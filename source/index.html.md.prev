@@ -18,7 +18,7 @@ headingLevel: 2
 
 ---
 
-<h1 id="appointments-management-api">Appointments management API v0.5</h1>
+<h1 id="appointments-management-api">Appointments management API v0.7</h1>
 
 > Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.
 
@@ -201,21 +201,23 @@ Returns company information identified by {id}
 
 ```json
 {
-  "name": "string",
-  "notification_advance": 0,
-  "created_at": "2019-08-20T20:25:56Z",
-  "employees_id": [
-    "string"
-  ],
-  "address": {
-    "street": "string",
-    "city": "string",
-    "county": "string",
-    "state": "string",
-    "country": "string",
-    "post_code": 0
+  "company": {
+    "name": "string",
+    "notification_advance": 0,
+    "created_at": "2019-08-30T12:49:11Z",
+    "updated_at": "2019-08-30T12:49:11Z",
+    "address": {
+      "street": "string",
+      "city": "string",
+      "county": "string",
+      "state": "string",
+      "country": "string",
+      "post_code": 0
+    },
+    "_id": "string",
+    "active": "string"
   },
-  "id": "string"
+  "message": "Element successfully found"
 }
 ```
 
@@ -223,11 +225,50 @@ Returns company information identified by {id}
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Gets the specific company|[RegisteredCompany](#schemaregisteredcompany)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Gets the specific company|Inline|
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Not authenticated|[GeneralError](#schemageneralerror)|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Permission denied|[GeneralError](#schemageneralerror)|
-|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Company not found|[NotFoundError](#schemanotfounderror)|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Company not found|[GeneralError](#schemageneralerror)|
 |default|Default|Error|[GeneralError](#schemageneralerror)|
+
+<h3 id="getcompanybyid-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» company|any|false|none|none|
+
+*allOf*
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|»» *anonymous*|[BasicCompany](#schemabasiccompany)|false|none|none|
+|»»» name|string|true|none|none|
+|»»» notification_advance|integer(int64)|false|none|none|
+|»»» created_at|string(date-time)|true|none|none|
+|»»» updated_at|string(date-time)|true|none|none|
+|»»» address|object|true|none|none|
+|»»»» street|string|true|none|none|
+|»»»» city|string|true|none|none|
+|»»»» county|string|false|none|none|
+|»»»» state|string|false|none|none|
+|»»»» country|string|true|none|none|
+|»»»» post_code|integer|true|none|none|
+
+*and*
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|»»» *anonymous*|object|false|none|none|
+|»»»» _id|string|true|none|none|
+|»»»» active|string|true|none|none|
+
+*continued*
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|»»» message|string|false|none|none|
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
@@ -282,10 +323,8 @@ const fetch = require('node-fetch');
 const inputBody = '{
   "name": "string",
   "notification_advance": 0,
-  "created_at": "2019-08-20T20:25:56Z",
-  "employees_id": [
-    "string"
-  ],
+  "created_at": "2019-08-30T12:49:11Z",
+  "updated_at": "2019-08-30T12:49:11Z",
   "address": {
     "street": "string",
     "city": "string",
@@ -294,7 +333,8 @@ const inputBody = '{
     "country": "string",
     "post_code": 0
   },
-  "id": "string"
+  "_id": "string",
+  "active": "string"
 }';
 const headers = {
   'Content-Type':'application/json',
@@ -408,10 +448,8 @@ Updates company information data identified by {id} returning no information
 {
   "name": "string",
   "notification_advance": 0,
-  "created_at": "2019-08-20T20:25:56Z",
-  "employees_id": [
-    "string"
-  ],
+  "created_at": "2019-08-30T12:49:11Z",
+  "updated_at": "2019-08-30T12:49:11Z",
   "address": {
     "street": "string",
     "city": "string",
@@ -420,7 +458,8 @@ Updates company information data identified by {id} returning no information
     "country": "string",
     "post_code": 0
   },
-  "id": "string"
+  "_id": "string",
+  "active": "string"
 }
 ```
 
@@ -437,7 +476,8 @@ Updates company information data identified by {id} returning no information
 
 ```json
 {
-  "message": "string"
+  "message": "string",
+  "status": 0
 }
 ```
 
@@ -449,7 +489,7 @@ Updates company information data identified by {id} returning no information
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Request does not have the right format or missing required data|[GeneralError](#schemageneralerror)|
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Not authenticated|[GeneralError](#schemageneralerror)|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Permission denied|[GeneralError](#schemageneralerror)|
-|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Company not found|[NotFoundError](#schemanotfounderror)|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Company not found|[GeneralError](#schemageneralerror)|
 |default|Default|Error|[GeneralError](#schemageneralerror)|
 
 <aside class="warning">
@@ -615,17 +655,21 @@ Returns all company employees data
 ```json
 [
   {
+    "password": "string",
+    "company_id": "string",
     "name": "string",
     "surname": "string",
     "email": "string",
-    "phone": "string",
-    "created_at": "2019-08-20T20:25:56Z",
-    "permissions": {
+    "phone_number": "string",
+    "created_at": "2019-08-30T12:49:11Z",
+    "updated_at": "2019-08-30T12:49:11Z",
+    "privileges": {
       "add_employee": true,
       "update_client": true,
       "update_schedule": true
     },
-    "id": "string"
+    "_id": "string",
+    "active": true
   }
 ]
 ```
@@ -652,12 +696,15 @@ Status Code **200**
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |» *anonymous*|[BasicEmployee](#schemabasicemployee)|false|none|none|
+|»» password|string|true|none|none|
+|»» company_id|string|true|none|none|
 |»» name|string|true|none|none|
 |»» surname|string|true|none|none|
 |»» email|string|true|none|none|
-|»» phone|string|false|none|none|
+|»» phone_number|string|false|none|none|
 |»» created_at|string(date-time)|true|none|none|
-|»» permissions|[BasicEmployee_permissions](#schemabasicemployee_permissions)|true|none|none|
+|»» updated_at|string(date-time)|true|none|none|
+|»» privileges|object|true|none|none|
 |»»» add_employee|boolean|true|none|none|
 |»»» update_client|boolean|true|none|none|
 |»»» update_schedule|boolean|true|none|none|
@@ -667,7 +714,8 @@ Status Code **200**
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |»» *anonymous*|object|false|none|none|
-|»»» id|string|true|none|none|
+|»»» _id|string|true|none|none|
+|»»» active|boolean|true|none|none|
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
@@ -836,10 +884,12 @@ Returns all company clients data
     "surname": "string",
     "email": "string",
     "phone": "string",
-    "created_at": "2019-08-20T20:25:56Z",
+    "created_at": "2019-08-30T12:49:11Z",
+    "updated_at": "2019-08-30T12:49:11Z",
     "added_by": "string",
     "company_added": "string",
-    "id": "string"
+    "_id": "string",
+    "active": true
   }
 ]
 ```
@@ -871,6 +921,7 @@ Status Code **200**
 |»» email|string|true|none|none|
 |»» phone|string|false|none|none|
 |»» created_at|string(date-time)|true|none|none|
+|»» updated_at|string(date-time)|true|none|none|
 |»» added_by|string|true|none|none|
 |»» company_added|string|true|none|none|
 
@@ -879,7 +930,8 @@ Status Code **200**
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |» *anonymous*|object|false|none|none|
-|»» id|string|true|none|none|
+|»» _id|string|true|none|none|
+|»» active|boolean|true|none|none|
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
@@ -1040,10 +1092,8 @@ Returns an array with information from each company
   {
     "name": "string",
     "notification_advance": 0,
-    "created_at": "2019-08-20T20:25:56Z",
-    "employees_id": [
-      "string"
-    ],
+    "created_at": "2019-08-30T12:49:11Z",
+    "updated_at": "2019-08-30T12:49:11Z",
     "address": {
       "street": "string",
       "city": "string",
@@ -1052,7 +1102,8 @@ Returns an array with information from each company
       "country": "string",
       "post_code": 0
     },
-    "id": "string"
+    "_id": "string",
+    "active": "string"
   }
 ]
 ```
@@ -1082,8 +1133,8 @@ Status Code **200**
 |»» name|string|true|none|none|
 |»» notification_advance|integer(int64)|false|none|none|
 |»» created_at|string(date-time)|true|none|none|
-|»» employees_id|[string]|false|none|none|
-|»» address|[BasicCompany_address](#schemabasiccompany_address)|true|none|none|
+|»» updated_at|string(date-time)|true|none|none|
+|»» address|object|true|none|none|
 |»»» street|string|true|none|none|
 |»»» city|string|true|none|none|
 |»»» county|string|false|none|none|
@@ -1096,7 +1147,8 @@ Status Code **200**
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |»» *anonymous*|object|false|none|none|
-|»»» id|string|true|none|none|
+|»»» _id|string|true|none|none|
+|»»» active|string|true|none|none|
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
@@ -1151,10 +1203,8 @@ const fetch = require('node-fetch');
 const inputBody = '{
   "name": "string",
   "notification_advance": 0,
-  "created_at": "2019-08-20T20:25:56Z",
-  "employees_id": [
-    "string"
-  ],
+  "created_at": "2019-08-30T12:49:11Z",
+  "updated_at": "2019-08-30T12:49:11Z",
   "address": {
     "street": "string",
     "city": "string",
@@ -1276,10 +1326,8 @@ Creates new company returning no information
 {
   "name": "string",
   "notification_advance": 0,
-  "created_at": "2019-08-20T20:25:56Z",
-  "employees_id": [
-    "string"
-  ],
+  "created_at": "2019-08-30T12:49:11Z",
+  "updated_at": "2019-08-30T12:49:11Z",
   "address": {
     "street": "string",
     "city": "string",
@@ -1303,21 +1351,23 @@ Creates new company returning no information
 
 ```json
 {
-  "name": "string",
-  "notification_advance": 0,
-  "created_at": "2019-08-20T20:25:56Z",
-  "employees_id": [
-    "string"
-  ],
-  "address": {
-    "street": "string",
-    "city": "string",
-    "county": "string",
-    "state": "string",
-    "country": "string",
-    "post_code": 0
+  "company": {
+    "name": "string",
+    "notification_advance": 0,
+    "created_at": "2019-08-30T12:49:11Z",
+    "updated_at": "2019-08-30T12:49:11Z",
+    "address": {
+      "street": "string",
+      "city": "string",
+      "county": "string",
+      "state": "string",
+      "country": "string",
+      "post_code": 0
+    },
+    "_id": "string",
+    "active": "string"
   },
-  "id": "string"
+  "message": "Element successfully created"
 }
 ```
 
@@ -1325,11 +1375,50 @@ Creates new company returning no information
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|Resource created successfully, created resource is returned|[RegisteredCompany](#schemaregisteredcompany)|
+|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|Resource created successfully, created resource is returned|Inline|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Request does not have the right format or missing required data|[GeneralError](#schemageneralerror)|
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Not authenticated|[GeneralError](#schemageneralerror)|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Permission denied|[GeneralError](#schemageneralerror)|
 |default|Default|Error|[GeneralError](#schemageneralerror)|
+
+<h3 id="createcompany-responseschema">Response Schema</h3>
+
+Status Code **201**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» company|any|false|none|none|
+
+*allOf*
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|»» *anonymous*|[BasicCompany](#schemabasiccompany)|false|none|none|
+|»»» name|string|true|none|none|
+|»»» notification_advance|integer(int64)|false|none|none|
+|»»» created_at|string(date-time)|true|none|none|
+|»»» updated_at|string(date-time)|true|none|none|
+|»»» address|object|true|none|none|
+|»»»» street|string|true|none|none|
+|»»»» city|string|true|none|none|
+|»»»» county|string|false|none|none|
+|»»»» state|string|false|none|none|
+|»»»» country|string|true|none|none|
+|»»»» post_code|integer|true|none|none|
+
+*and*
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|»»» *anonymous*|object|false|none|none|
+|»»»» _id|string|true|none|none|
+|»»»» active|string|true|none|none|
+
+*continued*
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|»»» message|string|false|none|none|
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
@@ -1497,17 +1586,21 @@ Returns employee data identified by {id}
 
 ```json
 {
+  "password": "string",
+  "company_id": "string",
   "name": "string",
   "surname": "string",
   "email": "string",
-  "phone": "string",
-  "created_at": "2019-08-20T20:25:56Z",
-  "permissions": {
+  "phone_number": "string",
+  "created_at": "2019-08-30T12:49:11Z",
+  "updated_at": "2019-08-30T12:49:11Z",
+  "privileges": {
     "add_employee": true,
     "update_client": true,
     "update_schedule": true
   },
-  "id": "string"
+  "_id": "string",
+  "active": true
 }
 ```
 
@@ -1516,9 +1609,9 @@ Returns employee data identified by {id}
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Gets the specific employee|[RegisteredEmployee](#schemaregisteredemployee)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Request does not have the right format or missing required data|[GeneralError](#schemageneralerror)|
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Not authenticated|[GeneralError](#schemageneralerror)|
-|403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Permission denied|[GeneralError](#schemageneralerror)|
-|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Employee not found|[NotFoundError](#schemanotfounderror)|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Employee not found|[GeneralError](#schemageneralerror)|
 |default|Default|Error|[GeneralError](#schemageneralerror)|
 
 <aside class="warning">
@@ -1572,17 +1665,21 @@ $.ajax({
 ```javascript--nodejs
 const fetch = require('node-fetch');
 const inputBody = '{
+  "password": "string",
+  "company_id": "string",
   "name": "string",
   "surname": "string",
   "email": "string",
-  "phone": "string",
-  "created_at": "2019-08-20T20:25:56Z",
-  "permissions": {
+  "phone_number": "string",
+  "created_at": "2019-08-30T12:49:11Z",
+  "updated_at": "2019-08-30T12:49:11Z",
+  "privileges": {
     "add_employee": true,
     "update_client": true,
     "update_schedule": true
   },
-  "id": "string"
+  "_id": "string",
+  "active": true
 }';
 const headers = {
   'Content-Type':'application/json',
@@ -1694,17 +1791,21 @@ Updates employee data identified by {id} returning no information
 
 ```json
 {
+  "password": "string",
+  "company_id": "string",
   "name": "string",
   "surname": "string",
   "email": "string",
-  "phone": "string",
-  "created_at": "2019-08-20T20:25:56Z",
-  "permissions": {
+  "phone_number": "string",
+  "created_at": "2019-08-30T12:49:11Z",
+  "updated_at": "2019-08-30T12:49:11Z",
+  "privileges": {
     "add_employee": true,
     "update_client": true,
     "update_schedule": true
   },
-  "id": "string"
+  "_id": "string",
+  "active": true
 }
 ```
 
@@ -1721,7 +1822,8 @@ Updates employee data identified by {id} returning no information
 
 ```json
 {
-  "message": "string"
+  "message": "string",
+  "status": 0
 }
 ```
 
@@ -1733,7 +1835,7 @@ Updates employee data identified by {id} returning no information
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Request does not have the right format or missing required data|[GeneralError](#schemageneralerror)|
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Not authenticated|[GeneralError](#schemageneralerror)|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Permission denied|[GeneralError](#schemageneralerror)|
-|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Employee not found|[NotFoundError](#schemanotfounderror)|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Employee not found|[GeneralError](#schemageneralerror)|
 |default|Default|Error|[GeneralError](#schemageneralerror)|
 
 <aside class="warning">
@@ -1787,12 +1889,15 @@ $.ajax({
 ```javascript--nodejs
 const fetch = require('node-fetch');
 const inputBody = '{
+  "password": "string",
+  "company_id": "string",
   "name": "string",
   "surname": "string",
   "email": "string",
-  "phone": "string",
-  "created_at": "2019-08-20T20:25:56Z",
-  "permissions": {
+  "phone_number": "string",
+  "created_at": "2019-08-30T12:49:11Z",
+  "updated_at": "2019-08-30T12:49:11Z",
+  "privileges": {
     "add_employee": true,
     "update_client": true,
     "update_schedule": true
@@ -1908,12 +2013,15 @@ Creates new employee returning no information
 
 ```json
 {
+  "password": "string",
+  "company_id": "string",
   "name": "string",
   "surname": "string",
   "email": "string",
-  "phone": "string",
-  "created_at": "2019-08-20T20:25:56Z",
-  "permissions": {
+  "phone_number": "string",
+  "created_at": "2019-08-30T12:49:11Z",
+  "updated_at": "2019-08-30T12:49:11Z",
+  "privileges": {
     "add_employee": true,
     "update_client": true,
     "update_schedule": true
@@ -1933,17 +2041,8 @@ Creates new employee returning no information
 
 ```json
 {
-  "name": "string",
-  "surname": "string",
-  "email": "string",
-  "phone": "string",
-  "created_at": "2019-08-20T20:25:56Z",
-  "permissions": {
-    "add_employee": true,
-    "update_client": true,
-    "update_schedule": true
-  },
-  "id": "string"
+  "status": 0,
+  "message": "string"
 }
 ```
 
@@ -1951,11 +2050,20 @@ Creates new employee returning no information
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|Resource created successfully, created resource is returned|[RegisteredEmployee](#schemaregisteredemployee)|
+|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|Resource created successfully, created resource is returned|Inline|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Request does not have the right format or missing required data|[GeneralError](#schemageneralerror)|
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Not authenticated|[GeneralError](#schemageneralerror)|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Permission denied|[GeneralError](#schemageneralerror)|
 |default|Default|Error|[GeneralError](#schemageneralerror)|
+
+<h3 id="createemployee-responseschema">Response Schema</h3>
+
+Status Code **201**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» status|number|false|none|none|
+|» message|string|false|none|none|
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
@@ -2123,14 +2231,19 @@ Returns client data identified by {id}
 
 ```json
 {
-  "name": "string",
-  "surname": "string",
-  "email": "string",
-  "phone": "string",
-  "created_at": "2019-08-20T20:25:56Z",
-  "added_by": "string",
-  "company_added": "string",
-  "id": "string"
+  "client": {
+    "name": "string",
+    "surname": "string",
+    "email": "string",
+    "phone": "string",
+    "created_at": "2019-08-30T12:49:11Z",
+    "updated_at": "2019-08-30T12:49:11Z",
+    "added_by": "string",
+    "company_added": "string",
+    "_id": "string",
+    "active": true
+  },
+  "message": "Element successfully found"
 }
 ```
 
@@ -2138,11 +2251,47 @@ Returns client data identified by {id}
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Gets the specific client|[RegisteredClient](#schemaregisteredclient)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Gets the specific client|Inline|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Required request parameters are missing or are incorrect|[GeneralError](#schemageneralerror)|
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Not authenticated|[GeneralError](#schemageneralerror)|
-|403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Permission denied|[GeneralError](#schemageneralerror)|
-|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Client not found|[NotFoundError](#schemanotfounderror)|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Client not found|[GeneralError](#schemageneralerror)|
 |default|Default|Error|[GeneralError](#schemageneralerror)|
+
+<h3 id="getclientbyid-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» client|any|false|none|none|
+
+*allOf*
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|»» *anonymous*|[BasicClient](#schemabasicclient)|false|none|none|
+|»»» name|string|true|none|none|
+|»»» surname|string|true|none|none|
+|»»» email|string|true|none|none|
+|»»» phone|string|false|none|none|
+|»»» created_at|string(date-time)|true|none|none|
+|»»» updated_at|string(date-time)|true|none|none|
+|»»» added_by|string|true|none|none|
+|»»» company_added|string|true|none|none|
+
+*and*
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|»» *anonymous*|object|false|none|none|
+|»»» _id|string|true|none|none|
+|»»» active|boolean|true|none|none|
+
+*continued*
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|»» message|string|false|none|none|
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
@@ -2199,10 +2348,12 @@ const inputBody = '{
   "surname": "string",
   "email": "string",
   "phone": "string",
-  "created_at": "2019-08-20T20:25:56Z",
+  "created_at": "2019-08-30T12:49:11Z",
+  "updated_at": "2019-08-30T12:49:11Z",
   "added_by": "string",
   "company_added": "string",
-  "id": "string"
+  "_id": "string",
+  "active": true
 }';
 const headers = {
   'Content-Type':'application/json',
@@ -2318,10 +2469,12 @@ Updates client data identified by {id} returning no information
   "surname": "string",
   "email": "string",
   "phone": "string",
-  "created_at": "2019-08-20T20:25:56Z",
+  "created_at": "2019-08-30T12:49:11Z",
+  "updated_at": "2019-08-30T12:49:11Z",
   "added_by": "string",
   "company_added": "string",
-  "id": "string"
+  "_id": "string",
+  "active": true
 }
 ```
 
@@ -2338,7 +2491,8 @@ Updates client data identified by {id} returning no information
 
 ```json
 {
-  "message": "string"
+  "message": "string",
+  "status": 0
 }
 ```
 
@@ -2350,7 +2504,7 @@ Updates client data identified by {id} returning no information
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Request does not have the right format or missing required data|[GeneralError](#schemageneralerror)|
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Not authenticated|[GeneralError](#schemageneralerror)|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Permission denied|[GeneralError](#schemageneralerror)|
-|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Client not found|[NotFoundError](#schemanotfounderror)|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Client not found|[GeneralError](#schemageneralerror)|
 |default|Default|Error|[GeneralError](#schemageneralerror)|
 
 <aside class="warning">
@@ -2508,23 +2662,56 @@ Returns all client appointments or single appointment information information da
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |id|path|string|true|Client id|
-|appointment_id|query|string|false|Appointment resource identified|
+|from|query|string(date-time)|false|Filter out appointments starting before this string date|
+|to|query|string(date-time)|false|Filter out appointments ending after this string date|
 
 > Example responses
 
 > 200 Response
 
 ```json
-[
-  {
-    "employee_id": "string",
-    "client_id": "string",
-    "created_at": "2019-08-20T20:25:56Z",
-    "start_date": "2019-08-20T20:25:56Z",
-    "end_date": "2019-08-20T20:25:56Z",
-    "id": "string"
-  }
-]
+{
+  "message": "Element successfully found",
+  "appointments": [
+    {
+      "company_id": "string",
+      "created_at": "2019-08-30T12:49:11Z",
+      "client": {
+        "name": "string",
+        "surname": "string",
+        "email": "string",
+        "phone": "string",
+        "created_at": "2019-08-30T12:49:11Z",
+        "updated_at": "2019-08-30T12:49:11Z",
+        "added_by": "string",
+        "company_added": "string",
+        "_id": "string",
+        "active": true
+      },
+      "employee": {
+        "password": "string",
+        "company_id": "string",
+        "name": "string",
+        "surname": "string",
+        "email": "string",
+        "phone_number": "string",
+        "created_at": "2019-08-30T12:49:11Z",
+        "updated_at": "2019-08-30T12:49:11Z",
+        "privileges": {
+          "add_employee": true,
+          "update_client": true,
+          "update_schedule": true
+        },
+        "_id": "string",
+        "active": true
+      },
+      "modified_at": "2019-08-30T12:49:11Z",
+      "start_date": "2019-08-30T12:49:11Z",
+      "end_date": "2019-08-30T12:49:11Z",
+      "_id": "string"
+    }
+  ]
+}
 ```
 
 <h3 id="getclientappointment-responses">Responses</h3>
@@ -2533,11 +2720,95 @@ Returns all client appointments or single appointment information information da
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Gets array of with information of all client appointments or single appointment information if ?appointment_id is added to request. Client identified by {id}|Inline|
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Not authenticated|[GeneralError](#schemageneralerror)|
-|403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Permission denied|[GeneralError](#schemageneralerror)|
-|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Appointments or appointment not found|[NotFoundError](#schemanotfounderror)|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Appointments or appointment not found|[GeneralError](#schemageneralerror)|
 |default|Default|Error|[GeneralError](#schemageneralerror)|
 
 <h3 id="getclientappointment-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» message|string|false|none|none|
+|» appointments|[allOf]|false|none|none|
+
+*allOf*
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|»» *anonymous*|[BasicAppointment](#schemabasicappointment)|false|none|none|
+|»»» company_id|string|true|none|none|
+|»»» created_at|string(date-time)|true|none|none|
+|»»» client|any|true|none|none|
+
+*allOf*
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|»»»» *anonymous*|[BasicClient](#schemabasicclient)|false|none|none|
+|»»»»» name|string|true|none|none|
+|»»»»» surname|string|true|none|none|
+|»»»»» email|string|true|none|none|
+|»»»»» phone|string|false|none|none|
+|»»»»» created_at|string(date-time)|true|none|none|
+|»»»»» updated_at|string(date-time)|true|none|none|
+|»»»»» added_by|string|true|none|none|
+|»»»»» company_added|string|true|none|none|
+
+*and*
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|»»»» *anonymous*|object|false|none|none|
+|»»»»» _id|string|true|none|none|
+|»»»»» active|boolean|true|none|none|
+
+*continued*
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|»»»» employee|any|true|none|none|
+
+*allOf*
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|»»»»» *anonymous*|[BasicEmployee](#schemabasicemployee)|false|none|none|
+|»»»»»» password|string|true|none|none|
+|»»»»»» company_id|string|true|none|none|
+|»»»»»» name|string|true|none|none|
+|»»»»»» surname|string|true|none|none|
+|»»»»»» email|string|true|none|none|
+|»»»»»» phone_number|string|false|none|none|
+|»»»»»» created_at|string(date-time)|true|none|none|
+|»»»»»» updated_at|string(date-time)|true|none|none|
+|»»»»»» privileges|object|true|none|none|
+|»»»»»»» add_employee|boolean|true|none|none|
+|»»»»»»» update_client|boolean|true|none|none|
+|»»»»»»» update_schedule|boolean|true|none|none|
+
+*and*
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|»»»»»» *anonymous*|object|false|none|none|
+|»»»»»»» _id|string|true|none|none|
+|»»»»»»» active|boolean|true|none|none|
+
+*continued*
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|»»»»»» modified_at|string(date-time)|true|none|none|
+|»»»»»» start_date|string(date-time)|true|none|none|
+|»»»»»» end_date|string(date-time)|true|none|none|
+
+*and*
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|»»»»» *anonymous*|object|false|none|none|
+|»»»»»» _id|string|true|none|none|
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
@@ -2590,12 +2861,41 @@ $.ajax({
 ```javascript--nodejs
 const fetch = require('node-fetch');
 const inputBody = '{
-  "employee_id": "string",
-  "client_id": "string",
-  "created_at": "2019-08-20T20:25:56Z",
-  "start_date": "2019-08-20T20:25:56Z",
-  "end_date": "2019-08-20T20:25:56Z",
-  "id": "string"
+  "company_id": "string",
+  "created_at": "2019-08-30T12:49:11Z",
+  "client": {
+    "name": "string",
+    "surname": "string",
+    "email": "string",
+    "phone": "string",
+    "created_at": "2019-08-30T12:49:11Z",
+    "updated_at": "2019-08-30T12:49:11Z",
+    "added_by": "string",
+    "company_added": "string",
+    "_id": "string",
+    "active": true
+  },
+  "employee": {
+    "password": "string",
+    "company_id": "string",
+    "name": "string",
+    "surname": "string",
+    "email": "string",
+    "phone_number": "string",
+    "created_at": "2019-08-30T12:49:11Z",
+    "updated_at": "2019-08-30T12:49:11Z",
+    "privileges": {
+      "add_employee": true,
+      "update_client": true,
+      "update_schedule": true
+    },
+    "_id": "string",
+    "active": true
+  },
+  "modified_at": "2019-08-30T12:49:11Z",
+  "start_date": "2019-08-30T12:49:11Z",
+  "end_date": "2019-08-30T12:49:11Z",
+  "_id": "string"
 }';
 const headers = {
   'Content-Type':'application/json',
@@ -2708,12 +3008,41 @@ Updates appointment data for client identified by {id} and appointment identifie
 
 ```json
 {
-  "employee_id": "string",
-  "client_id": "string",
-  "created_at": "2019-08-20T20:25:56Z",
-  "start_date": "2019-08-20T20:25:56Z",
-  "end_date": "2019-08-20T20:25:56Z",
-  "id": "string"
+  "company_id": "string",
+  "created_at": "2019-08-30T12:49:11Z",
+  "client": {
+    "name": "string",
+    "surname": "string",
+    "email": "string",
+    "phone": "string",
+    "created_at": "2019-08-30T12:49:11Z",
+    "updated_at": "2019-08-30T12:49:11Z",
+    "added_by": "string",
+    "company_added": "string",
+    "_id": "string",
+    "active": true
+  },
+  "employee": {
+    "password": "string",
+    "company_id": "string",
+    "name": "string",
+    "surname": "string",
+    "email": "string",
+    "phone_number": "string",
+    "created_at": "2019-08-30T12:49:11Z",
+    "updated_at": "2019-08-30T12:49:11Z",
+    "privileges": {
+      "add_employee": true,
+      "update_client": true,
+      "update_schedule": true
+    },
+    "_id": "string",
+    "active": true
+  },
+  "modified_at": "2019-08-30T12:49:11Z",
+  "start_date": "2019-08-30T12:49:11Z",
+  "end_date": "2019-08-30T12:49:11Z",
+  "_id": "string"
 }
 ```
 
@@ -2731,7 +3060,8 @@ Updates appointment data for client identified by {id} and appointment identifie
 
 ```json
 {
-  "message": "string"
+  "message": "string",
+  "status": 0
 }
 ```
 
@@ -2743,7 +3073,7 @@ Updates appointment data for client identified by {id} and appointment identifie
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Request does not have the right format or missing required data|[GeneralError](#schemageneralerror)|
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Not authenticated|[GeneralError](#schemageneralerror)|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Permission denied|[GeneralError](#schemageneralerror)|
-|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Appointment not found|[NotFoundError](#schemanotfounderror)|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Appointment not found|[GeneralError](#schemageneralerror)|
 |default|Default|Error|[GeneralError](#schemageneralerror)|
 
 <aside class="warning">
@@ -2797,11 +3127,40 @@ $.ajax({
 ```javascript--nodejs
 const fetch = require('node-fetch');
 const inputBody = '{
-  "employee_id": "string",
-  "client_id": "string",
-  "created_at": "2019-08-20T20:25:56Z",
-  "start_date": "2019-08-20T20:25:56Z",
-  "end_date": "2019-08-20T20:25:56Z"
+  "company_id": "string",
+  "created_at": "2019-08-30T12:49:11Z",
+  "client": {
+    "name": "string",
+    "surname": "string",
+    "email": "string",
+    "phone": "string",
+    "created_at": "2019-08-30T12:49:11Z",
+    "updated_at": "2019-08-30T12:49:11Z",
+    "added_by": "string",
+    "company_added": "string",
+    "_id": "string",
+    "active": true
+  },
+  "employee": {
+    "password": "string",
+    "company_id": "string",
+    "name": "string",
+    "surname": "string",
+    "email": "string",
+    "phone_number": "string",
+    "created_at": "2019-08-30T12:49:11Z",
+    "updated_at": "2019-08-30T12:49:11Z",
+    "privileges": {
+      "add_employee": true,
+      "update_client": true,
+      "update_schedule": true
+    },
+    "_id": "string",
+    "active": true
+  },
+  "modified_at": "2019-08-30T12:49:11Z",
+  "start_date": "2019-08-30T12:49:11Z",
+  "end_date": "2019-08-30T12:49:11Z"
 }';
 const headers = {
   'Content-Type':'application/json',
@@ -2913,11 +3272,40 @@ Creates new appointment returning new appointment information. Client identified
 
 ```json
 {
-  "employee_id": "string",
-  "client_id": "string",
-  "created_at": "2019-08-20T20:25:56Z",
-  "start_date": "2019-08-20T20:25:56Z",
-  "end_date": "2019-08-20T20:25:56Z"
+  "company_id": "string",
+  "created_at": "2019-08-30T12:49:11Z",
+  "client": {
+    "name": "string",
+    "surname": "string",
+    "email": "string",
+    "phone": "string",
+    "created_at": "2019-08-30T12:49:11Z",
+    "updated_at": "2019-08-30T12:49:11Z",
+    "added_by": "string",
+    "company_added": "string",
+    "_id": "string",
+    "active": true
+  },
+  "employee": {
+    "password": "string",
+    "company_id": "string",
+    "name": "string",
+    "surname": "string",
+    "email": "string",
+    "phone_number": "string",
+    "created_at": "2019-08-30T12:49:11Z",
+    "updated_at": "2019-08-30T12:49:11Z",
+    "privileges": {
+      "add_employee": true,
+      "update_client": true,
+      "update_schedule": true
+    },
+    "_id": "string",
+    "active": true
+  },
+  "modified_at": "2019-08-30T12:49:11Z",
+  "start_date": "2019-08-30T12:49:11Z",
+  "end_date": "2019-08-30T12:49:11Z"
 }
 ```
 
@@ -2934,12 +3322,44 @@ Creates new appointment returning new appointment information. Client identified
 
 ```json
 {
-  "employee_id": "string",
-  "client_id": "string",
-  "created_at": "2019-08-20T20:25:56Z",
-  "start_date": "2019-08-20T20:25:56Z",
-  "end_date": "2019-08-20T20:25:56Z",
-  "id": "string"
+  "appointment": {
+    "company_id": "string",
+    "created_at": "2019-08-30T12:49:11Z",
+    "client": {
+      "name": "string",
+      "surname": "string",
+      "email": "string",
+      "phone": "string",
+      "created_at": "2019-08-30T12:49:11Z",
+      "updated_at": "2019-08-30T12:49:11Z",
+      "added_by": "string",
+      "company_added": "string",
+      "_id": "string",
+      "active": true
+    },
+    "employee": {
+      "password": "string",
+      "company_id": "string",
+      "name": "string",
+      "surname": "string",
+      "email": "string",
+      "phone_number": "string",
+      "created_at": "2019-08-30T12:49:11Z",
+      "updated_at": "2019-08-30T12:49:11Z",
+      "privileges": {
+        "add_employee": true,
+        "update_client": true,
+        "update_schedule": true
+      },
+      "_id": "string",
+      "active": true
+    },
+    "modified_at": "2019-08-30T12:49:11Z",
+    "start_date": "2019-08-30T12:49:11Z",
+    "end_date": "2019-08-30T12:49:11Z",
+    "_id": "string"
+  },
+  "message": "Element successfully created"
 }
 ```
 
@@ -2947,11 +3367,103 @@ Creates new appointment returning new appointment information. Client identified
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|Resource created successfully, created resource is returned|[RegisteredAppointment](#schemaregisteredappointment)|
+|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|Resource created successfully, created resource is returned|Inline|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Request does not have the right format or missing required data|[GeneralError](#schemageneralerror)|
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Not authenticated|[GeneralError](#schemageneralerror)|
-|403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Permission denied|[GeneralError](#schemageneralerror)|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Client not found|[GeneralError](#schemageneralerror)|
 |default|Default|Error|[GeneralError](#schemageneralerror)|
+
+<h3 id="createclientappointment-responseschema">Response Schema</h3>
+
+Status Code **201**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» appointment|any|false|none|none|
+
+*allOf*
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|»» *anonymous*|[BasicAppointment](#schemabasicappointment)|false|none|none|
+|»»» company_id|string|true|none|none|
+|»»» created_at|string(date-time)|true|none|none|
+|»»» client|any|true|none|none|
+
+*allOf*
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|»»»» *anonymous*|[BasicClient](#schemabasicclient)|false|none|none|
+|»»»»» name|string|true|none|none|
+|»»»»» surname|string|true|none|none|
+|»»»»» email|string|true|none|none|
+|»»»»» phone|string|false|none|none|
+|»»»»» created_at|string(date-time)|true|none|none|
+|»»»»» updated_at|string(date-time)|true|none|none|
+|»»»»» added_by|string|true|none|none|
+|»»»»» company_added|string|true|none|none|
+
+*and*
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|»»»» *anonymous*|object|false|none|none|
+|»»»»» _id|string|true|none|none|
+|»»»»» active|boolean|true|none|none|
+
+*continued*
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|»»»» employee|any|true|none|none|
+
+*allOf*
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|»»»»» *anonymous*|[BasicEmployee](#schemabasicemployee)|false|none|none|
+|»»»»»» password|string|true|none|none|
+|»»»»»» company_id|string|true|none|none|
+|»»»»»» name|string|true|none|none|
+|»»»»»» surname|string|true|none|none|
+|»»»»»» email|string|true|none|none|
+|»»»»»» phone_number|string|false|none|none|
+|»»»»»» created_at|string(date-time)|true|none|none|
+|»»»»»» updated_at|string(date-time)|true|none|none|
+|»»»»»» privileges|object|true|none|none|
+|»»»»»»» add_employee|boolean|true|none|none|
+|»»»»»»» update_client|boolean|true|none|none|
+|»»»»»»» update_schedule|boolean|true|none|none|
+
+*and*
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|»»»»»» *anonymous*|object|false|none|none|
+|»»»»»»» _id|string|true|none|none|
+|»»»»»»» active|boolean|true|none|none|
+
+*continued*
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|»»»»»» modified_at|string(date-time)|true|none|none|
+|»»»»»» start_date|string(date-time)|true|none|none|
+|»»»»»» end_date|string(date-time)|true|none|none|
+
+*and*
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|»»»»» *anonymous*|object|false|none|none|
+|»»»»»» _id|string|true|none|none|
+
+*continued*
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|»»»»» message|string|false|none|none|
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
@@ -3008,7 +3520,8 @@ const inputBody = '{
   "surname": "string",
   "email": "string",
   "phone": "string",
-  "created_at": "2019-08-20T20:25:56Z",
+  "created_at": "2019-08-30T12:49:11Z",
+  "updated_at": "2019-08-30T12:49:11Z",
   "added_by": "string",
   "company_added": "string"
 }';
@@ -3126,7 +3639,8 @@ Creates new client returning new client information
   "surname": "string",
   "email": "string",
   "phone": "string",
-  "created_at": "2019-08-20T20:25:56Z",
+  "created_at": "2019-08-30T12:49:11Z",
+  "updated_at": "2019-08-30T12:49:11Z",
   "added_by": "string",
   "company_added": "string"
 }
@@ -3144,14 +3658,19 @@ Creates new client returning new client information
 
 ```json
 {
-  "name": "string",
-  "surname": "string",
-  "email": "string",
-  "phone": "string",
-  "created_at": "2019-08-20T20:25:56Z",
-  "added_by": "string",
-  "company_added": "string",
-  "id": "string"
+  "client": {
+    "name": "string",
+    "surname": "string",
+    "email": "string",
+    "phone": "string",
+    "created_at": "2019-08-30T12:49:11Z",
+    "updated_at": "2019-08-30T12:49:11Z",
+    "added_by": "string",
+    "company_added": "string",
+    "_id": "string",
+    "active": true
+  },
+  "message": "Element successfully created"
 }
 ```
 
@@ -3159,11 +3678,46 @@ Creates new client returning new client information
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|Resource created successfully, created resource is returned|[RegisteredClient](#schemaregisteredclient)|
+|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|Resource created successfully, created resource is returned|Inline|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Request does not have the right format or missing required data|[GeneralError](#schemageneralerror)|
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Not authenticated|[GeneralError](#schemageneralerror)|
-|403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Permission denied|[GeneralError](#schemageneralerror)|
 |default|Default|Error|[GeneralError](#schemageneralerror)|
+
+<h3 id="createclient-responseschema">Response Schema</h3>
+
+Status Code **201**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» client|any|false|none|none|
+
+*allOf*
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|»» *anonymous*|[BasicClient](#schemabasicclient)|false|none|none|
+|»»» name|string|true|none|none|
+|»»» surname|string|true|none|none|
+|»»» email|string|true|none|none|
+|»»» phone|string|false|none|none|
+|»»» created_at|string(date-time)|true|none|none|
+|»»» updated_at|string(date-time)|true|none|none|
+|»»» added_by|string|true|none|none|
+|»»» company_added|string|true|none|none|
+
+*and*
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|»» *anonymous*|object|false|none|none|
+|»»» _id|string|true|none|none|
+|»»» active|boolean|true|none|none|
+
+*continued*
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|»» message|string|false|none|none|
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
@@ -3178,25 +3732,8 @@ BearerAuth
 
 ```json
 {
-  "message": "string"
-}
-
-```
-
-### Properties
-
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|message|string|true|none|none|
-
-<h2 id="tocSnotfounderror">NotFoundError</h2>
-
-<a id="schemanotfounderror"></a>
-
-```json
-{
   "message": "string",
-  "hint": "string"
+  "status": 0
 }
 
 ```
@@ -3206,7 +3743,7 @@ BearerAuth
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |message|string|true|none|none|
-|hint|string|true|none|none|
+|status|number|true|none|none|
 
 <h2 id="tocSregisteredemployee">RegisteredEmployee</h2>
 
@@ -3214,17 +3751,21 @@ BearerAuth
 
 ```json
 {
+  "password": "string",
+  "company_id": "string",
   "name": "string",
   "surname": "string",
   "email": "string",
-  "phone": "string",
-  "created_at": "2019-08-20T20:25:56Z",
-  "permissions": {
+  "phone_number": "string",
+  "created_at": "2019-08-30T12:49:11Z",
+  "updated_at": "2019-08-30T12:49:11Z",
+  "privileges": {
     "add_employee": true,
     "update_client": true,
     "update_schedule": true
   },
-  "id": "string"
+  "_id": "string",
+  "active": true
 }
 
 ```
@@ -3242,7 +3783,8 @@ BearerAuth
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |*anonymous*|object|false|none|none|
-|» id|string|true|none|none|
+|» _id|string|true|none|none|
+|» active|boolean|true|none|none|
 
 <h2 id="tocSbasicemployee">BasicEmployee</h2>
 
@@ -3250,12 +3792,15 @@ BearerAuth
 
 ```json
 {
+  "password": "string",
+  "company_id": "string",
   "name": "string",
   "surname": "string",
   "email": "string",
-  "phone": "string",
-  "created_at": "2019-08-20T20:25:56Z",
-  "permissions": {
+  "phone_number": "string",
+  "created_at": "2019-08-30T12:49:11Z",
+  "updated_at": "2019-08-30T12:49:11Z",
+  "privileges": {
     "add_employee": true,
     "update_client": true,
     "update_schedule": true
@@ -3268,12 +3813,18 @@ BearerAuth
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
+|password|string|true|none|none|
+|company_id|string|true|none|none|
 |name|string|true|none|none|
 |surname|string|true|none|none|
 |email|string|true|none|none|
-|phone|string|false|none|none|
+|phone_number|string|false|none|none|
 |created_at|string(date-time)|true|none|none|
-|permissions|[BasicEmployee_permissions](#schemabasicemployee_permissions)|true|none|none|
+|updated_at|string(date-time)|true|none|none|
+|privileges|object|true|none|none|
+|» add_employee|boolean|true|none|none|
+|» update_client|boolean|true|none|none|
+|» update_schedule|boolean|true|none|none|
 
 <h2 id="tocSregisteredclient">RegisteredClient</h2>
 
@@ -3285,10 +3836,12 @@ BearerAuth
   "surname": "string",
   "email": "string",
   "phone": "string",
-  "created_at": "2019-08-20T20:25:56Z",
+  "created_at": "2019-08-30T12:49:11Z",
+  "updated_at": "2019-08-30T12:49:11Z",
   "added_by": "string",
   "company_added": "string",
-  "id": "string"
+  "_id": "string",
+  "active": true
 }
 
 ```
@@ -3306,7 +3859,8 @@ BearerAuth
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |*anonymous*|object|false|none|none|
-|» id|string|true|none|none|
+|» _id|string|true|none|none|
+|» active|boolean|true|none|none|
 
 <h2 id="tocSbasicclient">BasicClient</h2>
 
@@ -3318,7 +3872,8 @@ BearerAuth
   "surname": "string",
   "email": "string",
   "phone": "string",
-  "created_at": "2019-08-20T20:25:56Z",
+  "created_at": "2019-08-30T12:49:11Z",
+  "updated_at": "2019-08-30T12:49:11Z",
   "added_by": "string",
   "company_added": "string"
 }
@@ -3334,6 +3889,7 @@ BearerAuth
 |email|string|true|none|none|
 |phone|string|false|none|none|
 |created_at|string(date-time)|true|none|none|
+|updated_at|string(date-time)|true|none|none|
 |added_by|string|true|none|none|
 |company_added|string|true|none|none|
 
@@ -3345,10 +3901,8 @@ BearerAuth
 {
   "name": "string",
   "notification_advance": 0,
-  "created_at": "2019-08-20T20:25:56Z",
-  "employees_id": [
-    "string"
-  ],
+  "created_at": "2019-08-30T12:49:11Z",
+  "updated_at": "2019-08-30T12:49:11Z",
   "address": {
     "street": "string",
     "city": "string",
@@ -3357,7 +3911,8 @@ BearerAuth
     "country": "string",
     "post_code": 0
   },
-  "id": "string"
+  "_id": "string",
+  "active": "string"
 }
 
 ```
@@ -3375,7 +3930,8 @@ BearerAuth
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |*anonymous*|object|false|none|none|
-|» id|string|true|none|none|
+|» _id|string|true|none|none|
+|» active|string|true|none|none|
 
 <h2 id="tocSbasiccompany">BasicCompany</h2>
 
@@ -3385,10 +3941,8 @@ BearerAuth
 {
   "name": "string",
   "notification_advance": 0,
-  "created_at": "2019-08-20T20:25:56Z",
-  "employees_id": [
-    "string"
-  ],
+  "created_at": "2019-08-30T12:49:11Z",
+  "updated_at": "2019-08-30T12:49:11Z",
   "address": {
     "street": "string",
     "city": "string",
@@ -3408,8 +3962,14 @@ BearerAuth
 |name|string|true|none|none|
 |notification_advance|integer(int64)|false|none|none|
 |created_at|string(date-time)|true|none|none|
-|employees_id|[string]|false|none|none|
-|address|[BasicCompany_address](#schemabasiccompany_address)|true|none|none|
+|updated_at|string(date-time)|true|none|none|
+|address|object|true|none|none|
+|» street|string|true|none|none|
+|» city|string|true|none|none|
+|» county|string|false|none|none|
+|» state|string|false|none|none|
+|» country|string|true|none|none|
+|» post_code|integer|true|none|none|
 
 <h2 id="tocSregisteredappointment">RegisteredAppointment</h2>
 
@@ -3417,12 +3977,41 @@ BearerAuth
 
 ```json
 {
-  "employee_id": "string",
-  "client_id": "string",
-  "created_at": "2019-08-20T20:25:56Z",
-  "start_date": "2019-08-20T20:25:56Z",
-  "end_date": "2019-08-20T20:25:56Z",
-  "id": "string"
+  "company_id": "string",
+  "created_at": "2019-08-30T12:49:11Z",
+  "client": {
+    "name": "string",
+    "surname": "string",
+    "email": "string",
+    "phone": "string",
+    "created_at": "2019-08-30T12:49:11Z",
+    "updated_at": "2019-08-30T12:49:11Z",
+    "added_by": "string",
+    "company_added": "string",
+    "_id": "string",
+    "active": true
+  },
+  "employee": {
+    "password": "string",
+    "company_id": "string",
+    "name": "string",
+    "surname": "string",
+    "email": "string",
+    "phone_number": "string",
+    "created_at": "2019-08-30T12:49:11Z",
+    "updated_at": "2019-08-30T12:49:11Z",
+    "privileges": {
+      "add_employee": true,
+      "update_client": true,
+      "update_schedule": true
+    },
+    "_id": "string",
+    "active": true
+  },
+  "modified_at": "2019-08-30T12:49:11Z",
+  "start_date": "2019-08-30T12:49:11Z",
+  "end_date": "2019-08-30T12:49:11Z",
+  "_id": "string"
 }
 
 ```
@@ -3440,7 +4029,7 @@ BearerAuth
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |*anonymous*|object|false|none|none|
-|» id|string|true|none|none|
+|» _id|string|true|none|none|
 
 <h2 id="tocSbasicappointment">BasicAppointment</h2>
 
@@ -3448,11 +4037,40 @@ BearerAuth
 
 ```json
 {
-  "employee_id": "string",
-  "client_id": "string",
-  "created_at": "2019-08-20T20:25:56Z",
-  "start_date": "2019-08-20T20:25:56Z",
-  "end_date": "2019-08-20T20:25:56Z"
+  "company_id": "string",
+  "created_at": "2019-08-30T12:49:11Z",
+  "client": {
+    "name": "string",
+    "surname": "string",
+    "email": "string",
+    "phone": "string",
+    "created_at": "2019-08-30T12:49:11Z",
+    "updated_at": "2019-08-30T12:49:11Z",
+    "added_by": "string",
+    "company_added": "string",
+    "_id": "string",
+    "active": true
+  },
+  "employee": {
+    "password": "string",
+    "company_id": "string",
+    "name": "string",
+    "surname": "string",
+    "email": "string",
+    "phone_number": "string",
+    "created_at": "2019-08-30T12:49:11Z",
+    "updated_at": "2019-08-30T12:49:11Z",
+    "privileges": {
+      "add_employee": true,
+      "update_client": true,
+      "update_schedule": true
+    },
+    "_id": "string",
+    "active": true
+  },
+  "modified_at": "2019-08-30T12:49:11Z",
+  "start_date": "2019-08-30T12:49:11Z",
+  "end_date": "2019-08-30T12:49:11Z"
 }
 
 ```
@@ -3461,57 +4079,11 @@ BearerAuth
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|employee_id|string|true|none|none|
-|client_id|string|true|none|none|
+|company_id|string|true|none|none|
 |created_at|string(date-time)|true|none|none|
+|client|[RegisteredClient](#schemaregisteredclient)|true|none|none|
+|employee|[RegisteredEmployee](#schemaregisteredemployee)|true|none|none|
+|modified_at|string(date-time)|true|none|none|
 |start_date|string(date-time)|true|none|none|
 |end_date|string(date-time)|true|none|none|
-
-<h2 id="tocSbasicemployee_permissions">BasicEmployee_permissions</h2>
-
-<a id="schemabasicemployee_permissions"></a>
-
-```json
-{
-  "add_employee": true,
-  "update_client": true,
-  "update_schedule": true
-}
-
-```
-
-### Properties
-
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|add_employee|boolean|true|none|none|
-|update_client|boolean|true|none|none|
-|update_schedule|boolean|true|none|none|
-
-<h2 id="tocSbasiccompany_address">BasicCompany_address</h2>
-
-<a id="schemabasiccompany_address"></a>
-
-```json
-{
-  "street": "string",
-  "city": "string",
-  "county": "string",
-  "state": "string",
-  "country": "string",
-  "post_code": 0
-}
-
-```
-
-### Properties
-
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|street|string|true|none|none|
-|city|string|true|none|none|
-|county|string|false|none|none|
-|state|string|false|none|none|
-|country|string|true|none|none|
-|post_code|integer|true|none|none|
 

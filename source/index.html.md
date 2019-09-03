@@ -18,7 +18,7 @@ headingLevel: 2
 
 ---
 
-<h1 id="appointments-management-api">Appointments management API v0.7</h1>
+<h1 id="appointments-management-api">Appointments management API v0.7.5</h1>
 
 > Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.
 
@@ -202,10 +202,11 @@ Returns company information identified by {id}
 ```json
 {
   "company": {
+    "active": true,
+    "IANA_timezone": "Europe/Madrid",
+    "locale": "es-ES",
     "name": "string",
-    "notification_advance": 0,
-    "created_at": "2019-08-30T12:49:11Z",
-    "updated_at": "2019-08-30T12:49:11Z",
+    "notification_advance": 86400,
     "address": {
       "street": "string",
       "city": "string",
@@ -215,7 +216,8 @@ Returns company information identified by {id}
       "post_code": 0
     },
     "_id": "string",
-    "active": "string"
+    "created_at": "2019-09-03T09:31:38Z",
+    "updated_at": "2019-09-03T09:31:38Z"
   },
   "message": "Element successfully found"
 }
@@ -244,10 +246,11 @@ Status Code **200**
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |»» *anonymous*|[BasicCompany](#schemabasiccompany)|false|none|none|
+|»»» active|boolean|false|none|none|
+|»»» IANA_timezone|string|false|none|none|
+|»»» locale|string|false|none|none|
 |»»» name|string|true|none|none|
 |»»» notification_advance|integer(int64)|false|none|none|
-|»»» created_at|string(date-time)|true|none|none|
-|»»» updated_at|string(date-time)|true|none|none|
 |»»» address|object|true|none|none|
 |»»»» street|string|true|none|none|
 |»»»» city|string|true|none|none|
@@ -262,7 +265,8 @@ Status Code **200**
 |---|---|---|---|---|
 |»»» *anonymous*|object|false|none|none|
 |»»»» _id|string|true|none|none|
-|»»»» active|string|true|none|none|
+|»»»» created_at|string(date-time)|true|none|none|
+|»»»» updated_at|string(date-time)|true|none|none|
 
 *continued*
 
@@ -321,10 +325,11 @@ $.ajax({
 ```javascript--nodejs
 const fetch = require('node-fetch');
 const inputBody = '{
+  "active": true,
+  "IANA_timezone": "Europe/Madrid",
+  "locale": "es-ES",
   "name": "string",
-  "notification_advance": 0,
-  "created_at": "2019-08-30T12:49:11Z",
-  "updated_at": "2019-08-30T12:49:11Z",
+  "notification_advance": 86400,
   "address": {
     "street": "string",
     "city": "string",
@@ -334,7 +339,8 @@ const inputBody = '{
     "post_code": 0
   },
   "_id": "string",
-  "active": "string"
+  "created_at": "2019-09-03T09:31:38Z",
+  "updated_at": "2019-09-03T09:31:38Z"
 }';
 const headers = {
   'Content-Type':'application/json',
@@ -446,10 +452,11 @@ Updates company information data identified by {id} returning no information
 
 ```json
 {
+  "active": true,
+  "IANA_timezone": "Europe/Madrid",
+  "locale": "es-ES",
   "name": "string",
-  "notification_advance": 0,
-  "created_at": "2019-08-30T12:49:11Z",
-  "updated_at": "2019-08-30T12:49:11Z",
+  "notification_advance": 86400,
   "address": {
     "street": "string",
     "city": "string",
@@ -459,7 +466,8 @@ Updates company information data identified by {id} returning no information
     "post_code": 0
   },
   "_id": "string",
-  "active": "string"
+  "created_at": "2019-09-03T09:31:38Z",
+  "updated_at": "2019-09-03T09:31:38Z"
 }
 ```
 
@@ -655,21 +663,22 @@ Returns all company employees data
 ```json
 [
   {
+    "active": true,
     "password": "string",
-    "company_id": "string",
     "name": "string",
     "surname": "string",
     "email": "string",
     "phone_number": "string",
-    "created_at": "2019-08-30T12:49:11Z",
-    "updated_at": "2019-08-30T12:49:11Z",
     "privileges": {
-      "add_employee": true,
-      "update_client": true,
-      "update_schedule": true
+      "add_employee": false,
+      "update_client": false,
+      "update_schedule": false
     },
     "_id": "string",
-    "active": true
+    "company_id": "string",
+    "created_at": "2019-09-03T09:31:38Z",
+    "last_modified_by": "string",
+    "updated_at": "2019-09-03T09:31:38Z"
   }
 ]
 ```
@@ -696,18 +705,16 @@ Status Code **200**
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |» *anonymous*|[BasicEmployee](#schemabasicemployee)|false|none|none|
+|»» active|boolean|false|none|none|
 |»» password|string|true|none|none|
-|»» company_id|string|true|none|none|
 |»» name|string|true|none|none|
 |»» surname|string|true|none|none|
 |»» email|string|true|none|none|
 |»» phone_number|string|false|none|none|
-|»» created_at|string(date-time)|true|none|none|
-|»» updated_at|string(date-time)|true|none|none|
-|»» privileges|object|true|none|none|
-|»»» add_employee|boolean|true|none|none|
-|»»» update_client|boolean|true|none|none|
-|»»» update_schedule|boolean|true|none|none|
+|»» privileges|object|false|none|none|
+|»»» add_employee|boolean|false|none|none|
+|»»» update_client|boolean|false|none|none|
+|»»» update_schedule|boolean|false|none|none|
 
 *and*
 
@@ -715,7 +722,10 @@ Status Code **200**
 |---|---|---|---|---|
 |»» *anonymous*|object|false|none|none|
 |»»» _id|string|true|none|none|
-|»»» active|boolean|true|none|none|
+|»»» company_id|string|true|none|none|
+|»»» created_at|string(date-time)|true|none|none|
+|»»» last_modified_by|string|true|none|none|
+|»»» updated_at|string(date-time)|true|none|none|
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
@@ -880,16 +890,16 @@ Returns all company clients data
 ```json
 [
   {
+    "active": true,
     "name": "string",
     "surname": "string",
     "email": "string",
-    "phone": "string",
-    "created_at": "2019-08-30T12:49:11Z",
-    "updated_at": "2019-08-30T12:49:11Z",
-    "added_by": "string",
-    "company_added": "string",
+    "phone_number": "string",
     "_id": "string",
-    "active": true
+    "company_added": "string",
+    "created_at": "2019-09-03T09:31:38Z",
+    "updated_at": "2019-09-03T09:31:38Z",
+    "last_modified_by": "string"
   }
 ]
 ```
@@ -916,14 +926,11 @@ Status Code **200**
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |» *anonymous*|[BasicClient](#schemabasicclient)|false|none|none|
+|»» active|boolean|false|none|none|
 |»» name|string|true|none|none|
 |»» surname|string|true|none|none|
 |»» email|string|true|none|none|
-|»» phone|string|false|none|none|
-|»» created_at|string(date-time)|true|none|none|
-|»» updated_at|string(date-time)|true|none|none|
-|»» added_by|string|true|none|none|
-|»» company_added|string|true|none|none|
+|»» phone_number|string|false|none|none|
 
 *and*
 
@@ -931,7 +938,10 @@ Status Code **200**
 |---|---|---|---|---|
 |» *anonymous*|object|false|none|none|
 |»» _id|string|true|none|none|
-|»» active|boolean|true|none|none|
+|»» company_added|string|true|none|none|
+|»» created_at|string(date-time)|true|none|none|
+|»» updated_at|string(date-time)|true|none|none|
+|»» last_modified_by|string|true|none|none|
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
@@ -1090,10 +1100,11 @@ Returns an array with information from each company
 ```json
 [
   {
+    "active": true,
+    "IANA_timezone": "Europe/Madrid",
+    "locale": "es-ES",
     "name": "string",
-    "notification_advance": 0,
-    "created_at": "2019-08-30T12:49:11Z",
-    "updated_at": "2019-08-30T12:49:11Z",
+    "notification_advance": 86400,
     "address": {
       "street": "string",
       "city": "string",
@@ -1103,7 +1114,8 @@ Returns an array with information from each company
       "post_code": 0
     },
     "_id": "string",
-    "active": "string"
+    "created_at": "2019-09-03T09:31:38Z",
+    "updated_at": "2019-09-03T09:31:38Z"
   }
 ]
 ```
@@ -1130,10 +1142,11 @@ Status Code **200**
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |» *anonymous*|[BasicCompany](#schemabasiccompany)|false|none|none|
+|»» active|boolean|false|none|none|
+|»» IANA_timezone|string|false|none|none|
+|»» locale|string|false|none|none|
 |»» name|string|true|none|none|
 |»» notification_advance|integer(int64)|false|none|none|
-|»» created_at|string(date-time)|true|none|none|
-|»» updated_at|string(date-time)|true|none|none|
 |»» address|object|true|none|none|
 |»»» street|string|true|none|none|
 |»»» city|string|true|none|none|
@@ -1148,7 +1161,8 @@ Status Code **200**
 |---|---|---|---|---|
 |»» *anonymous*|object|false|none|none|
 |»»» _id|string|true|none|none|
-|»»» active|string|true|none|none|
+|»»» created_at|string(date-time)|true|none|none|
+|»»» updated_at|string(date-time)|true|none|none|
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
@@ -1201,10 +1215,11 @@ $.ajax({
 ```javascript--nodejs
 const fetch = require('node-fetch');
 const inputBody = '{
+  "active": true,
+  "IANA_timezone": "Europe/Madrid",
+  "locale": "es-ES",
   "name": "string",
-  "notification_advance": 0,
-  "created_at": "2019-08-30T12:49:11Z",
-  "updated_at": "2019-08-30T12:49:11Z",
+  "notification_advance": 86400,
   "address": {
     "street": "string",
     "city": "string",
@@ -1324,10 +1339,11 @@ Creates new company returning no information
 
 ```json
 {
+  "active": true,
+  "IANA_timezone": "Europe/Madrid",
+  "locale": "es-ES",
   "name": "string",
-  "notification_advance": 0,
-  "created_at": "2019-08-30T12:49:11Z",
-  "updated_at": "2019-08-30T12:49:11Z",
+  "notification_advance": 86400,
   "address": {
     "street": "string",
     "city": "string",
@@ -1352,10 +1368,11 @@ Creates new company returning no information
 ```json
 {
   "company": {
+    "active": true,
+    "IANA_timezone": "Europe/Madrid",
+    "locale": "es-ES",
     "name": "string",
-    "notification_advance": 0,
-    "created_at": "2019-08-30T12:49:11Z",
-    "updated_at": "2019-08-30T12:49:11Z",
+    "notification_advance": 86400,
     "address": {
       "street": "string",
       "city": "string",
@@ -1365,7 +1382,8 @@ Creates new company returning no information
       "post_code": 0
     },
     "_id": "string",
-    "active": "string"
+    "created_at": "2019-09-03T09:31:38Z",
+    "updated_at": "2019-09-03T09:31:38Z"
   },
   "message": "Element successfully created"
 }
@@ -1394,10 +1412,11 @@ Status Code **201**
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |»» *anonymous*|[BasicCompany](#schemabasiccompany)|false|none|none|
+|»»» active|boolean|false|none|none|
+|»»» IANA_timezone|string|false|none|none|
+|»»» locale|string|false|none|none|
 |»»» name|string|true|none|none|
 |»»» notification_advance|integer(int64)|false|none|none|
-|»»» created_at|string(date-time)|true|none|none|
-|»»» updated_at|string(date-time)|true|none|none|
 |»»» address|object|true|none|none|
 |»»»» street|string|true|none|none|
 |»»»» city|string|true|none|none|
@@ -1412,7 +1431,8 @@ Status Code **201**
 |---|---|---|---|---|
 |»»» *anonymous*|object|false|none|none|
 |»»»» _id|string|true|none|none|
-|»»»» active|string|true|none|none|
+|»»»» created_at|string(date-time)|true|none|none|
+|»»»» updated_at|string(date-time)|true|none|none|
 
 *continued*
 
@@ -1586,21 +1606,22 @@ Returns employee data identified by {id}
 
 ```json
 {
+  "active": true,
   "password": "string",
-  "company_id": "string",
   "name": "string",
   "surname": "string",
   "email": "string",
   "phone_number": "string",
-  "created_at": "2019-08-30T12:49:11Z",
-  "updated_at": "2019-08-30T12:49:11Z",
   "privileges": {
-    "add_employee": true,
-    "update_client": true,
-    "update_schedule": true
+    "add_employee": false,
+    "update_client": false,
+    "update_schedule": false
   },
   "_id": "string",
-  "active": true
+  "company_id": "string",
+  "created_at": "2019-09-03T09:31:38Z",
+  "last_modified_by": "string",
+  "updated_at": "2019-09-03T09:31:38Z"
 }
 ```
 
@@ -1665,21 +1686,22 @@ $.ajax({
 ```javascript--nodejs
 const fetch = require('node-fetch');
 const inputBody = '{
+  "active": true,
   "password": "string",
-  "company_id": "string",
   "name": "string",
   "surname": "string",
   "email": "string",
   "phone_number": "string",
-  "created_at": "2019-08-30T12:49:11Z",
-  "updated_at": "2019-08-30T12:49:11Z",
   "privileges": {
-    "add_employee": true,
-    "update_client": true,
-    "update_schedule": true
+    "add_employee": false,
+    "update_client": false,
+    "update_schedule": false
   },
   "_id": "string",
-  "active": true
+  "company_id": "string",
+  "created_at": "2019-09-03T09:31:38Z",
+  "last_modified_by": "string",
+  "updated_at": "2019-09-03T09:31:38Z"
 }';
 const headers = {
   'Content-Type':'application/json',
@@ -1791,21 +1813,22 @@ Updates employee data identified by {id} returning no information
 
 ```json
 {
+  "active": true,
   "password": "string",
-  "company_id": "string",
   "name": "string",
   "surname": "string",
   "email": "string",
   "phone_number": "string",
-  "created_at": "2019-08-30T12:49:11Z",
-  "updated_at": "2019-08-30T12:49:11Z",
   "privileges": {
-    "add_employee": true,
-    "update_client": true,
-    "update_schedule": true
+    "add_employee": false,
+    "update_client": false,
+    "update_schedule": false
   },
   "_id": "string",
-  "active": true
+  "company_id": "string",
+  "created_at": "2019-09-03T09:31:38Z",
+  "last_modified_by": "string",
+  "updated_at": "2019-09-03T09:31:38Z"
 }
 ```
 
@@ -1889,18 +1912,16 @@ $.ajax({
 ```javascript--nodejs
 const fetch = require('node-fetch');
 const inputBody = '{
+  "active": true,
   "password": "string",
-  "company_id": "string",
   "name": "string",
   "surname": "string",
   "email": "string",
   "phone_number": "string",
-  "created_at": "2019-08-30T12:49:11Z",
-  "updated_at": "2019-08-30T12:49:11Z",
   "privileges": {
-    "add_employee": true,
-    "update_client": true,
-    "update_schedule": true
+    "add_employee": false,
+    "update_client": false,
+    "update_schedule": false
   }
 }';
 const headers = {
@@ -2013,18 +2034,16 @@ Creates new employee returning no information
 
 ```json
 {
+  "active": true,
   "password": "string",
-  "company_id": "string",
   "name": "string",
   "surname": "string",
   "email": "string",
   "phone_number": "string",
-  "created_at": "2019-08-30T12:49:11Z",
-  "updated_at": "2019-08-30T12:49:11Z",
   "privileges": {
-    "add_employee": true,
-    "update_client": true,
-    "update_schedule": true
+    "add_employee": false,
+    "update_client": false,
+    "update_schedule": false
   }
 }
 ```
@@ -2232,16 +2251,16 @@ Returns client data identified by {id}
 ```json
 {
   "client": {
+    "active": true,
     "name": "string",
     "surname": "string",
     "email": "string",
-    "phone": "string",
-    "created_at": "2019-08-30T12:49:11Z",
-    "updated_at": "2019-08-30T12:49:11Z",
-    "added_by": "string",
-    "company_added": "string",
+    "phone_number": "string",
     "_id": "string",
-    "active": true
+    "company_added": "string",
+    "created_at": "2019-09-03T09:31:38Z",
+    "updated_at": "2019-09-03T09:31:38Z",
+    "last_modified_by": "string"
   },
   "message": "Element successfully found"
 }
@@ -2270,14 +2289,11 @@ Status Code **200**
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |»» *anonymous*|[BasicClient](#schemabasicclient)|false|none|none|
+|»»» active|boolean|false|none|none|
 |»»» name|string|true|none|none|
 |»»» surname|string|true|none|none|
 |»»» email|string|true|none|none|
-|»»» phone|string|false|none|none|
-|»»» created_at|string(date-time)|true|none|none|
-|»»» updated_at|string(date-time)|true|none|none|
-|»»» added_by|string|true|none|none|
-|»»» company_added|string|true|none|none|
+|»»» phone_number|string|false|none|none|
 
 *and*
 
@@ -2285,7 +2301,10 @@ Status Code **200**
 |---|---|---|---|---|
 |»» *anonymous*|object|false|none|none|
 |»»» _id|string|true|none|none|
-|»»» active|boolean|true|none|none|
+|»»» company_added|string|true|none|none|
+|»»» created_at|string(date-time)|true|none|none|
+|»»» updated_at|string(date-time)|true|none|none|
+|»»» last_modified_by|string|true|none|none|
 
 *continued*
 
@@ -2344,16 +2363,16 @@ $.ajax({
 ```javascript--nodejs
 const fetch = require('node-fetch');
 const inputBody = '{
+  "active": true,
   "name": "string",
   "surname": "string",
   "email": "string",
-  "phone": "string",
-  "created_at": "2019-08-30T12:49:11Z",
-  "updated_at": "2019-08-30T12:49:11Z",
-  "added_by": "string",
-  "company_added": "string",
+  "phone_number": "string",
   "_id": "string",
-  "active": true
+  "company_added": "string",
+  "created_at": "2019-09-03T09:31:38Z",
+  "updated_at": "2019-09-03T09:31:38Z",
+  "last_modified_by": "string"
 }';
 const headers = {
   'Content-Type':'application/json',
@@ -2465,16 +2484,16 @@ Updates client data identified by {id} returning no information
 
 ```json
 {
+  "active": true,
   "name": "string",
   "surname": "string",
   "email": "string",
-  "phone": "string",
-  "created_at": "2019-08-30T12:49:11Z",
-  "updated_at": "2019-08-30T12:49:11Z",
-  "added_by": "string",
-  "company_added": "string",
+  "phone_number": "string",
   "_id": "string",
-  "active": true
+  "company_added": "string",
+  "created_at": "2019-09-03T09:31:38Z",
+  "updated_at": "2019-09-03T09:31:38Z",
+  "last_modified_by": "string"
 }
 ```
 
@@ -2675,40 +2694,42 @@ Returns all client appointments or single appointment information information da
   "appointments": [
     {
       "company_id": "string",
-      "created_at": "2019-08-30T12:49:11Z",
       "client": {
-        "name": "string",
-        "surname": "string",
-        "email": "string",
-        "phone": "string",
-        "created_at": "2019-08-30T12:49:11Z",
-        "updated_at": "2019-08-30T12:49:11Z",
-        "added_by": "string",
-        "company_added": "string",
-        "_id": "string",
-        "active": true
-      },
-      "employee": {
-        "password": "string",
-        "company_id": "string",
+        "active": true,
         "name": "string",
         "surname": "string",
         "email": "string",
         "phone_number": "string",
-        "created_at": "2019-08-30T12:49:11Z",
-        "updated_at": "2019-08-30T12:49:11Z",
+        "_id": "string",
+        "company_added": "string",
+        "created_at": "2019-09-03T09:31:38Z",
+        "updated_at": "2019-09-03T09:31:38Z",
+        "last_modified_by": "string"
+      },
+      "employee": {
+        "active": true,
+        "password": "string",
+        "name": "string",
+        "surname": "string",
+        "email": "string",
+        "phone_number": "string",
         "privileges": {
-          "add_employee": true,
-          "update_client": true,
-          "update_schedule": true
+          "add_employee": false,
+          "update_client": false,
+          "update_schedule": false
         },
         "_id": "string",
-        "active": true
+        "company_id": "string",
+        "created_at": "2019-09-03T09:31:38Z",
+        "last_modified_by": "string",
+        "updated_at": "2019-09-03T09:31:38Z"
       },
-      "modified_at": "2019-08-30T12:49:11Z",
-      "start_date": "2019-08-30T12:49:11Z",
-      "end_date": "2019-08-30T12:49:11Z",
-      "_id": "string"
+      "start_date": "2019-09-03T09:31:38Z",
+      "end_date": "2019-09-03T09:31:38Z",
+      "_id": "string",
+      "created_at": "2019-09-03T09:31:38Z",
+      "updated_at": "2019-09-03T09:31:38Z",
+      "last_modified_by": "string"
     }
   ]
 }
@@ -2738,7 +2759,6 @@ Status Code **200**
 |---|---|---|---|---|
 |»» *anonymous*|[BasicAppointment](#schemabasicappointment)|false|none|none|
 |»»» company_id|string|true|none|none|
-|»»» created_at|string(date-time)|true|none|none|
 |»»» client|any|true|none|none|
 
 *allOf*
@@ -2746,14 +2766,11 @@ Status Code **200**
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |»»»» *anonymous*|[BasicClient](#schemabasicclient)|false|none|none|
+|»»»»» active|boolean|false|none|none|
 |»»»»» name|string|true|none|none|
 |»»»»» surname|string|true|none|none|
 |»»»»» email|string|true|none|none|
-|»»»»» phone|string|false|none|none|
-|»»»»» created_at|string(date-time)|true|none|none|
-|»»»»» updated_at|string(date-time)|true|none|none|
-|»»»»» added_by|string|true|none|none|
-|»»»»» company_added|string|true|none|none|
+|»»»»» phone_number|string|false|none|none|
 
 *and*
 
@@ -2761,7 +2778,10 @@ Status Code **200**
 |---|---|---|---|---|
 |»»»» *anonymous*|object|false|none|none|
 |»»»»» _id|string|true|none|none|
-|»»»»» active|boolean|true|none|none|
+|»»»»» company_added|string|true|none|none|
+|»»»»» created_at|string(date-time)|true|none|none|
+|»»»»» updated_at|string(date-time)|true|none|none|
+|»»»»» last_modified_by|string|true|none|none|
 
 *continued*
 
@@ -2774,18 +2794,16 @@ Status Code **200**
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |»»»»» *anonymous*|[BasicEmployee](#schemabasicemployee)|false|none|none|
+|»»»»»» active|boolean|false|none|none|
 |»»»»»» password|string|true|none|none|
-|»»»»»» company_id|string|true|none|none|
 |»»»»»» name|string|true|none|none|
 |»»»»»» surname|string|true|none|none|
 |»»»»»» email|string|true|none|none|
 |»»»»»» phone_number|string|false|none|none|
-|»»»»»» created_at|string(date-time)|true|none|none|
-|»»»»»» updated_at|string(date-time)|true|none|none|
-|»»»»»» privileges|object|true|none|none|
-|»»»»»»» add_employee|boolean|true|none|none|
-|»»»»»»» update_client|boolean|true|none|none|
-|»»»»»»» update_schedule|boolean|true|none|none|
+|»»»»»» privileges|object|false|none|none|
+|»»»»»»» add_employee|boolean|false|none|none|
+|»»»»»»» update_client|boolean|false|none|none|
+|»»»»»»» update_schedule|boolean|false|none|none|
 
 *and*
 
@@ -2793,13 +2811,15 @@ Status Code **200**
 |---|---|---|---|---|
 |»»»»»» *anonymous*|object|false|none|none|
 |»»»»»»» _id|string|true|none|none|
-|»»»»»»» active|boolean|true|none|none|
+|»»»»»»» company_id|string|true|none|none|
+|»»»»»»» created_at|string(date-time)|true|none|none|
+|»»»»»»» last_modified_by|string|true|none|none|
+|»»»»»»» updated_at|string(date-time)|true|none|none|
 
 *continued*
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|»»»»»» modified_at|string(date-time)|true|none|none|
 |»»»»»» start_date|string(date-time)|true|none|none|
 |»»»»»» end_date|string(date-time)|true|none|none|
 
@@ -2809,6 +2829,9 @@ Status Code **200**
 |---|---|---|---|---|
 |»»»»» *anonymous*|object|false|none|none|
 |»»»»»» _id|string|true|none|none|
+|»»»»»» created_at|string(date-time)|true|none|none|
+|»»»»»» updated_at|string(date-time)|true|none|none|
+|»»»»»» last_modified_by|string|true|none|none|
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
@@ -2862,40 +2885,42 @@ $.ajax({
 const fetch = require('node-fetch');
 const inputBody = '{
   "company_id": "string",
-  "created_at": "2019-08-30T12:49:11Z",
   "client": {
-    "name": "string",
-    "surname": "string",
-    "email": "string",
-    "phone": "string",
-    "created_at": "2019-08-30T12:49:11Z",
-    "updated_at": "2019-08-30T12:49:11Z",
-    "added_by": "string",
-    "company_added": "string",
-    "_id": "string",
-    "active": true
-  },
-  "employee": {
-    "password": "string",
-    "company_id": "string",
+    "active": true,
     "name": "string",
     "surname": "string",
     "email": "string",
     "phone_number": "string",
-    "created_at": "2019-08-30T12:49:11Z",
-    "updated_at": "2019-08-30T12:49:11Z",
+    "_id": "string",
+    "company_added": "string",
+    "created_at": "2019-09-03T09:31:38Z",
+    "updated_at": "2019-09-03T09:31:38Z",
+    "last_modified_by": "string"
+  },
+  "employee": {
+    "active": true,
+    "password": "string",
+    "name": "string",
+    "surname": "string",
+    "email": "string",
+    "phone_number": "string",
     "privileges": {
-      "add_employee": true,
-      "update_client": true,
-      "update_schedule": true
+      "add_employee": false,
+      "update_client": false,
+      "update_schedule": false
     },
     "_id": "string",
-    "active": true
+    "company_id": "string",
+    "created_at": "2019-09-03T09:31:38Z",
+    "last_modified_by": "string",
+    "updated_at": "2019-09-03T09:31:38Z"
   },
-  "modified_at": "2019-08-30T12:49:11Z",
-  "start_date": "2019-08-30T12:49:11Z",
-  "end_date": "2019-08-30T12:49:11Z",
-  "_id": "string"
+  "start_date": "2019-09-03T09:31:38Z",
+  "end_date": "2019-09-03T09:31:38Z",
+  "_id": "string",
+  "created_at": "2019-09-03T09:31:38Z",
+  "updated_at": "2019-09-03T09:31:38Z",
+  "last_modified_by": "string"
 }';
 const headers = {
   'Content-Type':'application/json',
@@ -3009,40 +3034,42 @@ Updates appointment data for client identified by {id} and appointment identifie
 ```json
 {
   "company_id": "string",
-  "created_at": "2019-08-30T12:49:11Z",
   "client": {
-    "name": "string",
-    "surname": "string",
-    "email": "string",
-    "phone": "string",
-    "created_at": "2019-08-30T12:49:11Z",
-    "updated_at": "2019-08-30T12:49:11Z",
-    "added_by": "string",
-    "company_added": "string",
-    "_id": "string",
-    "active": true
-  },
-  "employee": {
-    "password": "string",
-    "company_id": "string",
+    "active": true,
     "name": "string",
     "surname": "string",
     "email": "string",
     "phone_number": "string",
-    "created_at": "2019-08-30T12:49:11Z",
-    "updated_at": "2019-08-30T12:49:11Z",
+    "_id": "string",
+    "company_added": "string",
+    "created_at": "2019-09-03T09:31:38Z",
+    "updated_at": "2019-09-03T09:31:38Z",
+    "last_modified_by": "string"
+  },
+  "employee": {
+    "active": true,
+    "password": "string",
+    "name": "string",
+    "surname": "string",
+    "email": "string",
+    "phone_number": "string",
     "privileges": {
-      "add_employee": true,
-      "update_client": true,
-      "update_schedule": true
+      "add_employee": false,
+      "update_client": false,
+      "update_schedule": false
     },
     "_id": "string",
-    "active": true
+    "company_id": "string",
+    "created_at": "2019-09-03T09:31:38Z",
+    "last_modified_by": "string",
+    "updated_at": "2019-09-03T09:31:38Z"
   },
-  "modified_at": "2019-08-30T12:49:11Z",
-  "start_date": "2019-08-30T12:49:11Z",
-  "end_date": "2019-08-30T12:49:11Z",
-  "_id": "string"
+  "start_date": "2019-09-03T09:31:38Z",
+  "end_date": "2019-09-03T09:31:38Z",
+  "_id": "string",
+  "created_at": "2019-09-03T09:31:38Z",
+  "updated_at": "2019-09-03T09:31:38Z",
+  "last_modified_by": "string"
 }
 ```
 
@@ -3128,39 +3155,38 @@ $.ajax({
 const fetch = require('node-fetch');
 const inputBody = '{
   "company_id": "string",
-  "created_at": "2019-08-30T12:49:11Z",
   "client": {
-    "name": "string",
-    "surname": "string",
-    "email": "string",
-    "phone": "string",
-    "created_at": "2019-08-30T12:49:11Z",
-    "updated_at": "2019-08-30T12:49:11Z",
-    "added_by": "string",
-    "company_added": "string",
-    "_id": "string",
-    "active": true
-  },
-  "employee": {
-    "password": "string",
-    "company_id": "string",
+    "active": true,
     "name": "string",
     "surname": "string",
     "email": "string",
     "phone_number": "string",
-    "created_at": "2019-08-30T12:49:11Z",
-    "updated_at": "2019-08-30T12:49:11Z",
+    "_id": "string",
+    "company_added": "string",
+    "created_at": "2019-09-03T09:31:38Z",
+    "updated_at": "2019-09-03T09:31:38Z",
+    "last_modified_by": "string"
+  },
+  "employee": {
+    "active": true,
+    "password": "string",
+    "name": "string",
+    "surname": "string",
+    "email": "string",
+    "phone_number": "string",
     "privileges": {
-      "add_employee": true,
-      "update_client": true,
-      "update_schedule": true
+      "add_employee": false,
+      "update_client": false,
+      "update_schedule": false
     },
     "_id": "string",
-    "active": true
+    "company_id": "string",
+    "created_at": "2019-09-03T09:31:38Z",
+    "last_modified_by": "string",
+    "updated_at": "2019-09-03T09:31:38Z"
   },
-  "modified_at": "2019-08-30T12:49:11Z",
-  "start_date": "2019-08-30T12:49:11Z",
-  "end_date": "2019-08-30T12:49:11Z"
+  "start_date": "2019-09-03T09:31:38Z",
+  "end_date": "2019-09-03T09:31:38Z"
 }';
 const headers = {
   'Content-Type':'application/json',
@@ -3273,39 +3299,38 @@ Creates new appointment returning new appointment information. Client identified
 ```json
 {
   "company_id": "string",
-  "created_at": "2019-08-30T12:49:11Z",
   "client": {
-    "name": "string",
-    "surname": "string",
-    "email": "string",
-    "phone": "string",
-    "created_at": "2019-08-30T12:49:11Z",
-    "updated_at": "2019-08-30T12:49:11Z",
-    "added_by": "string",
-    "company_added": "string",
-    "_id": "string",
-    "active": true
-  },
-  "employee": {
-    "password": "string",
-    "company_id": "string",
+    "active": true,
     "name": "string",
     "surname": "string",
     "email": "string",
     "phone_number": "string",
-    "created_at": "2019-08-30T12:49:11Z",
-    "updated_at": "2019-08-30T12:49:11Z",
+    "_id": "string",
+    "company_added": "string",
+    "created_at": "2019-09-03T09:31:38Z",
+    "updated_at": "2019-09-03T09:31:38Z",
+    "last_modified_by": "string"
+  },
+  "employee": {
+    "active": true,
+    "password": "string",
+    "name": "string",
+    "surname": "string",
+    "email": "string",
+    "phone_number": "string",
     "privileges": {
-      "add_employee": true,
-      "update_client": true,
-      "update_schedule": true
+      "add_employee": false,
+      "update_client": false,
+      "update_schedule": false
     },
     "_id": "string",
-    "active": true
+    "company_id": "string",
+    "created_at": "2019-09-03T09:31:38Z",
+    "last_modified_by": "string",
+    "updated_at": "2019-09-03T09:31:38Z"
   },
-  "modified_at": "2019-08-30T12:49:11Z",
-  "start_date": "2019-08-30T12:49:11Z",
-  "end_date": "2019-08-30T12:49:11Z"
+  "start_date": "2019-09-03T09:31:38Z",
+  "end_date": "2019-09-03T09:31:38Z"
 }
 ```
 
@@ -3324,40 +3349,42 @@ Creates new appointment returning new appointment information. Client identified
 {
   "appointment": {
     "company_id": "string",
-    "created_at": "2019-08-30T12:49:11Z",
     "client": {
-      "name": "string",
-      "surname": "string",
-      "email": "string",
-      "phone": "string",
-      "created_at": "2019-08-30T12:49:11Z",
-      "updated_at": "2019-08-30T12:49:11Z",
-      "added_by": "string",
-      "company_added": "string",
-      "_id": "string",
-      "active": true
-    },
-    "employee": {
-      "password": "string",
-      "company_id": "string",
+      "active": true,
       "name": "string",
       "surname": "string",
       "email": "string",
       "phone_number": "string",
-      "created_at": "2019-08-30T12:49:11Z",
-      "updated_at": "2019-08-30T12:49:11Z",
+      "_id": "string",
+      "company_added": "string",
+      "created_at": "2019-09-03T09:31:38Z",
+      "updated_at": "2019-09-03T09:31:38Z",
+      "last_modified_by": "string"
+    },
+    "employee": {
+      "active": true,
+      "password": "string",
+      "name": "string",
+      "surname": "string",
+      "email": "string",
+      "phone_number": "string",
       "privileges": {
-        "add_employee": true,
-        "update_client": true,
-        "update_schedule": true
+        "add_employee": false,
+        "update_client": false,
+        "update_schedule": false
       },
       "_id": "string",
-      "active": true
+      "company_id": "string",
+      "created_at": "2019-09-03T09:31:38Z",
+      "last_modified_by": "string",
+      "updated_at": "2019-09-03T09:31:38Z"
     },
-    "modified_at": "2019-08-30T12:49:11Z",
-    "start_date": "2019-08-30T12:49:11Z",
-    "end_date": "2019-08-30T12:49:11Z",
-    "_id": "string"
+    "start_date": "2019-09-03T09:31:38Z",
+    "end_date": "2019-09-03T09:31:38Z",
+    "_id": "string",
+    "created_at": "2019-09-03T09:31:38Z",
+    "updated_at": "2019-09-03T09:31:38Z",
+    "last_modified_by": "string"
   },
   "message": "Element successfully created"
 }
@@ -3387,7 +3414,6 @@ Status Code **201**
 |---|---|---|---|---|
 |»» *anonymous*|[BasicAppointment](#schemabasicappointment)|false|none|none|
 |»»» company_id|string|true|none|none|
-|»»» created_at|string(date-time)|true|none|none|
 |»»» client|any|true|none|none|
 
 *allOf*
@@ -3395,14 +3421,11 @@ Status Code **201**
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |»»»» *anonymous*|[BasicClient](#schemabasicclient)|false|none|none|
+|»»»»» active|boolean|false|none|none|
 |»»»»» name|string|true|none|none|
 |»»»»» surname|string|true|none|none|
 |»»»»» email|string|true|none|none|
-|»»»»» phone|string|false|none|none|
-|»»»»» created_at|string(date-time)|true|none|none|
-|»»»»» updated_at|string(date-time)|true|none|none|
-|»»»»» added_by|string|true|none|none|
-|»»»»» company_added|string|true|none|none|
+|»»»»» phone_number|string|false|none|none|
 
 *and*
 
@@ -3410,7 +3433,10 @@ Status Code **201**
 |---|---|---|---|---|
 |»»»» *anonymous*|object|false|none|none|
 |»»»»» _id|string|true|none|none|
-|»»»»» active|boolean|true|none|none|
+|»»»»» company_added|string|true|none|none|
+|»»»»» created_at|string(date-time)|true|none|none|
+|»»»»» updated_at|string(date-time)|true|none|none|
+|»»»»» last_modified_by|string|true|none|none|
 
 *continued*
 
@@ -3423,18 +3449,16 @@ Status Code **201**
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |»»»»» *anonymous*|[BasicEmployee](#schemabasicemployee)|false|none|none|
+|»»»»»» active|boolean|false|none|none|
 |»»»»»» password|string|true|none|none|
-|»»»»»» company_id|string|true|none|none|
 |»»»»»» name|string|true|none|none|
 |»»»»»» surname|string|true|none|none|
 |»»»»»» email|string|true|none|none|
 |»»»»»» phone_number|string|false|none|none|
-|»»»»»» created_at|string(date-time)|true|none|none|
-|»»»»»» updated_at|string(date-time)|true|none|none|
-|»»»»»» privileges|object|true|none|none|
-|»»»»»»» add_employee|boolean|true|none|none|
-|»»»»»»» update_client|boolean|true|none|none|
-|»»»»»»» update_schedule|boolean|true|none|none|
+|»»»»»» privileges|object|false|none|none|
+|»»»»»»» add_employee|boolean|false|none|none|
+|»»»»»»» update_client|boolean|false|none|none|
+|»»»»»»» update_schedule|boolean|false|none|none|
 
 *and*
 
@@ -3442,13 +3466,15 @@ Status Code **201**
 |---|---|---|---|---|
 |»»»»»» *anonymous*|object|false|none|none|
 |»»»»»»» _id|string|true|none|none|
-|»»»»»»» active|boolean|true|none|none|
+|»»»»»»» company_id|string|true|none|none|
+|»»»»»»» created_at|string(date-time)|true|none|none|
+|»»»»»»» last_modified_by|string|true|none|none|
+|»»»»»»» updated_at|string(date-time)|true|none|none|
 
 *continued*
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|»»»»»» modified_at|string(date-time)|true|none|none|
 |»»»»»» start_date|string(date-time)|true|none|none|
 |»»»»»» end_date|string(date-time)|true|none|none|
 
@@ -3458,6 +3484,9 @@ Status Code **201**
 |---|---|---|---|---|
 |»»»»» *anonymous*|object|false|none|none|
 |»»»»»» _id|string|true|none|none|
+|»»»»»» created_at|string(date-time)|true|none|none|
+|»»»»»» updated_at|string(date-time)|true|none|none|
+|»»»»»» last_modified_by|string|true|none|none|
 
 *continued*
 
@@ -3516,14 +3545,11 @@ $.ajax({
 ```javascript--nodejs
 const fetch = require('node-fetch');
 const inputBody = '{
+  "active": true,
   "name": "string",
   "surname": "string",
   "email": "string",
-  "phone": "string",
-  "created_at": "2019-08-30T12:49:11Z",
-  "updated_at": "2019-08-30T12:49:11Z",
-  "added_by": "string",
-  "company_added": "string"
+  "phone_number": "string"
 }';
 const headers = {
   'Content-Type':'application/json',
@@ -3635,14 +3661,11 @@ Creates new client returning new client information
 
 ```json
 {
+  "active": true,
   "name": "string",
   "surname": "string",
   "email": "string",
-  "phone": "string",
-  "created_at": "2019-08-30T12:49:11Z",
-  "updated_at": "2019-08-30T12:49:11Z",
-  "added_by": "string",
-  "company_added": "string"
+  "phone_number": "string"
 }
 ```
 
@@ -3659,16 +3682,16 @@ Creates new client returning new client information
 ```json
 {
   "client": {
+    "active": true,
     "name": "string",
     "surname": "string",
     "email": "string",
-    "phone": "string",
-    "created_at": "2019-08-30T12:49:11Z",
-    "updated_at": "2019-08-30T12:49:11Z",
-    "added_by": "string",
-    "company_added": "string",
+    "phone_number": "string",
     "_id": "string",
-    "active": true
+    "company_added": "string",
+    "created_at": "2019-09-03T09:31:38Z",
+    "updated_at": "2019-09-03T09:31:38Z",
+    "last_modified_by": "string"
   },
   "message": "Element successfully created"
 }
@@ -3696,14 +3719,11 @@ Status Code **201**
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |»» *anonymous*|[BasicClient](#schemabasicclient)|false|none|none|
+|»»» active|boolean|false|none|none|
 |»»» name|string|true|none|none|
 |»»» surname|string|true|none|none|
 |»»» email|string|true|none|none|
-|»»» phone|string|false|none|none|
-|»»» created_at|string(date-time)|true|none|none|
-|»»» updated_at|string(date-time)|true|none|none|
-|»»» added_by|string|true|none|none|
-|»»» company_added|string|true|none|none|
+|»»» phone_number|string|false|none|none|
 
 *and*
 
@@ -3711,7 +3731,10 @@ Status Code **201**
 |---|---|---|---|---|
 |»» *anonymous*|object|false|none|none|
 |»»» _id|string|true|none|none|
-|»»» active|boolean|true|none|none|
+|»»» company_added|string|true|none|none|
+|»»» created_at|string(date-time)|true|none|none|
+|»»» updated_at|string(date-time)|true|none|none|
+|»»» last_modified_by|string|true|none|none|
 
 *continued*
 
@@ -3751,21 +3774,22 @@ BearerAuth
 
 ```json
 {
+  "active": true,
   "password": "string",
-  "company_id": "string",
   "name": "string",
   "surname": "string",
   "email": "string",
   "phone_number": "string",
-  "created_at": "2019-08-30T12:49:11Z",
-  "updated_at": "2019-08-30T12:49:11Z",
   "privileges": {
-    "add_employee": true,
-    "update_client": true,
-    "update_schedule": true
+    "add_employee": false,
+    "update_client": false,
+    "update_schedule": false
   },
   "_id": "string",
-  "active": true
+  "company_id": "string",
+  "created_at": "2019-09-03T09:31:38Z",
+  "last_modified_by": "string",
+  "updated_at": "2019-09-03T09:31:38Z"
 }
 
 ```
@@ -3784,7 +3808,10 @@ BearerAuth
 |---|---|---|---|---|
 |*anonymous*|object|false|none|none|
 |» _id|string|true|none|none|
-|» active|boolean|true|none|none|
+|» company_id|string|true|none|none|
+|» created_at|string(date-time)|true|none|none|
+|» last_modified_by|string|true|none|none|
+|» updated_at|string(date-time)|true|none|none|
 
 <h2 id="tocSbasicemployee">BasicEmployee</h2>
 
@@ -3792,18 +3819,16 @@ BearerAuth
 
 ```json
 {
+  "active": true,
   "password": "string",
-  "company_id": "string",
   "name": "string",
   "surname": "string",
   "email": "string",
   "phone_number": "string",
-  "created_at": "2019-08-30T12:49:11Z",
-  "updated_at": "2019-08-30T12:49:11Z",
   "privileges": {
-    "add_employee": true,
-    "update_client": true,
-    "update_schedule": true
+    "add_employee": false,
+    "update_client": false,
+    "update_schedule": false
   }
 }
 
@@ -3813,18 +3838,16 @@ BearerAuth
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
+|active|boolean|false|none|none|
 |password|string|true|none|none|
-|company_id|string|true|none|none|
 |name|string|true|none|none|
 |surname|string|true|none|none|
 |email|string|true|none|none|
 |phone_number|string|false|none|none|
-|created_at|string(date-time)|true|none|none|
-|updated_at|string(date-time)|true|none|none|
-|privileges|object|true|none|none|
-|» add_employee|boolean|true|none|none|
-|» update_client|boolean|true|none|none|
-|» update_schedule|boolean|true|none|none|
+|privileges|object|false|none|none|
+|» add_employee|boolean|false|none|none|
+|» update_client|boolean|false|none|none|
+|» update_schedule|boolean|false|none|none|
 
 <h2 id="tocSregisteredclient">RegisteredClient</h2>
 
@@ -3832,16 +3855,16 @@ BearerAuth
 
 ```json
 {
+  "active": true,
   "name": "string",
   "surname": "string",
   "email": "string",
-  "phone": "string",
-  "created_at": "2019-08-30T12:49:11Z",
-  "updated_at": "2019-08-30T12:49:11Z",
-  "added_by": "string",
-  "company_added": "string",
+  "phone_number": "string",
   "_id": "string",
-  "active": true
+  "company_added": "string",
+  "created_at": "2019-09-03T09:31:38Z",
+  "updated_at": "2019-09-03T09:31:38Z",
+  "last_modified_by": "string"
 }
 
 ```
@@ -3860,7 +3883,10 @@ BearerAuth
 |---|---|---|---|---|
 |*anonymous*|object|false|none|none|
 |» _id|string|true|none|none|
-|» active|boolean|true|none|none|
+|» company_added|string|true|none|none|
+|» created_at|string(date-time)|true|none|none|
+|» updated_at|string(date-time)|true|none|none|
+|» last_modified_by|string|true|none|none|
 
 <h2 id="tocSbasicclient">BasicClient</h2>
 
@@ -3868,14 +3894,11 @@ BearerAuth
 
 ```json
 {
+  "active": true,
   "name": "string",
   "surname": "string",
   "email": "string",
-  "phone": "string",
-  "created_at": "2019-08-30T12:49:11Z",
-  "updated_at": "2019-08-30T12:49:11Z",
-  "added_by": "string",
-  "company_added": "string"
+  "phone_number": "string"
 }
 
 ```
@@ -3884,14 +3907,11 @@ BearerAuth
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
+|active|boolean|false|none|none|
 |name|string|true|none|none|
 |surname|string|true|none|none|
 |email|string|true|none|none|
-|phone|string|false|none|none|
-|created_at|string(date-time)|true|none|none|
-|updated_at|string(date-time)|true|none|none|
-|added_by|string|true|none|none|
-|company_added|string|true|none|none|
+|phone_number|string|false|none|none|
 
 <h2 id="tocSregisteredcompany">RegisteredCompany</h2>
 
@@ -3899,10 +3919,11 @@ BearerAuth
 
 ```json
 {
+  "active": true,
+  "IANA_timezone": "Europe/Madrid",
+  "locale": "es-ES",
   "name": "string",
-  "notification_advance": 0,
-  "created_at": "2019-08-30T12:49:11Z",
-  "updated_at": "2019-08-30T12:49:11Z",
+  "notification_advance": 86400,
   "address": {
     "street": "string",
     "city": "string",
@@ -3912,7 +3933,8 @@ BearerAuth
     "post_code": 0
   },
   "_id": "string",
-  "active": "string"
+  "created_at": "2019-09-03T09:31:38Z",
+  "updated_at": "2019-09-03T09:31:38Z"
 }
 
 ```
@@ -3931,7 +3953,8 @@ BearerAuth
 |---|---|---|---|---|
 |*anonymous*|object|false|none|none|
 |» _id|string|true|none|none|
-|» active|string|true|none|none|
+|» created_at|string(date-time)|true|none|none|
+|» updated_at|string(date-time)|true|none|none|
 
 <h2 id="tocSbasiccompany">BasicCompany</h2>
 
@@ -3939,10 +3962,11 @@ BearerAuth
 
 ```json
 {
+  "active": true,
+  "IANA_timezone": "Europe/Madrid",
+  "locale": "es-ES",
   "name": "string",
-  "notification_advance": 0,
-  "created_at": "2019-08-30T12:49:11Z",
-  "updated_at": "2019-08-30T12:49:11Z",
+  "notification_advance": 86400,
   "address": {
     "street": "string",
     "city": "string",
@@ -3959,10 +3983,11 @@ BearerAuth
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
+|active|boolean|false|none|none|
+|IANA_timezone|string|false|none|none|
+|locale|string|false|none|none|
 |name|string|true|none|none|
 |notification_advance|integer(int64)|false|none|none|
-|created_at|string(date-time)|true|none|none|
-|updated_at|string(date-time)|true|none|none|
 |address|object|true|none|none|
 |» street|string|true|none|none|
 |» city|string|true|none|none|
@@ -3978,40 +4003,42 @@ BearerAuth
 ```json
 {
   "company_id": "string",
-  "created_at": "2019-08-30T12:49:11Z",
   "client": {
-    "name": "string",
-    "surname": "string",
-    "email": "string",
-    "phone": "string",
-    "created_at": "2019-08-30T12:49:11Z",
-    "updated_at": "2019-08-30T12:49:11Z",
-    "added_by": "string",
-    "company_added": "string",
-    "_id": "string",
-    "active": true
-  },
-  "employee": {
-    "password": "string",
-    "company_id": "string",
+    "active": true,
     "name": "string",
     "surname": "string",
     "email": "string",
     "phone_number": "string",
-    "created_at": "2019-08-30T12:49:11Z",
-    "updated_at": "2019-08-30T12:49:11Z",
+    "_id": "string",
+    "company_added": "string",
+    "created_at": "2019-09-03T09:31:38Z",
+    "updated_at": "2019-09-03T09:31:38Z",
+    "last_modified_by": "string"
+  },
+  "employee": {
+    "active": true,
+    "password": "string",
+    "name": "string",
+    "surname": "string",
+    "email": "string",
+    "phone_number": "string",
     "privileges": {
-      "add_employee": true,
-      "update_client": true,
-      "update_schedule": true
+      "add_employee": false,
+      "update_client": false,
+      "update_schedule": false
     },
     "_id": "string",
-    "active": true
+    "company_id": "string",
+    "created_at": "2019-09-03T09:31:38Z",
+    "last_modified_by": "string",
+    "updated_at": "2019-09-03T09:31:38Z"
   },
-  "modified_at": "2019-08-30T12:49:11Z",
-  "start_date": "2019-08-30T12:49:11Z",
-  "end_date": "2019-08-30T12:49:11Z",
-  "_id": "string"
+  "start_date": "2019-09-03T09:31:38Z",
+  "end_date": "2019-09-03T09:31:38Z",
+  "_id": "string",
+  "created_at": "2019-09-03T09:31:38Z",
+  "updated_at": "2019-09-03T09:31:38Z",
+  "last_modified_by": "string"
 }
 
 ```
@@ -4030,6 +4057,9 @@ BearerAuth
 |---|---|---|---|---|
 |*anonymous*|object|false|none|none|
 |» _id|string|true|none|none|
+|» created_at|string(date-time)|true|none|none|
+|» updated_at|string(date-time)|true|none|none|
+|» last_modified_by|string|true|none|none|
 
 <h2 id="tocSbasicappointment">BasicAppointment</h2>
 
@@ -4038,39 +4068,38 @@ BearerAuth
 ```json
 {
   "company_id": "string",
-  "created_at": "2019-08-30T12:49:11Z",
   "client": {
-    "name": "string",
-    "surname": "string",
-    "email": "string",
-    "phone": "string",
-    "created_at": "2019-08-30T12:49:11Z",
-    "updated_at": "2019-08-30T12:49:11Z",
-    "added_by": "string",
-    "company_added": "string",
-    "_id": "string",
-    "active": true
-  },
-  "employee": {
-    "password": "string",
-    "company_id": "string",
+    "active": true,
     "name": "string",
     "surname": "string",
     "email": "string",
     "phone_number": "string",
-    "created_at": "2019-08-30T12:49:11Z",
-    "updated_at": "2019-08-30T12:49:11Z",
+    "_id": "string",
+    "company_added": "string",
+    "created_at": "2019-09-03T09:31:38Z",
+    "updated_at": "2019-09-03T09:31:38Z",
+    "last_modified_by": "string"
+  },
+  "employee": {
+    "active": true,
+    "password": "string",
+    "name": "string",
+    "surname": "string",
+    "email": "string",
+    "phone_number": "string",
     "privileges": {
-      "add_employee": true,
-      "update_client": true,
-      "update_schedule": true
+      "add_employee": false,
+      "update_client": false,
+      "update_schedule": false
     },
     "_id": "string",
-    "active": true
+    "company_id": "string",
+    "created_at": "2019-09-03T09:31:38Z",
+    "last_modified_by": "string",
+    "updated_at": "2019-09-03T09:31:38Z"
   },
-  "modified_at": "2019-08-30T12:49:11Z",
-  "start_date": "2019-08-30T12:49:11Z",
-  "end_date": "2019-08-30T12:49:11Z"
+  "start_date": "2019-09-03T09:31:38Z",
+  "end_date": "2019-09-03T09:31:38Z"
 }
 
 ```
@@ -4080,10 +4109,8 @@ BearerAuth
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |company_id|string|true|none|none|
-|created_at|string(date-time)|true|none|none|
 |client|[RegisteredClient](#schemaregisteredclient)|true|none|none|
 |employee|[RegisteredEmployee](#schemaregisteredemployee)|true|none|none|
-|modified_at|string(date-time)|true|none|none|
 |start_date|string(date-time)|true|none|none|
 |end_date|string(date-time)|true|none|none|
 

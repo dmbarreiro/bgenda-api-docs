@@ -226,7 +226,7 @@
         <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
           <li>
-            <a href="#appointments-management-api" class="toc-h1 toc-link" data-title="Appointments management API v0.7.5">Appointments management API v0.7.5</a>
+            <a href="#appointments-management-api" class="toc-h1 toc-link" data-title="Appointments management API v1.0.0">Appointments management API v1.0.0</a>
           </li>
           <li>
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
@@ -331,7 +331,7 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id="appointments-management-api">Appointments management API v0.7.5</h1>
+        <h1 id="appointments-management-api">Appointments management API v1.0.0</h1>
 
 <blockquote>
 <p>Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.</p>
@@ -342,7 +342,7 @@
 <p>Base URLs:</p>
 
 <ul>
-<li><a href="https://localhost:3000/v1.0/">https://localhost:3000/v1.0/</a></li>
+<li><a href="https://api.bgenda.dmbarreiro.com/v1.0/">https://api.bgenda.dmbarreiro.com/v1.0/</a></li>
 </ul>
 
 <p>Email: <a href="mailto:david@dmbarreiro.com">David Martinez Barreiro</a> Web: <a href="https://www.dmbarreiro.com">David Martinez Barreiro</a> 
@@ -368,12 +368,12 @@
 <p>Code samples</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
-curl -X GET https://localhost:3000/v1.0/companies/<span class="o">{</span>id<span class="o">}</span> <span class="se">\</span>
+curl -X GET https://api.bgenda.dmbarreiro.com/v1.0/companies/<span class="o">{</span>id<span class="o">}</span> <span class="se">\</span>
   -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   -H <span class="s1">'Authorization: Bearer {access-token}'</span>
 
-</code></pre><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://localhost:3000/v1.0/companies/{id}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">localhost:3000</span>
+</code></pre><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://api.bgenda.dmbarreiro.com/v1.0/companies/{id}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">api.bgenda.dmbarreiro.com</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -383,7 +383,7 @@ curl -X GET https://localhost:3000/v1.0/companies/<span class="o">{</span>id<spa
 <span class="p">};</span>
 
 <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://localhost:3000/v1.0/companies/{id}'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.bgenda.dmbarreiro.com/v1.0/companies/{id}'</span><span class="p">,</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'get'</span><span class="p">,</span>
 
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span><span class="p">,</span>
@@ -400,7 +400,7 @@ curl -X GET https://localhost:3000/v1.0/companies/<span class="o">{</span>id<spa
 
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://localhost:3000/v1.0/companies/{id}'</span><span class="p">,</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://api.bgenda.dmbarreiro.com/v1.0/companies/{id}'</span><span class="p">,</span>
 <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
 
@@ -420,7 +420,7 @@ curl -X GET https://localhost:3000/v1.0/companies/<span class="o">{</span>id<spa
   <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Bearer {access-token}'</span>
 <span class="p">}</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'https://localhost:3000/v1.0/companies/{id}'</span><span class="p">,</span>
+<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'https://api.bgenda.dmbarreiro.com/v1.0/companies/{id}'</span><span class="p">,</span>
   <span class="ss">params: </span><span class="p">{</span>
   <span class="p">},</span> <span class="ss">headers: </span><span class="n">headers</span>
 
@@ -432,13 +432,13 @@ curl -X GET https://localhost:3000/v1.0/companies/<span class="o">{</span>id<spa
   <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer {access-token}'</span>
 <span class="p">}</span>
 
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://localhost:3000/v1.0/companies/{id}'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://api.bgenda.dmbarreiro.com/v1.0/companies/{id}'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
 
 <span class="p">},</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
 
 <span class="k">print</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 
-</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"https://localhost:3000/v1.0/companies/{id}"</span><span class="o">);</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"https://api.bgenda.dmbarreiro.com/v1.0/companies/{id}"</span><span class="o">);</span>
 <span class="n">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="n">HttpURLConnection</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
 <span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"GET"</span><span class="o">);</span>
 <span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
@@ -468,7 +468,7 @@ curl -X GET https://localhost:3000/v1.0/companies/<span class="o">{</span>id<spa
     </span><span class="p">}</span><span class="x">
 
     </span><span class="n">data</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">bytes</span><span class="o">.</span><span class="n">NewBuffer</span><span class="p">([]</span><span class="kt">byte</span><span class="p">{</span><span class="n">jsonReq</span><span class="p">})</span><span class="x">
-    </span><span class="n">req</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span><span class="x"> </span><span class="s">"https://localhost:3000/v1.0/companies/{id}"</span><span class="p">,</span><span class="x"> </span><span class="n">data</span><span class="p">)</span><span class="x">
+    </span><span class="n">req</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span><span class="x"> </span><span class="s">"https://api.bgenda.dmbarreiro.com/v1.0/companies/{id}"</span><span class="p">,</span><span class="x"> </span><span class="n">data</span><span class="p">)</span><span class="x">
     </span><span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="n">headers</span><span class="x">
 
     </span><span class="n">client</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span><span class="p">{}</span><span class="x">
@@ -524,8 +524,8 @@ curl -X GET https://localhost:3000/v1.0/companies/<span class="o">{</span>id<spa
       </span><span class="s2">"post_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Element successfully found"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -770,13 +770,13 @@ BearerAuth
 <p>Code samples</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
-curl -X PUT https://localhost:3000/v1.0/companies/<span class="o">{</span>id<span class="o">}</span> <span class="se">\</span>
+curl -X PUT https://api.bgenda.dmbarreiro.com/v1.0/companies/<span class="o">{</span>id<span class="o">}</span> <span class="se">\</span>
   -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   -H <span class="s1">'Authorization: Bearer {access-token}'</span>
 
-</code></pre><pre class="highlight http tab-http"><code><span class="nf">PUT</span> <span class="nn">https://localhost:3000/v1.0/companies/{id}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">localhost:3000</span>
+</code></pre><pre class="highlight http tab-http"><code><span class="nf">PUT</span> <span class="nn">https://api.bgenda.dmbarreiro.com/v1.0/companies/{id}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">api.bgenda.dmbarreiro.com</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 
@@ -788,7 +788,7 @@ curl -X PUT https://localhost:3000/v1.0/companies/<span class="o">{</span>id<spa
 <span class="p">};</span>
 
 <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://localhost:3000/v1.0/companies/{id}'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.bgenda.dmbarreiro.com/v1.0/companies/{id}'</span><span class="p">,</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'put'</span><span class="p">,</span>
 
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span><span class="p">,</span>
@@ -813,8 +813,8 @@ curl -X PUT https://localhost:3000/v1.0/companies/<span class="o">{</span>id<spa
     "post_code": 0
   },
   "_id": "string",
-  "created_at": "2019-09-03T09:31:38Z",
-  "updated_at": "2019-09-03T09:31:38Z"
+  "created_at": "2019-09-19T13:37:23Z",
+  "updated_at": "2019-09-19T13:37:23Z"
 }'</span><span class="p">;</span>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Content-Type'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
@@ -823,7 +823,7 @@ curl -X PUT https://localhost:3000/v1.0/companies/<span class="o">{</span>id<spa
 
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://localhost:3000/v1.0/companies/{id}'</span><span class="p">,</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://api.bgenda.dmbarreiro.com/v1.0/companies/{id}'</span><span class="p">,</span>
 <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'PUT'</span><span class="p">,</span>
   <span class="na">body</span><span class="p">:</span> <span class="nx">inputBody</span><span class="p">,</span>
@@ -844,7 +844,7 @@ curl -X PUT https://localhost:3000/v1.0/companies/<span class="o">{</span>id<spa
   <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Bearer {access-token}'</span>
 <span class="p">}</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">put</span> <span class="s1">'https://localhost:3000/v1.0/companies/{id}'</span><span class="p">,</span>
+<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">put</span> <span class="s1">'https://api.bgenda.dmbarreiro.com/v1.0/companies/{id}'</span><span class="p">,</span>
   <span class="ss">params: </span><span class="p">{</span>
   <span class="p">},</span> <span class="ss">headers: </span><span class="n">headers</span>
 
@@ -857,13 +857,13 @@ curl -X PUT https://localhost:3000/v1.0/companies/<span class="o">{</span>id<spa
   <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer {access-token}'</span>
 <span class="p">}</span>
 
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s">'https://localhost:3000/v1.0/companies/{id}'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s">'https://api.bgenda.dmbarreiro.com/v1.0/companies/{id}'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
 
 <span class="p">},</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
 
 <span class="k">print</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 
-</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"https://localhost:3000/v1.0/companies/{id}"</span><span class="o">);</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"https://api.bgenda.dmbarreiro.com/v1.0/companies/{id}"</span><span class="o">);</span>
 <span class="n">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="n">HttpURLConnection</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
 <span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"PUT"</span><span class="o">);</span>
 <span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
@@ -894,7 +894,7 @@ curl -X PUT https://localhost:3000/v1.0/companies/<span class="o">{</span>id<spa
     </span><span class="p">}</span><span class="x">
 
     </span><span class="n">data</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">bytes</span><span class="o">.</span><span class="n">NewBuffer</span><span class="p">([]</span><span class="kt">byte</span><span class="p">{</span><span class="n">jsonReq</span><span class="p">})</span><span class="x">
-    </span><span class="n">req</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"PUT"</span><span class="p">,</span><span class="x"> </span><span class="s">"https://localhost:3000/v1.0/companies/{id}"</span><span class="p">,</span><span class="x"> </span><span class="n">data</span><span class="p">)</span><span class="x">
+    </span><span class="n">req</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"PUT"</span><span class="p">,</span><span class="x"> </span><span class="s">"https://api.bgenda.dmbarreiro.com/v1.0/companies/{id}"</span><span class="p">,</span><span class="x"> </span><span class="n">data</span><span class="p">)</span><span class="x">
     </span><span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="n">headers</span><span class="x">
 
     </span><span class="n">client</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span><span class="p">{}</span><span class="x">
@@ -927,8 +927,8 @@ curl -X PUT https://localhost:3000/v1.0/companies/<span class="o">{</span>id<spa
     </span><span class="s2">"post_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <h3 id="updatecompanybyid-parameters">Parameters</h3>
@@ -1027,12 +1027,12 @@ BearerAuth
 <p>Code samples</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
-curl -X GET https://localhost:3000/v1.0/companies/<span class="o">{</span>id<span class="o">}</span>/employees <span class="se">\</span>
+curl -X GET https://api.bgenda.dmbarreiro.com/v1.0/companies/<span class="o">{</span>id<span class="o">}</span>/employees <span class="se">\</span>
   -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   -H <span class="s1">'Authorization: Bearer {access-token}'</span>
 
-</code></pre><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://localhost:3000/v1.0/companies/{id}/employees</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">localhost:3000</span>
+</code></pre><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://api.bgenda.dmbarreiro.com/v1.0/companies/{id}/employees</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">api.bgenda.dmbarreiro.com</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -1042,7 +1042,7 @@ curl -X GET https://localhost:3000/v1.0/companies/<span class="o">{</span>id<spa
 <span class="p">};</span>
 
 <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://localhost:3000/v1.0/companies/{id}/employees'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.bgenda.dmbarreiro.com/v1.0/companies/{id}/employees'</span><span class="p">,</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'get'</span><span class="p">,</span>
 
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span><span class="p">,</span>
@@ -1059,7 +1059,7 @@ curl -X GET https://localhost:3000/v1.0/companies/<span class="o">{</span>id<spa
 
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://localhost:3000/v1.0/companies/{id}/employees'</span><span class="p">,</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://api.bgenda.dmbarreiro.com/v1.0/companies/{id}/employees'</span><span class="p">,</span>
 <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
 
@@ -1079,7 +1079,7 @@ curl -X GET https://localhost:3000/v1.0/companies/<span class="o">{</span>id<spa
   <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Bearer {access-token}'</span>
 <span class="p">}</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'https://localhost:3000/v1.0/companies/{id}/employees'</span><span class="p">,</span>
+<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'https://api.bgenda.dmbarreiro.com/v1.0/companies/{id}/employees'</span><span class="p">,</span>
   <span class="ss">params: </span><span class="p">{</span>
   <span class="p">},</span> <span class="ss">headers: </span><span class="n">headers</span>
 
@@ -1091,13 +1091,13 @@ curl -X GET https://localhost:3000/v1.0/companies/<span class="o">{</span>id<spa
   <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer {access-token}'</span>
 <span class="p">}</span>
 
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://localhost:3000/v1.0/companies/{id}/employees'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://api.bgenda.dmbarreiro.com/v1.0/companies/{id}/employees'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
 
 <span class="p">},</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
 
 <span class="k">print</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 
-</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"https://localhost:3000/v1.0/companies/{id}/employees"</span><span class="o">);</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"https://api.bgenda.dmbarreiro.com/v1.0/companies/{id}/employees"</span><span class="o">);</span>
 <span class="n">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="n">HttpURLConnection</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
 <span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"GET"</span><span class="o">);</span>
 <span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
@@ -1127,7 +1127,7 @@ curl -X GET https://localhost:3000/v1.0/companies/<span class="o">{</span>id<spa
     </span><span class="p">}</span><span class="x">
 
     </span><span class="n">data</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">bytes</span><span class="o">.</span><span class="n">NewBuffer</span><span class="p">([]</span><span class="kt">byte</span><span class="p">{</span><span class="n">jsonReq</span><span class="p">})</span><span class="x">
-    </span><span class="n">req</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span><span class="x"> </span><span class="s">"https://localhost:3000/v1.0/companies/{id}/employees"</span><span class="p">,</span><span class="x"> </span><span class="n">data</span><span class="p">)</span><span class="x">
+    </span><span class="n">req</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span><span class="x"> </span><span class="s">"https://api.bgenda.dmbarreiro.com/v1.0/companies/{id}/employees"</span><span class="p">,</span><span class="x"> </span><span class="n">data</span><span class="p">)</span><span class="x">
     </span><span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="n">headers</span><span class="x">
 
     </span><span class="n">client</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span><span class="p">{}</span><span class="x">
@@ -1182,9 +1182,9 @@ curl -X GET https://localhost:3000/v1.0/companies/<span class="o">{</span>id<spa
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"last_modified_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
@@ -1402,12 +1402,12 @@ BearerAuth
 <p>Code samples</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
-curl -X GET https://localhost:3000/v1.0/companies/<span class="o">{</span>id<span class="o">}</span>/clients <span class="se">\</span>
+curl -X GET https://api.bgenda.dmbarreiro.com/v1.0/companies/<span class="o">{</span>id<span class="o">}</span>/clients <span class="se">\</span>
   -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   -H <span class="s1">'Authorization: Bearer {access-token}'</span>
 
-</code></pre><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://localhost:3000/v1.0/companies/{id}/clients</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">localhost:3000</span>
+</code></pre><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://api.bgenda.dmbarreiro.com/v1.0/companies/{id}/clients</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">api.bgenda.dmbarreiro.com</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -1417,7 +1417,7 @@ curl -X GET https://localhost:3000/v1.0/companies/<span class="o">{</span>id<spa
 <span class="p">};</span>
 
 <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://localhost:3000/v1.0/companies/{id}/clients'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.bgenda.dmbarreiro.com/v1.0/companies/{id}/clients'</span><span class="p">,</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'get'</span><span class="p">,</span>
 
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span><span class="p">,</span>
@@ -1434,7 +1434,7 @@ curl -X GET https://localhost:3000/v1.0/companies/<span class="o">{</span>id<spa
 
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://localhost:3000/v1.0/companies/{id}/clients'</span><span class="p">,</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://api.bgenda.dmbarreiro.com/v1.0/companies/{id}/clients'</span><span class="p">,</span>
 <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
 
@@ -1454,7 +1454,7 @@ curl -X GET https://localhost:3000/v1.0/companies/<span class="o">{</span>id<spa
   <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Bearer {access-token}'</span>
 <span class="p">}</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'https://localhost:3000/v1.0/companies/{id}/clients'</span><span class="p">,</span>
+<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'https://api.bgenda.dmbarreiro.com/v1.0/companies/{id}/clients'</span><span class="p">,</span>
   <span class="ss">params: </span><span class="p">{</span>
   <span class="p">},</span> <span class="ss">headers: </span><span class="n">headers</span>
 
@@ -1466,13 +1466,13 @@ curl -X GET https://localhost:3000/v1.0/companies/<span class="o">{</span>id<spa
   <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer {access-token}'</span>
 <span class="p">}</span>
 
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://localhost:3000/v1.0/companies/{id}/clients'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://api.bgenda.dmbarreiro.com/v1.0/companies/{id}/clients'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
 
 <span class="p">},</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
 
 <span class="k">print</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 
-</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"https://localhost:3000/v1.0/companies/{id}/clients"</span><span class="o">);</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"https://api.bgenda.dmbarreiro.com/v1.0/companies/{id}/clients"</span><span class="o">);</span>
 <span class="n">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="n">HttpURLConnection</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
 <span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"GET"</span><span class="o">);</span>
 <span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
@@ -1502,7 +1502,7 @@ curl -X GET https://localhost:3000/v1.0/companies/<span class="o">{</span>id<spa
     </span><span class="p">}</span><span class="x">
 
     </span><span class="n">data</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">bytes</span><span class="o">.</span><span class="n">NewBuffer</span><span class="p">([]</span><span class="kt">byte</span><span class="p">{</span><span class="n">jsonReq</span><span class="p">})</span><span class="x">
-    </span><span class="n">req</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span><span class="x"> </span><span class="s">"https://localhost:3000/v1.0/companies/{id}/clients"</span><span class="p">,</span><span class="x"> </span><span class="n">data</span><span class="p">)</span><span class="x">
+    </span><span class="n">req</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span><span class="x"> </span><span class="s">"https://api.bgenda.dmbarreiro.com/v1.0/companies/{id}/clients"</span><span class="p">,</span><span class="x"> </span><span class="n">data</span><span class="p">)</span><span class="x">
     </span><span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="n">headers</span><span class="x">
 
     </span><span class="n">client</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span><span class="p">{}</span><span class="x">
@@ -1551,8 +1551,8 @@ curl -X GET https://localhost:3000/v1.0/companies/<span class="o">{</span>id<spa
     </span><span class="s2">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"company_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"last_modified_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
@@ -1736,12 +1736,12 @@ BearerAuth
 <p>Code samples</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
-curl -X GET https://localhost:3000/v1.0/companies <span class="se">\</span>
+curl -X GET https://api.bgenda.dmbarreiro.com/v1.0/companies <span class="se">\</span>
   -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   -H <span class="s1">'Authorization: Bearer {access-token}'</span>
 
-</code></pre><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://localhost:3000/v1.0/companies</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">localhost:3000</span>
+</code></pre><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://api.bgenda.dmbarreiro.com/v1.0/companies</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">api.bgenda.dmbarreiro.com</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -1751,7 +1751,7 @@ curl -X GET https://localhost:3000/v1.0/companies <span class="se">\</span>
 <span class="p">};</span>
 
 <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://localhost:3000/v1.0/companies'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.bgenda.dmbarreiro.com/v1.0/companies'</span><span class="p">,</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'get'</span><span class="p">,</span>
 
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span><span class="p">,</span>
@@ -1768,7 +1768,7 @@ curl -X GET https://localhost:3000/v1.0/companies <span class="se">\</span>
 
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://localhost:3000/v1.0/companies'</span><span class="p">,</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://api.bgenda.dmbarreiro.com/v1.0/companies'</span><span class="p">,</span>
 <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
 
@@ -1788,7 +1788,7 @@ curl -X GET https://localhost:3000/v1.0/companies <span class="se">\</span>
   <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Bearer {access-token}'</span>
 <span class="p">}</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'https://localhost:3000/v1.0/companies'</span><span class="p">,</span>
+<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'https://api.bgenda.dmbarreiro.com/v1.0/companies'</span><span class="p">,</span>
   <span class="ss">params: </span><span class="p">{</span>
   <span class="p">},</span> <span class="ss">headers: </span><span class="n">headers</span>
 
@@ -1800,13 +1800,13 @@ curl -X GET https://localhost:3000/v1.0/companies <span class="se">\</span>
   <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer {access-token}'</span>
 <span class="p">}</span>
 
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://localhost:3000/v1.0/companies'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://api.bgenda.dmbarreiro.com/v1.0/companies'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
 
 <span class="p">},</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
 
 <span class="k">print</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 
-</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"https://localhost:3000/v1.0/companies"</span><span class="o">);</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"https://api.bgenda.dmbarreiro.com/v1.0/companies"</span><span class="o">);</span>
 <span class="n">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="n">HttpURLConnection</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
 <span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"GET"</span><span class="o">);</span>
 <span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
@@ -1836,7 +1836,7 @@ curl -X GET https://localhost:3000/v1.0/companies <span class="se">\</span>
     </span><span class="p">}</span><span class="x">
 
     </span><span class="n">data</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">bytes</span><span class="o">.</span><span class="n">NewBuffer</span><span class="p">([]</span><span class="kt">byte</span><span class="p">{</span><span class="n">jsonReq</span><span class="p">})</span><span class="x">
-    </span><span class="n">req</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span><span class="x"> </span><span class="s">"https://localhost:3000/v1.0/companies"</span><span class="p">,</span><span class="x"> </span><span class="n">data</span><span class="p">)</span><span class="x">
+    </span><span class="n">req</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span><span class="x"> </span><span class="s">"https://api.bgenda.dmbarreiro.com/v1.0/companies"</span><span class="p">,</span><span class="x"> </span><span class="n">data</span><span class="p">)</span><span class="x">
     </span><span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="n">headers</span><span class="x">
 
     </span><span class="n">client</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span><span class="p">{}</span><span class="x">
@@ -1872,8 +1872,8 @@ curl -X GET https://localhost:3000/v1.0/companies <span class="se">\</span>
       </span><span class="s2">"post_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
@@ -2091,13 +2091,13 @@ BearerAuth
 <p>Code samples</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
-curl -X POST https://localhost:3000/v1.0/companies <span class="se">\</span>
+curl -X POST https://api.bgenda.dmbarreiro.com/v1.0/companies <span class="se">\</span>
   -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   -H <span class="s1">'Authorization: Bearer {access-token}'</span>
 
-</code></pre><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://localhost:3000/v1.0/companies</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">localhost:3000</span>
+</code></pre><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://api.bgenda.dmbarreiro.com/v1.0/companies</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">api.bgenda.dmbarreiro.com</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 
@@ -2109,7 +2109,7 @@ curl -X POST https://localhost:3000/v1.0/companies <span class="se">\</span>
 <span class="p">};</span>
 
 <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://localhost:3000/v1.0/companies'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.bgenda.dmbarreiro.com/v1.0/companies'</span><span class="p">,</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'post'</span><span class="p">,</span>
 
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span><span class="p">,</span>
@@ -2141,7 +2141,7 @@ curl -X POST https://localhost:3000/v1.0/companies <span class="se">\</span>
 
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://localhost:3000/v1.0/companies'</span><span class="p">,</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://api.bgenda.dmbarreiro.com/v1.0/companies'</span><span class="p">,</span>
 <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
   <span class="na">body</span><span class="p">:</span> <span class="nx">inputBody</span><span class="p">,</span>
@@ -2162,7 +2162,7 @@ curl -X POST https://localhost:3000/v1.0/companies <span class="se">\</span>
   <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Bearer {access-token}'</span>
 <span class="p">}</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span> <span class="s1">'https://localhost:3000/v1.0/companies'</span><span class="p">,</span>
+<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span> <span class="s1">'https://api.bgenda.dmbarreiro.com/v1.0/companies'</span><span class="p">,</span>
   <span class="ss">params: </span><span class="p">{</span>
   <span class="p">},</span> <span class="ss">headers: </span><span class="n">headers</span>
 
@@ -2175,13 +2175,13 @@ curl -X POST https://localhost:3000/v1.0/companies <span class="se">\</span>
   <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer {access-token}'</span>
 <span class="p">}</span>
 
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s">'https://localhost:3000/v1.0/companies'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s">'https://api.bgenda.dmbarreiro.com/v1.0/companies'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
 
 <span class="p">},</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
 
 <span class="k">print</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 
-</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"https://localhost:3000/v1.0/companies"</span><span class="o">);</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"https://api.bgenda.dmbarreiro.com/v1.0/companies"</span><span class="o">);</span>
 <span class="n">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="n">HttpURLConnection</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
 <span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"POST"</span><span class="o">);</span>
 <span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
@@ -2212,7 +2212,7 @@ curl -X POST https://localhost:3000/v1.0/companies <span class="se">\</span>
     </span><span class="p">}</span><span class="x">
 
     </span><span class="n">data</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">bytes</span><span class="o">.</span><span class="n">NewBuffer</span><span class="p">([]</span><span class="kt">byte</span><span class="p">{</span><span class="n">jsonReq</span><span class="p">})</span><span class="x">
-    </span><span class="n">req</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span><span class="x"> </span><span class="s">"https://localhost:3000/v1.0/companies"</span><span class="p">,</span><span class="x"> </span><span class="n">data</span><span class="p">)</span><span class="x">
+    </span><span class="n">req</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span><span class="x"> </span><span class="s">"https://api.bgenda.dmbarreiro.com/v1.0/companies"</span><span class="p">,</span><span class="x"> </span><span class="n">data</span><span class="p">)</span><span class="x">
     </span><span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="n">headers</span><span class="x">
 
     </span><span class="n">client</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span><span class="p">{}</span><span class="x">
@@ -2287,8 +2287,8 @@ curl -X POST https://localhost:3000/v1.0/companies <span class="se">\</span>
       </span><span class="s2">"post_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Element successfully created"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -2537,12 +2537,12 @@ BearerAuth
 <p>Code samples</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
-curl -X GET https://localhost:3000/v1.0/employees/<span class="o">{</span>id<span class="o">}</span> <span class="se">\</span>
+curl -X GET https://api.bgenda.dmbarreiro.com/v1.0/employees/<span class="o">{</span>id<span class="o">}</span> <span class="se">\</span>
   -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   -H <span class="s1">'Authorization: Bearer {access-token}'</span>
 
-</code></pre><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://localhost:3000/v1.0/employees/{id}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">localhost:3000</span>
+</code></pre><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://api.bgenda.dmbarreiro.com/v1.0/employees/{id}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">api.bgenda.dmbarreiro.com</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -2552,7 +2552,7 @@ curl -X GET https://localhost:3000/v1.0/employees/<span class="o">{</span>id<spa
 <span class="p">};</span>
 
 <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://localhost:3000/v1.0/employees/{id}'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.bgenda.dmbarreiro.com/v1.0/employees/{id}'</span><span class="p">,</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'get'</span><span class="p">,</span>
 
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span><span class="p">,</span>
@@ -2569,7 +2569,7 @@ curl -X GET https://localhost:3000/v1.0/employees/<span class="o">{</span>id<spa
 
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://localhost:3000/v1.0/employees/{id}'</span><span class="p">,</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://api.bgenda.dmbarreiro.com/v1.0/employees/{id}'</span><span class="p">,</span>
 <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
 
@@ -2589,7 +2589,7 @@ curl -X GET https://localhost:3000/v1.0/employees/<span class="o">{</span>id<spa
   <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Bearer {access-token}'</span>
 <span class="p">}</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'https://localhost:3000/v1.0/employees/{id}'</span><span class="p">,</span>
+<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'https://api.bgenda.dmbarreiro.com/v1.0/employees/{id}'</span><span class="p">,</span>
   <span class="ss">params: </span><span class="p">{</span>
   <span class="p">},</span> <span class="ss">headers: </span><span class="n">headers</span>
 
@@ -2601,13 +2601,13 @@ curl -X GET https://localhost:3000/v1.0/employees/<span class="o">{</span>id<spa
   <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer {access-token}'</span>
 <span class="p">}</span>
 
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://localhost:3000/v1.0/employees/{id}'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://api.bgenda.dmbarreiro.com/v1.0/employees/{id}'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
 
 <span class="p">},</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
 
 <span class="k">print</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 
-</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"https://localhost:3000/v1.0/employees/{id}"</span><span class="o">);</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"https://api.bgenda.dmbarreiro.com/v1.0/employees/{id}"</span><span class="o">);</span>
 <span class="n">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="n">HttpURLConnection</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
 <span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"GET"</span><span class="o">);</span>
 <span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
@@ -2637,7 +2637,7 @@ curl -X GET https://localhost:3000/v1.0/employees/<span class="o">{</span>id<spa
     </span><span class="p">}</span><span class="x">
 
     </span><span class="n">data</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">bytes</span><span class="o">.</span><span class="n">NewBuffer</span><span class="p">([]</span><span class="kt">byte</span><span class="p">{</span><span class="n">jsonReq</span><span class="p">})</span><span class="x">
-    </span><span class="n">req</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span><span class="x"> </span><span class="s">"https://localhost:3000/v1.0/employees/{id}"</span><span class="p">,</span><span class="x"> </span><span class="n">data</span><span class="p">)</span><span class="x">
+    </span><span class="n">req</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span><span class="x"> </span><span class="s">"https://api.bgenda.dmbarreiro.com/v1.0/employees/{id}"</span><span class="p">,</span><span class="x"> </span><span class="n">data</span><span class="p">)</span><span class="x">
     </span><span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="n">headers</span><span class="x">
 
     </span><span class="n">client</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span><span class="p">{}</span><span class="x">
@@ -2691,9 +2691,9 @@ curl -X GET https://localhost:3000/v1.0/employees/<span class="o">{</span>id<spa
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"last_modified_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="w">
+  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <h3 id="getemployeebyid-responses">Responses</h3>
@@ -2749,13 +2749,13 @@ BearerAuth
 <p>Code samples</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
-curl -X PUT https://localhost:3000/v1.0/employees/<span class="o">{</span>id<span class="o">}</span> <span class="se">\</span>
+curl -X PUT https://api.bgenda.dmbarreiro.com/v1.0/employees/<span class="o">{</span>id<span class="o">}</span> <span class="se">\</span>
   -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   -H <span class="s1">'Authorization: Bearer {access-token}'</span>
 
-</code></pre><pre class="highlight http tab-http"><code><span class="nf">PUT</span> <span class="nn">https://localhost:3000/v1.0/employees/{id}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">localhost:3000</span>
+</code></pre><pre class="highlight http tab-http"><code><span class="nf">PUT</span> <span class="nn">https://api.bgenda.dmbarreiro.com/v1.0/employees/{id}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">api.bgenda.dmbarreiro.com</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 
@@ -2767,7 +2767,7 @@ curl -X PUT https://localhost:3000/v1.0/employees/<span class="o">{</span>id<spa
 <span class="p">};</span>
 
 <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://localhost:3000/v1.0/employees/{id}'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.bgenda.dmbarreiro.com/v1.0/employees/{id}'</span><span class="p">,</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'put'</span><span class="p">,</span>
 
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span><span class="p">,</span>
@@ -2791,9 +2791,9 @@ curl -X PUT https://localhost:3000/v1.0/employees/<span class="o">{</span>id<spa
   },
   "_id": "string",
   "company_id": "string",
-  "created_at": "2019-09-03T09:31:38Z",
+  "created_at": "2019-09-19T13:37:23Z",
   "last_modified_by": "string",
-  "updated_at": "2019-09-03T09:31:38Z"
+  "updated_at": "2019-09-19T13:37:23Z"
 }'</span><span class="p">;</span>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Content-Type'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
@@ -2802,7 +2802,7 @@ curl -X PUT https://localhost:3000/v1.0/employees/<span class="o">{</span>id<spa
 
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://localhost:3000/v1.0/employees/{id}'</span><span class="p">,</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://api.bgenda.dmbarreiro.com/v1.0/employees/{id}'</span><span class="p">,</span>
 <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'PUT'</span><span class="p">,</span>
   <span class="na">body</span><span class="p">:</span> <span class="nx">inputBody</span><span class="p">,</span>
@@ -2823,7 +2823,7 @@ curl -X PUT https://localhost:3000/v1.0/employees/<span class="o">{</span>id<spa
   <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Bearer {access-token}'</span>
 <span class="p">}</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">put</span> <span class="s1">'https://localhost:3000/v1.0/employees/{id}'</span><span class="p">,</span>
+<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">put</span> <span class="s1">'https://api.bgenda.dmbarreiro.com/v1.0/employees/{id}'</span><span class="p">,</span>
   <span class="ss">params: </span><span class="p">{</span>
   <span class="p">},</span> <span class="ss">headers: </span><span class="n">headers</span>
 
@@ -2836,13 +2836,13 @@ curl -X PUT https://localhost:3000/v1.0/employees/<span class="o">{</span>id<spa
   <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer {access-token}'</span>
 <span class="p">}</span>
 
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s">'https://localhost:3000/v1.0/employees/{id}'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s">'https://api.bgenda.dmbarreiro.com/v1.0/employees/{id}'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
 
 <span class="p">},</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
 
 <span class="k">print</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 
-</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"https://localhost:3000/v1.0/employees/{id}"</span><span class="o">);</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"https://api.bgenda.dmbarreiro.com/v1.0/employees/{id}"</span><span class="o">);</span>
 <span class="n">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="n">HttpURLConnection</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
 <span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"PUT"</span><span class="o">);</span>
 <span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
@@ -2873,7 +2873,7 @@ curl -X PUT https://localhost:3000/v1.0/employees/<span class="o">{</span>id<spa
     </span><span class="p">}</span><span class="x">
 
     </span><span class="n">data</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">bytes</span><span class="o">.</span><span class="n">NewBuffer</span><span class="p">([]</span><span class="kt">byte</span><span class="p">{</span><span class="n">jsonReq</span><span class="p">})</span><span class="x">
-    </span><span class="n">req</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"PUT"</span><span class="p">,</span><span class="x"> </span><span class="s">"https://localhost:3000/v1.0/employees/{id}"</span><span class="p">,</span><span class="x"> </span><span class="n">data</span><span class="p">)</span><span class="x">
+    </span><span class="n">req</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"PUT"</span><span class="p">,</span><span class="x"> </span><span class="s">"https://api.bgenda.dmbarreiro.com/v1.0/employees/{id}"</span><span class="p">,</span><span class="x"> </span><span class="n">data</span><span class="p">)</span><span class="x">
     </span><span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="n">headers</span><span class="x">
 
     </span><span class="n">client</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span><span class="p">{}</span><span class="x">
@@ -2905,9 +2905,9 @@ curl -X PUT https://localhost:3000/v1.0/employees/<span class="o">{</span>id<spa
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"last_modified_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="w">
+  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <h3 id="updateemployeebyid-parameters">Parameters</h3>
@@ -3006,13 +3006,13 @@ BearerAuth
 <p>Code samples</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
-curl -X POST https://localhost:3000/v1.0/employees <span class="se">\</span>
+curl -X POST https://api.bgenda.dmbarreiro.com/v1.0/employees <span class="se">\</span>
   -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   -H <span class="s1">'Authorization: Bearer {access-token}'</span>
 
-</code></pre><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://localhost:3000/v1.0/employees</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">localhost:3000</span>
+</code></pre><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://api.bgenda.dmbarreiro.com/v1.0/employees</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">api.bgenda.dmbarreiro.com</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 
@@ -3024,7 +3024,7 @@ curl -X POST https://localhost:3000/v1.0/employees <span class="se">\</span>
 <span class="p">};</span>
 
 <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://localhost:3000/v1.0/employees'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.bgenda.dmbarreiro.com/v1.0/employees'</span><span class="p">,</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'post'</span><span class="p">,</span>
 
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span><span class="p">,</span>
@@ -3054,7 +3054,7 @@ curl -X POST https://localhost:3000/v1.0/employees <span class="se">\</span>
 
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://localhost:3000/v1.0/employees'</span><span class="p">,</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://api.bgenda.dmbarreiro.com/v1.0/employees'</span><span class="p">,</span>
 <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
   <span class="na">body</span><span class="p">:</span> <span class="nx">inputBody</span><span class="p">,</span>
@@ -3075,7 +3075,7 @@ curl -X POST https://localhost:3000/v1.0/employees <span class="se">\</span>
   <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Bearer {access-token}'</span>
 <span class="p">}</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span> <span class="s1">'https://localhost:3000/v1.0/employees'</span><span class="p">,</span>
+<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span> <span class="s1">'https://api.bgenda.dmbarreiro.com/v1.0/employees'</span><span class="p">,</span>
   <span class="ss">params: </span><span class="p">{</span>
   <span class="p">},</span> <span class="ss">headers: </span><span class="n">headers</span>
 
@@ -3088,13 +3088,13 @@ curl -X POST https://localhost:3000/v1.0/employees <span class="se">\</span>
   <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer {access-token}'</span>
 <span class="p">}</span>
 
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s">'https://localhost:3000/v1.0/employees'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s">'https://api.bgenda.dmbarreiro.com/v1.0/employees'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
 
 <span class="p">},</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
 
 <span class="k">print</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 
-</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"https://localhost:3000/v1.0/employees"</span><span class="o">);</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"https://api.bgenda.dmbarreiro.com/v1.0/employees"</span><span class="o">);</span>
 <span class="n">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="n">HttpURLConnection</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
 <span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"POST"</span><span class="o">);</span>
 <span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
@@ -3125,7 +3125,7 @@ curl -X POST https://localhost:3000/v1.0/employees <span class="se">\</span>
     </span><span class="p">}</span><span class="x">
 
     </span><span class="n">data</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">bytes</span><span class="o">.</span><span class="n">NewBuffer</span><span class="p">([]</span><span class="kt">byte</span><span class="p">{</span><span class="n">jsonReq</span><span class="p">})</span><span class="x">
-    </span><span class="n">req</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span><span class="x"> </span><span class="s">"https://localhost:3000/v1.0/employees"</span><span class="p">,</span><span class="x"> </span><span class="n">data</span><span class="p">)</span><span class="x">
+    </span><span class="n">req</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span><span class="x"> </span><span class="s">"https://api.bgenda.dmbarreiro.com/v1.0/employees"</span><span class="p">,</span><span class="x"> </span><span class="n">data</span><span class="p">)</span><span class="x">
     </span><span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="n">headers</span><span class="x">
 
     </span><span class="n">client</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span><span class="p">{}</span><span class="x">
@@ -3273,12 +3273,12 @@ BearerAuth
 <p>Code samples</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
-curl -X GET https://localhost:3000/v1.0/clients/<span class="o">{</span>id<span class="o">}</span> <span class="se">\</span>
+curl -X GET https://api.bgenda.dmbarreiro.com/v1.0/clients/<span class="o">{</span>id<span class="o">}</span> <span class="se">\</span>
   -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   -H <span class="s1">'Authorization: Bearer {access-token}'</span>
 
-</code></pre><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://localhost:3000/v1.0/clients/{id}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">localhost:3000</span>
+</code></pre><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">api.bgenda.dmbarreiro.com</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -3288,7 +3288,7 @@ curl -X GET https://localhost:3000/v1.0/clients/<span class="o">{</span>id<span 
 <span class="p">};</span>
 
 <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://localhost:3000/v1.0/clients/{id}'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}'</span><span class="p">,</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'get'</span><span class="p">,</span>
 
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span><span class="p">,</span>
@@ -3305,7 +3305,7 @@ curl -X GET https://localhost:3000/v1.0/clients/<span class="o">{</span>id<span 
 
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://localhost:3000/v1.0/clients/{id}'</span><span class="p">,</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}'</span><span class="p">,</span>
 <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
 
@@ -3325,7 +3325,7 @@ curl -X GET https://localhost:3000/v1.0/clients/<span class="o">{</span>id<span 
   <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Bearer {access-token}'</span>
 <span class="p">}</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'https://localhost:3000/v1.0/clients/{id}'</span><span class="p">,</span>
+<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}'</span><span class="p">,</span>
   <span class="ss">params: </span><span class="p">{</span>
   <span class="p">},</span> <span class="ss">headers: </span><span class="n">headers</span>
 
@@ -3337,13 +3337,13 @@ curl -X GET https://localhost:3000/v1.0/clients/<span class="o">{</span>id<span 
   <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer {access-token}'</span>
 <span class="p">}</span>
 
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://localhost:3000/v1.0/clients/{id}'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
 
 <span class="p">},</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
 
 <span class="k">print</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 
-</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"https://localhost:3000/v1.0/clients/{id}"</span><span class="o">);</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}"</span><span class="o">);</span>
 <span class="n">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="n">HttpURLConnection</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
 <span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"GET"</span><span class="o">);</span>
 <span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
@@ -3373,7 +3373,7 @@ curl -X GET https://localhost:3000/v1.0/clients/<span class="o">{</span>id<span 
     </span><span class="p">}</span><span class="x">
 
     </span><span class="n">data</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">bytes</span><span class="o">.</span><span class="n">NewBuffer</span><span class="p">([]</span><span class="kt">byte</span><span class="p">{</span><span class="n">jsonReq</span><span class="p">})</span><span class="x">
-    </span><span class="n">req</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span><span class="x"> </span><span class="s">"https://localhost:3000/v1.0/clients/{id}"</span><span class="p">,</span><span class="x"> </span><span class="n">data</span><span class="p">)</span><span class="x">
+    </span><span class="n">req</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span><span class="x"> </span><span class="s">"https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}"</span><span class="p">,</span><span class="x"> </span><span class="n">data</span><span class="p">)</span><span class="x">
     </span><span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="n">headers</span><span class="x">
 
     </span><span class="n">client</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span><span class="p">{}</span><span class="x">
@@ -3422,8 +3422,8 @@ curl -X GET https://localhost:3000/v1.0/clients/<span class="o">{</span>id<span 
     </span><span class="s2">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"company_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"last_modified_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Element successfully found"</span><span class="w">
@@ -3634,13 +3634,13 @@ BearerAuth
 <p>Code samples</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
-curl -X PUT https://localhost:3000/v1.0/clients/<span class="o">{</span>id<span class="o">}</span> <span class="se">\</span>
+curl -X PUT https://api.bgenda.dmbarreiro.com/v1.0/clients/<span class="o">{</span>id<span class="o">}</span> <span class="se">\</span>
   -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   -H <span class="s1">'Authorization: Bearer {access-token}'</span>
 
-</code></pre><pre class="highlight http tab-http"><code><span class="nf">PUT</span> <span class="nn">https://localhost:3000/v1.0/clients/{id}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">localhost:3000</span>
+</code></pre><pre class="highlight http tab-http"><code><span class="nf">PUT</span> <span class="nn">https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">api.bgenda.dmbarreiro.com</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 
@@ -3652,7 +3652,7 @@ curl -X PUT https://localhost:3000/v1.0/clients/<span class="o">{</span>id<span 
 <span class="p">};</span>
 
 <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://localhost:3000/v1.0/clients/{id}'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}'</span><span class="p">,</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'put'</span><span class="p">,</span>
 
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span><span class="p">,</span>
@@ -3670,8 +3670,8 @@ curl -X PUT https://localhost:3000/v1.0/clients/<span class="o">{</span>id<span 
   "phone_number": "string",
   "_id": "string",
   "company_added": "string",
-  "created_at": "2019-09-03T09:31:38Z",
-  "updated_at": "2019-09-03T09:31:38Z",
+  "created_at": "2019-09-19T13:37:23Z",
+  "updated_at": "2019-09-19T13:37:23Z",
   "last_modified_by": "string"
 }'</span><span class="p">;</span>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -3681,7 +3681,7 @@ curl -X PUT https://localhost:3000/v1.0/clients/<span class="o">{</span>id<span 
 
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://localhost:3000/v1.0/clients/{id}'</span><span class="p">,</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}'</span><span class="p">,</span>
 <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'PUT'</span><span class="p">,</span>
   <span class="na">body</span><span class="p">:</span> <span class="nx">inputBody</span><span class="p">,</span>
@@ -3702,7 +3702,7 @@ curl -X PUT https://localhost:3000/v1.0/clients/<span class="o">{</span>id<span 
   <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Bearer {access-token}'</span>
 <span class="p">}</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">put</span> <span class="s1">'https://localhost:3000/v1.0/clients/{id}'</span><span class="p">,</span>
+<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">put</span> <span class="s1">'https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}'</span><span class="p">,</span>
   <span class="ss">params: </span><span class="p">{</span>
   <span class="p">},</span> <span class="ss">headers: </span><span class="n">headers</span>
 
@@ -3715,13 +3715,13 @@ curl -X PUT https://localhost:3000/v1.0/clients/<span class="o">{</span>id<span 
   <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer {access-token}'</span>
 <span class="p">}</span>
 
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s">'https://localhost:3000/v1.0/clients/{id}'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s">'https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
 
 <span class="p">},</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
 
 <span class="k">print</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 
-</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"https://localhost:3000/v1.0/clients/{id}"</span><span class="o">);</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}"</span><span class="o">);</span>
 <span class="n">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="n">HttpURLConnection</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
 <span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"PUT"</span><span class="o">);</span>
 <span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
@@ -3752,7 +3752,7 @@ curl -X PUT https://localhost:3000/v1.0/clients/<span class="o">{</span>id<span 
     </span><span class="p">}</span><span class="x">
 
     </span><span class="n">data</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">bytes</span><span class="o">.</span><span class="n">NewBuffer</span><span class="p">([]</span><span class="kt">byte</span><span class="p">{</span><span class="n">jsonReq</span><span class="p">})</span><span class="x">
-    </span><span class="n">req</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"PUT"</span><span class="p">,</span><span class="x"> </span><span class="s">"https://localhost:3000/v1.0/clients/{id}"</span><span class="p">,</span><span class="x"> </span><span class="n">data</span><span class="p">)</span><span class="x">
+    </span><span class="n">req</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"PUT"</span><span class="p">,</span><span class="x"> </span><span class="s">"https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}"</span><span class="p">,</span><span class="x"> </span><span class="n">data</span><span class="p">)</span><span class="x">
     </span><span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="n">headers</span><span class="x">
 
     </span><span class="n">client</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span><span class="p">{}</span><span class="x">
@@ -3778,8 +3778,8 @@ curl -X PUT https://localhost:3000/v1.0/clients/<span class="o">{</span>id<span 
   </span><span class="s2">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"company_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"last_modified_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -3879,12 +3879,12 @@ BearerAuth
 <p>Code samples</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
-curl -X GET https://localhost:3000/v1.0/clients/<span class="o">{</span>id<span class="o">}</span>/appointments <span class="se">\</span>
+curl -X GET https://api.bgenda.dmbarreiro.com/v1.0/clients/<span class="o">{</span>id<span class="o">}</span>/appointments <span class="se">\</span>
   -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   -H <span class="s1">'Authorization: Bearer {access-token}'</span>
 
-</code></pre><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://localhost:3000/v1.0/clients/{id}/appointments</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">localhost:3000</span>
+</code></pre><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}/appointments</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">api.bgenda.dmbarreiro.com</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -3894,7 +3894,7 @@ curl -X GET https://localhost:3000/v1.0/clients/<span class="o">{</span>id<span 
 <span class="p">};</span>
 
 <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://localhost:3000/v1.0/clients/{id}/appointments'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}/appointments'</span><span class="p">,</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'get'</span><span class="p">,</span>
 
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span><span class="p">,</span>
@@ -3911,7 +3911,7 @@ curl -X GET https://localhost:3000/v1.0/clients/<span class="o">{</span>id<span 
 
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://localhost:3000/v1.0/clients/{id}/appointments'</span><span class="p">,</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}/appointments'</span><span class="p">,</span>
 <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
 
@@ -3931,7 +3931,7 @@ curl -X GET https://localhost:3000/v1.0/clients/<span class="o">{</span>id<span 
   <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Bearer {access-token}'</span>
 <span class="p">}</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'https://localhost:3000/v1.0/clients/{id}/appointments'</span><span class="p">,</span>
+<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}/appointments'</span><span class="p">,</span>
   <span class="ss">params: </span><span class="p">{</span>
   <span class="p">},</span> <span class="ss">headers: </span><span class="n">headers</span>
 
@@ -3943,13 +3943,13 @@ curl -X GET https://localhost:3000/v1.0/clients/<span class="o">{</span>id<span 
   <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer {access-token}'</span>
 <span class="p">}</span>
 
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://localhost:3000/v1.0/clients/{id}/appointments'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}/appointments'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
 
 <span class="p">},</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
 
 <span class="k">print</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 
-</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"https://localhost:3000/v1.0/clients/{id}/appointments"</span><span class="o">);</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}/appointments"</span><span class="o">);</span>
 <span class="n">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="n">HttpURLConnection</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
 <span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"GET"</span><span class="o">);</span>
 <span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
@@ -3979,7 +3979,7 @@ curl -X GET https://localhost:3000/v1.0/clients/<span class="o">{</span>id<span 
     </span><span class="p">}</span><span class="x">
 
     </span><span class="n">data</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">bytes</span><span class="o">.</span><span class="n">NewBuffer</span><span class="p">([]</span><span class="kt">byte</span><span class="p">{</span><span class="n">jsonReq</span><span class="p">})</span><span class="x">
-    </span><span class="n">req</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span><span class="x"> </span><span class="s">"https://localhost:3000/v1.0/clients/{id}/appointments"</span><span class="p">,</span><span class="x"> </span><span class="n">data</span><span class="p">)</span><span class="x">
+    </span><span class="n">req</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span><span class="x"> </span><span class="s">"https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}/appointments"</span><span class="p">,</span><span class="x"> </span><span class="n">data</span><span class="p">)</span><span class="x">
     </span><span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="n">headers</span><span class="x">
 
     </span><span class="n">client</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span><span class="p">{}</span><span class="x">
@@ -4046,8 +4046,8 @@ curl -X GET https://localhost:3000/v1.0/clients/<span class="o">{</span>id<span 
         </span><span class="s2">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"company_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"last_modified_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"employee"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -4064,15 +4064,15 @@ curl -X GET https://localhost:3000/v1.0/clients/<span class="o">{</span>id<span 
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"last_modified_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="w">
       </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"last_modified_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
@@ -4538,13 +4538,13 @@ BearerAuth
 <p>Code samples</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
-curl -X PUT https://localhost:3000/v1.0/clients/<span class="o">{</span>id<span class="o">}</span>/appointments?appointment_id<span class="o">=</span>string <span class="se">\</span>
+curl -X PUT https://api.bgenda.dmbarreiro.com/v1.0/clients/<span class="o">{</span>id<span class="o">}</span>/appointments?appointment_id<span class="o">=</span>string <span class="se">\</span>
   -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   -H <span class="s1">'Authorization: Bearer {access-token}'</span>
 
-</code></pre><pre class="highlight http tab-http"><code><span class="nf">PUT</span> <span class="nn">https://localhost:3000/v1.0/clients/{id}/appointments?appointment_id=string</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">localhost:3000</span>
+</code></pre><pre class="highlight http tab-http"><code><span class="nf">PUT</span> <span class="nn">https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}/appointments?appointment_id=string</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">api.bgenda.dmbarreiro.com</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 
@@ -4556,7 +4556,7 @@ curl -X PUT https://localhost:3000/v1.0/clients/<span class="o">{</span>id<span 
 <span class="p">};</span>
 
 <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://localhost:3000/v1.0/clients/{id}/appointments'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}/appointments'</span><span class="p">,</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'put'</span><span class="p">,</span>
   <span class="na">data</span><span class="p">:</span> <span class="s1">'?appointment_id=string'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span><span class="p">,</span>
@@ -4576,8 +4576,8 @@ curl -X PUT https://localhost:3000/v1.0/clients/<span class="o">{</span>id<span 
     "phone_number": "string",
     "_id": "string",
     "company_added": "string",
-    "created_at": "2019-09-03T09:31:38Z",
-    "updated_at": "2019-09-03T09:31:38Z",
+    "created_at": "2019-09-19T13:37:23Z",
+    "updated_at": "2019-09-19T13:37:23Z",
     "last_modified_by": "string"
   },
   "employee": {
@@ -4594,15 +4594,15 @@ curl -X PUT https://localhost:3000/v1.0/clients/<span class="o">{</span>id<span 
     },
     "_id": "string",
     "company_id": "string",
-    "created_at": "2019-09-03T09:31:38Z",
+    "created_at": "2019-09-19T13:37:23Z",
     "last_modified_by": "string",
-    "updated_at": "2019-09-03T09:31:38Z"
+    "updated_at": "2019-09-19T13:37:23Z"
   },
-  "start_date": "2019-09-03T09:31:38Z",
-  "end_date": "2019-09-03T09:31:38Z",
+  "start_date": "2019-09-19T13:37:23Z",
+  "end_date": "2019-09-19T13:37:23Z",
   "_id": "string",
-  "created_at": "2019-09-03T09:31:38Z",
-  "updated_at": "2019-09-03T09:31:38Z",
+  "created_at": "2019-09-19T13:37:23Z",
+  "updated_at": "2019-09-19T13:37:23Z",
   "last_modified_by": "string"
 }'</span><span class="p">;</span>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -4612,7 +4612,7 @@ curl -X PUT https://localhost:3000/v1.0/clients/<span class="o">{</span>id<span 
 
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://localhost:3000/v1.0/clients/{id}/appointments?appointment_id=string'</span><span class="p">,</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}/appointments?appointment_id=string'</span><span class="p">,</span>
 <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'PUT'</span><span class="p">,</span>
   <span class="na">body</span><span class="p">:</span> <span class="nx">inputBody</span><span class="p">,</span>
@@ -4633,7 +4633,7 @@ curl -X PUT https://localhost:3000/v1.0/clients/<span class="o">{</span>id<span 
   <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Bearer {access-token}'</span>
 <span class="p">}</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">put</span> <span class="s1">'https://localhost:3000/v1.0/clients/{id}/appointments'</span><span class="p">,</span>
+<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">put</span> <span class="s1">'https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}/appointments'</span><span class="p">,</span>
   <span class="ss">params: </span><span class="p">{</span>
   <span class="s1">'appointment_id'</span> <span class="o">=&gt;</span> <span class="s1">'string'</span>
 <span class="p">},</span> <span class="ss">headers: </span><span class="n">headers</span>
@@ -4647,13 +4647,13 @@ curl -X PUT https://localhost:3000/v1.0/clients/<span class="o">{</span>id<span 
   <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer {access-token}'</span>
 <span class="p">}</span>
 
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s">'https://localhost:3000/v1.0/clients/{id}/appointments'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s">'https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}/appointments'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
   <span class="s">'appointment_id'</span><span class="p">:</span> <span class="s">'string'</span>
 <span class="p">},</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
 
 <span class="k">print</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 
-</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"https://localhost:3000/v1.0/clients/{id}/appointments?appointment_id=string"</span><span class="o">);</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}/appointments?appointment_id=string"</span><span class="o">);</span>
 <span class="n">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="n">HttpURLConnection</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
 <span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"PUT"</span><span class="o">);</span>
 <span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
@@ -4684,7 +4684,7 @@ curl -X PUT https://localhost:3000/v1.0/clients/<span class="o">{</span>id<span 
     </span><span class="p">}</span><span class="x">
 
     </span><span class="n">data</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">bytes</span><span class="o">.</span><span class="n">NewBuffer</span><span class="p">([]</span><span class="kt">byte</span><span class="p">{</span><span class="n">jsonReq</span><span class="p">})</span><span class="x">
-    </span><span class="n">req</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"PUT"</span><span class="p">,</span><span class="x"> </span><span class="s">"https://localhost:3000/v1.0/clients/{id}/appointments"</span><span class="p">,</span><span class="x"> </span><span class="n">data</span><span class="p">)</span><span class="x">
+    </span><span class="n">req</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"PUT"</span><span class="p">,</span><span class="x"> </span><span class="s">"https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}/appointments"</span><span class="p">,</span><span class="x"> </span><span class="n">data</span><span class="p">)</span><span class="x">
     </span><span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="n">headers</span><span class="x">
 
     </span><span class="n">client</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span><span class="p">{}</span><span class="x">
@@ -4712,8 +4712,8 @@ curl -X PUT https://localhost:3000/v1.0/clients/<span class="o">{</span>id<span 
     </span><span class="s2">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"company_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"last_modified_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"employee"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -4730,15 +4730,15 @@ curl -X PUT https://localhost:3000/v1.0/clients/<span class="o">{</span>id<span 
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"last_modified_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"last_modified_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -4845,13 +4845,13 @@ BearerAuth
 <p>Code samples</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
-curl -X POST https://localhost:3000/v1.0/clients/<span class="o">{</span>id<span class="o">}</span>/appointments <span class="se">\</span>
+curl -X POST https://api.bgenda.dmbarreiro.com/v1.0/clients/<span class="o">{</span>id<span class="o">}</span>/appointments <span class="se">\</span>
   -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   -H <span class="s1">'Authorization: Bearer {access-token}'</span>
 
-</code></pre><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://localhost:3000/v1.0/clients/{id}/appointments</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">localhost:3000</span>
+</code></pre><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}/appointments</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">api.bgenda.dmbarreiro.com</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 
@@ -4863,7 +4863,7 @@ curl -X POST https://localhost:3000/v1.0/clients/<span class="o">{</span>id<span
 <span class="p">};</span>
 
 <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://localhost:3000/v1.0/clients/{id}/appointments'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}/appointments'</span><span class="p">,</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'post'</span><span class="p">,</span>
 
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span><span class="p">,</span>
@@ -4883,8 +4883,8 @@ curl -X POST https://localhost:3000/v1.0/clients/<span class="o">{</span>id<span
     "phone_number": "string",
     "_id": "string",
     "company_added": "string",
-    "created_at": "2019-09-03T09:31:38Z",
-    "updated_at": "2019-09-03T09:31:38Z",
+    "created_at": "2019-09-19T13:37:23Z",
+    "updated_at": "2019-09-19T13:37:23Z",
     "last_modified_by": "string"
   },
   "employee": {
@@ -4901,12 +4901,12 @@ curl -X POST https://localhost:3000/v1.0/clients/<span class="o">{</span>id<span
     },
     "_id": "string",
     "company_id": "string",
-    "created_at": "2019-09-03T09:31:38Z",
+    "created_at": "2019-09-19T13:37:23Z",
     "last_modified_by": "string",
-    "updated_at": "2019-09-03T09:31:38Z"
+    "updated_at": "2019-09-19T13:37:23Z"
   },
-  "start_date": "2019-09-03T09:31:38Z",
-  "end_date": "2019-09-03T09:31:38Z"
+  "start_date": "2019-09-19T13:37:23Z",
+  "end_date": "2019-09-19T13:37:23Z"
 }'</span><span class="p">;</span>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Content-Type'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
@@ -4915,7 +4915,7 @@ curl -X POST https://localhost:3000/v1.0/clients/<span class="o">{</span>id<span
 
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://localhost:3000/v1.0/clients/{id}/appointments'</span><span class="p">,</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}/appointments'</span><span class="p">,</span>
 <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
   <span class="na">body</span><span class="p">:</span> <span class="nx">inputBody</span><span class="p">,</span>
@@ -4936,7 +4936,7 @@ curl -X POST https://localhost:3000/v1.0/clients/<span class="o">{</span>id<span
   <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Bearer {access-token}'</span>
 <span class="p">}</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span> <span class="s1">'https://localhost:3000/v1.0/clients/{id}/appointments'</span><span class="p">,</span>
+<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span> <span class="s1">'https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}/appointments'</span><span class="p">,</span>
   <span class="ss">params: </span><span class="p">{</span>
   <span class="p">},</span> <span class="ss">headers: </span><span class="n">headers</span>
 
@@ -4949,13 +4949,13 @@ curl -X POST https://localhost:3000/v1.0/clients/<span class="o">{</span>id<span
   <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer {access-token}'</span>
 <span class="p">}</span>
 
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s">'https://localhost:3000/v1.0/clients/{id}/appointments'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s">'https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}/appointments'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
 
 <span class="p">},</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
 
 <span class="k">print</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 
-</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"https://localhost:3000/v1.0/clients/{id}/appointments"</span><span class="o">);</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}/appointments"</span><span class="o">);</span>
 <span class="n">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="n">HttpURLConnection</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
 <span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"POST"</span><span class="o">);</span>
 <span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
@@ -4986,7 +4986,7 @@ curl -X POST https://localhost:3000/v1.0/clients/<span class="o">{</span>id<span
     </span><span class="p">}</span><span class="x">
 
     </span><span class="n">data</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">bytes</span><span class="o">.</span><span class="n">NewBuffer</span><span class="p">([]</span><span class="kt">byte</span><span class="p">{</span><span class="n">jsonReq</span><span class="p">})</span><span class="x">
-    </span><span class="n">req</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span><span class="x"> </span><span class="s">"https://localhost:3000/v1.0/clients/{id}/appointments"</span><span class="p">,</span><span class="x"> </span><span class="n">data</span><span class="p">)</span><span class="x">
+    </span><span class="n">req</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span><span class="x"> </span><span class="s">"https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}/appointments"</span><span class="p">,</span><span class="x"> </span><span class="n">data</span><span class="p">)</span><span class="x">
     </span><span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="n">headers</span><span class="x">
 
     </span><span class="n">client</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span><span class="p">{}</span><span class="x">
@@ -5014,8 +5014,8 @@ curl -X POST https://localhost:3000/v1.0/clients/<span class="o">{</span>id<span
     </span><span class="s2">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"company_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"last_modified_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"employee"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -5032,12 +5032,12 @@ curl -X POST https://localhost:3000/v1.0/clients/<span class="o">{</span>id<span
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"last_modified_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="w">
+  </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <h3 id="createclientappointment-parameters">Parameters</h3>
@@ -5083,8 +5083,8 @@ curl -X POST https://localhost:3000/v1.0/clients/<span class="o">{</span>id<span
       </span><span class="s2">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"company_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"last_modified_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"employee"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -5101,15 +5101,15 @@ curl -X POST https://localhost:3000/v1.0/clients/<span class="o">{</span>id<span
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"last_modified_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="w">
+      </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"last_modified_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Element successfully created"</span><span class="w">
@@ -5594,13 +5594,13 @@ BearerAuth
 <p>Code samples</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
-curl -X POST https://localhost:3000/v1.0/clients <span class="se">\</span>
+curl -X POST https://api.bgenda.dmbarreiro.com/v1.0/clients <span class="se">\</span>
   -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   -H <span class="s1">'Authorization: Bearer {access-token}'</span>
 
-</code></pre><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://localhost:3000/v1.0/clients</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">localhost:3000</span>
+</code></pre><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://api.bgenda.dmbarreiro.com/v1.0/clients</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">api.bgenda.dmbarreiro.com</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 
@@ -5612,7 +5612,7 @@ curl -X POST https://localhost:3000/v1.0/clients <span class="se">\</span>
 <span class="p">};</span>
 
 <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://localhost:3000/v1.0/clients'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.bgenda.dmbarreiro.com/v1.0/clients'</span><span class="p">,</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'post'</span><span class="p">,</span>
 
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span><span class="p">,</span>
@@ -5636,7 +5636,7 @@ curl -X POST https://localhost:3000/v1.0/clients <span class="se">\</span>
 
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://localhost:3000/v1.0/clients'</span><span class="p">,</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://api.bgenda.dmbarreiro.com/v1.0/clients'</span><span class="p">,</span>
 <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
   <span class="na">body</span><span class="p">:</span> <span class="nx">inputBody</span><span class="p">,</span>
@@ -5657,7 +5657,7 @@ curl -X POST https://localhost:3000/v1.0/clients <span class="se">\</span>
   <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Bearer {access-token}'</span>
 <span class="p">}</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span> <span class="s1">'https://localhost:3000/v1.0/clients'</span><span class="p">,</span>
+<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span> <span class="s1">'https://api.bgenda.dmbarreiro.com/v1.0/clients'</span><span class="p">,</span>
   <span class="ss">params: </span><span class="p">{</span>
   <span class="p">},</span> <span class="ss">headers: </span><span class="n">headers</span>
 
@@ -5670,13 +5670,13 @@ curl -X POST https://localhost:3000/v1.0/clients <span class="se">\</span>
   <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer {access-token}'</span>
 <span class="p">}</span>
 
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s">'https://localhost:3000/v1.0/clients'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s">'https://api.bgenda.dmbarreiro.com/v1.0/clients'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
 
 <span class="p">},</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
 
 <span class="k">print</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 
-</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"https://localhost:3000/v1.0/clients"</span><span class="o">);</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"https://api.bgenda.dmbarreiro.com/v1.0/clients"</span><span class="o">);</span>
 <span class="n">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="n">HttpURLConnection</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
 <span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"POST"</span><span class="o">);</span>
 <span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
@@ -5707,7 +5707,7 @@ curl -X POST https://localhost:3000/v1.0/clients <span class="se">\</span>
     </span><span class="p">}</span><span class="x">
 
     </span><span class="n">data</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">bytes</span><span class="o">.</span><span class="n">NewBuffer</span><span class="p">([]</span><span class="kt">byte</span><span class="p">{</span><span class="n">jsonReq</span><span class="p">})</span><span class="x">
-    </span><span class="n">req</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span><span class="x"> </span><span class="s">"https://localhost:3000/v1.0/clients"</span><span class="p">,</span><span class="x"> </span><span class="n">data</span><span class="p">)</span><span class="x">
+    </span><span class="n">req</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span><span class="x"> </span><span class="s">"https://api.bgenda.dmbarreiro.com/v1.0/clients"</span><span class="p">,</span><span class="x"> </span><span class="n">data</span><span class="p">)</span><span class="x">
     </span><span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="n">headers</span><span class="x">
 
     </span><span class="n">client</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span><span class="p">{}</span><span class="x">
@@ -5767,8 +5767,8 @@ curl -X POST https://localhost:3000/v1.0/clients <span class="se">\</span>
     </span><span class="s2">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"company_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"last_modified_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Element successfully created"</span><span class="w">
@@ -6018,9 +6018,9 @@ BearerAuth
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"last_modified_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="w">
+  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre><h3 id='properties-2'>Properties</h3>
@@ -6209,8 +6209,8 @@ BearerAuth
   </span><span class="s2">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"company_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"last_modified_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -6366,8 +6366,8 @@ BearerAuth
     </span><span class="s2">"post_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre><h3 id='properties-6'>Properties</h3>
@@ -6560,8 +6560,8 @@ BearerAuth
     </span><span class="s2">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"company_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"last_modified_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"employee"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -6578,15 +6578,15 @@ BearerAuth
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"last_modified_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"last_modified_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -6672,8 +6672,8 @@ BearerAuth
     </span><span class="s2">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"company_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"last_modified_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"employee"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -6690,12 +6690,12 @@ BearerAuth
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"last_modified_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-03T09:31:38Z"</span><span class="w">
+  </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-19T13:37:23Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre><h3 id='properties-9'>Properties</h3>

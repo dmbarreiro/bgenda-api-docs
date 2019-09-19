@@ -18,7 +18,7 @@ headingLevel: 2
 
 ---
 
-<h1 id="appointments-management-api">Appointments management API v0.7.5</h1>
+<h1 id="appointments-management-api">Appointments management API v1.0.0</h1>
 
 > Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.
 
@@ -26,7 +26,7 @@ Specification for appointment management service with notifications
 
 Base URLs:
 
-* <a href="https://localhost:3000/v1.0/">https://localhost:3000/v1.0/</a>
+* <a href="https://api.bgenda.dmbarreiro.com/v1.0/">https://api.bgenda.dmbarreiro.com/v1.0/</a>
 
 Email: <a href="mailto:david@dmbarreiro.com">David Martinez Barreiro</a> Web: <a href="https://www.dmbarreiro.com">David Martinez Barreiro</a> 
  License: All Rights Reserved
@@ -52,15 +52,15 @@ Companies using appointments service
 
 ```shell
 # You can also use wget
-curl -X GET https://localhost:3000/v1.0/companies/{id} \
+curl -X GET https://api.bgenda.dmbarreiro.com/v1.0/companies/{id} \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access-token}'
 
 ```
 
 ```http
-GET https://localhost:3000/v1.0/companies/{id} HTTP/1.1
-Host: localhost:3000
+GET https://api.bgenda.dmbarreiro.com/v1.0/companies/{id} HTTP/1.1
+Host: api.bgenda.dmbarreiro.com
 Accept: application/json
 
 ```
@@ -73,7 +73,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://localhost:3000/v1.0/companies/{id}',
+  url: 'https://api.bgenda.dmbarreiro.com/v1.0/companies/{id}',
   method: 'get',
 
   headers: headers,
@@ -93,7 +93,7 @@ const headers = {
 
 };
 
-fetch('https://localhost:3000/v1.0/companies/{id}',
+fetch('https://api.bgenda.dmbarreiro.com/v1.0/companies/{id}',
 {
   method: 'GET',
 
@@ -116,7 +116,7 @@ headers = {
   'Authorization' => 'Bearer {access-token}'
 }
 
-result = RestClient.get 'https://localhost:3000/v1.0/companies/{id}',
+result = RestClient.get 'https://api.bgenda.dmbarreiro.com/v1.0/companies/{id}',
   params: {
   }, headers: headers
 
@@ -131,7 +131,7 @@ headers = {
   'Authorization': 'Bearer {access-token}'
 }
 
-r = requests.get('https://localhost:3000/v1.0/companies/{id}', params={
+r = requests.get('https://api.bgenda.dmbarreiro.com/v1.0/companies/{id}', params={
 
 }, headers = headers)
 
@@ -140,7 +140,7 @@ print r.json()
 ```
 
 ```java
-URL obj = new URL("https://localhost:3000/v1.0/companies/{id}");
+URL obj = new URL("https://api.bgenda.dmbarreiro.com/v1.0/companies/{id}");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("GET");
 int responseCode = con.getResponseCode();
@@ -173,7 +173,7 @@ func main() {
     }
 
     data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("GET", "https://localhost:3000/v1.0/companies/{id}", data)
+    req, err := http.NewRequest("GET", "https://api.bgenda.dmbarreiro.com/v1.0/companies/{id}", data)
     req.Header = headers
 
     client := &http.Client{}
@@ -216,8 +216,8 @@ Returns company information identified by {id}
       "post_code": 0
     },
     "_id": "string",
-    "created_at": "2019-09-03T09:31:38Z",
-    "updated_at": "2019-09-03T09:31:38Z"
+    "created_at": "2019-09-19T13:37:23Z",
+    "updated_at": "2019-09-19T13:37:23Z"
   },
   "message": "Element successfully found"
 }
@@ -287,7 +287,7 @@ BearerAuth
 
 ```shell
 # You can also use wget
-curl -X PUT https://localhost:3000/v1.0/companies/{id} \
+curl -X PUT https://api.bgenda.dmbarreiro.com/v1.0/companies/{id} \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access-token}'
@@ -295,8 +295,8 @@ curl -X PUT https://localhost:3000/v1.0/companies/{id} \
 ```
 
 ```http
-PUT https://localhost:3000/v1.0/companies/{id} HTTP/1.1
-Host: localhost:3000
+PUT https://api.bgenda.dmbarreiro.com/v1.0/companies/{id} HTTP/1.1
+Host: api.bgenda.dmbarreiro.com
 Content-Type: application/json
 Accept: application/json
 
@@ -311,7 +311,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://localhost:3000/v1.0/companies/{id}',
+  url: 'https://api.bgenda.dmbarreiro.com/v1.0/companies/{id}',
   method: 'put',
 
   headers: headers,
@@ -339,8 +339,8 @@ const inputBody = '{
     "post_code": 0
   },
   "_id": "string",
-  "created_at": "2019-09-03T09:31:38Z",
-  "updated_at": "2019-09-03T09:31:38Z"
+  "created_at": "2019-09-19T13:37:23Z",
+  "updated_at": "2019-09-19T13:37:23Z"
 }';
 const headers = {
   'Content-Type':'application/json',
@@ -349,7 +349,7 @@ const headers = {
 
 };
 
-fetch('https://localhost:3000/v1.0/companies/{id}',
+fetch('https://api.bgenda.dmbarreiro.com/v1.0/companies/{id}',
 {
   method: 'PUT',
   body: inputBody,
@@ -373,7 +373,7 @@ headers = {
   'Authorization' => 'Bearer {access-token}'
 }
 
-result = RestClient.put 'https://localhost:3000/v1.0/companies/{id}',
+result = RestClient.put 'https://api.bgenda.dmbarreiro.com/v1.0/companies/{id}',
   params: {
   }, headers: headers
 
@@ -389,7 +389,7 @@ headers = {
   'Authorization': 'Bearer {access-token}'
 }
 
-r = requests.put('https://localhost:3000/v1.0/companies/{id}', params={
+r = requests.put('https://api.bgenda.dmbarreiro.com/v1.0/companies/{id}', params={
 
 }, headers = headers)
 
@@ -398,7 +398,7 @@ print r.json()
 ```
 
 ```java
-URL obj = new URL("https://localhost:3000/v1.0/companies/{id}");
+URL obj = new URL("https://api.bgenda.dmbarreiro.com/v1.0/companies/{id}");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("PUT");
 int responseCode = con.getResponseCode();
@@ -432,7 +432,7 @@ func main() {
     }
 
     data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("PUT", "https://localhost:3000/v1.0/companies/{id}", data)
+    req, err := http.NewRequest("PUT", "https://api.bgenda.dmbarreiro.com/v1.0/companies/{id}", data)
     req.Header = headers
 
     client := &http.Client{}
@@ -466,8 +466,8 @@ Updates company information data identified by {id} returning no information
     "post_code": 0
   },
   "_id": "string",
-  "created_at": "2019-09-03T09:31:38Z",
-  "updated_at": "2019-09-03T09:31:38Z"
+  "created_at": "2019-09-19T13:37:23Z",
+  "updated_at": "2019-09-19T13:37:23Z"
 }
 ```
 
@@ -513,15 +513,15 @@ BearerAuth
 
 ```shell
 # You can also use wget
-curl -X GET https://localhost:3000/v1.0/companies/{id}/employees \
+curl -X GET https://api.bgenda.dmbarreiro.com/v1.0/companies/{id}/employees \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access-token}'
 
 ```
 
 ```http
-GET https://localhost:3000/v1.0/companies/{id}/employees HTTP/1.1
-Host: localhost:3000
+GET https://api.bgenda.dmbarreiro.com/v1.0/companies/{id}/employees HTTP/1.1
+Host: api.bgenda.dmbarreiro.com
 Accept: application/json
 
 ```
@@ -534,7 +534,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://localhost:3000/v1.0/companies/{id}/employees',
+  url: 'https://api.bgenda.dmbarreiro.com/v1.0/companies/{id}/employees',
   method: 'get',
 
   headers: headers,
@@ -554,7 +554,7 @@ const headers = {
 
 };
 
-fetch('https://localhost:3000/v1.0/companies/{id}/employees',
+fetch('https://api.bgenda.dmbarreiro.com/v1.0/companies/{id}/employees',
 {
   method: 'GET',
 
@@ -577,7 +577,7 @@ headers = {
   'Authorization' => 'Bearer {access-token}'
 }
 
-result = RestClient.get 'https://localhost:3000/v1.0/companies/{id}/employees',
+result = RestClient.get 'https://api.bgenda.dmbarreiro.com/v1.0/companies/{id}/employees',
   params: {
   }, headers: headers
 
@@ -592,7 +592,7 @@ headers = {
   'Authorization': 'Bearer {access-token}'
 }
 
-r = requests.get('https://localhost:3000/v1.0/companies/{id}/employees', params={
+r = requests.get('https://api.bgenda.dmbarreiro.com/v1.0/companies/{id}/employees', params={
 
 }, headers = headers)
 
@@ -601,7 +601,7 @@ print r.json()
 ```
 
 ```java
-URL obj = new URL("https://localhost:3000/v1.0/companies/{id}/employees");
+URL obj = new URL("https://api.bgenda.dmbarreiro.com/v1.0/companies/{id}/employees");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("GET");
 int responseCode = con.getResponseCode();
@@ -634,7 +634,7 @@ func main() {
     }
 
     data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("GET", "https://localhost:3000/v1.0/companies/{id}/employees", data)
+    req, err := http.NewRequest("GET", "https://api.bgenda.dmbarreiro.com/v1.0/companies/{id}/employees", data)
     req.Header = headers
 
     client := &http.Client{}
@@ -676,9 +676,9 @@ Returns all company employees data
     },
     "_id": "string",
     "company_id": "string",
-    "created_at": "2019-09-03T09:31:38Z",
+    "created_at": "2019-09-19T13:37:23Z",
     "last_modified_by": "string",
-    "updated_at": "2019-09-03T09:31:38Z"
+    "updated_at": "2019-09-19T13:37:23Z"
   }
 ]
 ```
@@ -740,15 +740,15 @@ BearerAuth
 
 ```shell
 # You can also use wget
-curl -X GET https://localhost:3000/v1.0/companies/{id}/clients \
+curl -X GET https://api.bgenda.dmbarreiro.com/v1.0/companies/{id}/clients \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access-token}'
 
 ```
 
 ```http
-GET https://localhost:3000/v1.0/companies/{id}/clients HTTP/1.1
-Host: localhost:3000
+GET https://api.bgenda.dmbarreiro.com/v1.0/companies/{id}/clients HTTP/1.1
+Host: api.bgenda.dmbarreiro.com
 Accept: application/json
 
 ```
@@ -761,7 +761,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://localhost:3000/v1.0/companies/{id}/clients',
+  url: 'https://api.bgenda.dmbarreiro.com/v1.0/companies/{id}/clients',
   method: 'get',
 
   headers: headers,
@@ -781,7 +781,7 @@ const headers = {
 
 };
 
-fetch('https://localhost:3000/v1.0/companies/{id}/clients',
+fetch('https://api.bgenda.dmbarreiro.com/v1.0/companies/{id}/clients',
 {
   method: 'GET',
 
@@ -804,7 +804,7 @@ headers = {
   'Authorization' => 'Bearer {access-token}'
 }
 
-result = RestClient.get 'https://localhost:3000/v1.0/companies/{id}/clients',
+result = RestClient.get 'https://api.bgenda.dmbarreiro.com/v1.0/companies/{id}/clients',
   params: {
   }, headers: headers
 
@@ -819,7 +819,7 @@ headers = {
   'Authorization': 'Bearer {access-token}'
 }
 
-r = requests.get('https://localhost:3000/v1.0/companies/{id}/clients', params={
+r = requests.get('https://api.bgenda.dmbarreiro.com/v1.0/companies/{id}/clients', params={
 
 }, headers = headers)
 
@@ -828,7 +828,7 @@ print r.json()
 ```
 
 ```java
-URL obj = new URL("https://localhost:3000/v1.0/companies/{id}/clients");
+URL obj = new URL("https://api.bgenda.dmbarreiro.com/v1.0/companies/{id}/clients");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("GET");
 int responseCode = con.getResponseCode();
@@ -861,7 +861,7 @@ func main() {
     }
 
     data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("GET", "https://localhost:3000/v1.0/companies/{id}/clients", data)
+    req, err := http.NewRequest("GET", "https://api.bgenda.dmbarreiro.com/v1.0/companies/{id}/clients", data)
     req.Header = headers
 
     client := &http.Client{}
@@ -897,8 +897,8 @@ Returns all company clients data
     "phone_number": "string",
     "_id": "string",
     "company_added": "string",
-    "created_at": "2019-09-03T09:31:38Z",
-    "updated_at": "2019-09-03T09:31:38Z",
+    "created_at": "2019-09-19T13:37:23Z",
+    "updated_at": "2019-09-19T13:37:23Z",
     "last_modified_by": "string"
   }
 ]
@@ -956,15 +956,15 @@ BearerAuth
 
 ```shell
 # You can also use wget
-curl -X GET https://localhost:3000/v1.0/companies \
+curl -X GET https://api.bgenda.dmbarreiro.com/v1.0/companies \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access-token}'
 
 ```
 
 ```http
-GET https://localhost:3000/v1.0/companies HTTP/1.1
-Host: localhost:3000
+GET https://api.bgenda.dmbarreiro.com/v1.0/companies HTTP/1.1
+Host: api.bgenda.dmbarreiro.com
 Accept: application/json
 
 ```
@@ -977,7 +977,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://localhost:3000/v1.0/companies',
+  url: 'https://api.bgenda.dmbarreiro.com/v1.0/companies',
   method: 'get',
 
   headers: headers,
@@ -997,7 +997,7 @@ const headers = {
 
 };
 
-fetch('https://localhost:3000/v1.0/companies',
+fetch('https://api.bgenda.dmbarreiro.com/v1.0/companies',
 {
   method: 'GET',
 
@@ -1020,7 +1020,7 @@ headers = {
   'Authorization' => 'Bearer {access-token}'
 }
 
-result = RestClient.get 'https://localhost:3000/v1.0/companies',
+result = RestClient.get 'https://api.bgenda.dmbarreiro.com/v1.0/companies',
   params: {
   }, headers: headers
 
@@ -1035,7 +1035,7 @@ headers = {
   'Authorization': 'Bearer {access-token}'
 }
 
-r = requests.get('https://localhost:3000/v1.0/companies', params={
+r = requests.get('https://api.bgenda.dmbarreiro.com/v1.0/companies', params={
 
 }, headers = headers)
 
@@ -1044,7 +1044,7 @@ print r.json()
 ```
 
 ```java
-URL obj = new URL("https://localhost:3000/v1.0/companies");
+URL obj = new URL("https://api.bgenda.dmbarreiro.com/v1.0/companies");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("GET");
 int responseCode = con.getResponseCode();
@@ -1077,7 +1077,7 @@ func main() {
     }
 
     data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("GET", "https://localhost:3000/v1.0/companies", data)
+    req, err := http.NewRequest("GET", "https://api.bgenda.dmbarreiro.com/v1.0/companies", data)
     req.Header = headers
 
     client := &http.Client{}
@@ -1114,8 +1114,8 @@ Returns an array with information from each company
       "post_code": 0
     },
     "_id": "string",
-    "created_at": "2019-09-03T09:31:38Z",
-    "updated_at": "2019-09-03T09:31:38Z"
+    "created_at": "2019-09-19T13:37:23Z",
+    "updated_at": "2019-09-19T13:37:23Z"
   }
 ]
 ```
@@ -1177,7 +1177,7 @@ BearerAuth
 
 ```shell
 # You can also use wget
-curl -X POST https://localhost:3000/v1.0/companies \
+curl -X POST https://api.bgenda.dmbarreiro.com/v1.0/companies \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access-token}'
@@ -1185,8 +1185,8 @@ curl -X POST https://localhost:3000/v1.0/companies \
 ```
 
 ```http
-POST https://localhost:3000/v1.0/companies HTTP/1.1
-Host: localhost:3000
+POST https://api.bgenda.dmbarreiro.com/v1.0/companies HTTP/1.1
+Host: api.bgenda.dmbarreiro.com
 Content-Type: application/json
 Accept: application/json
 
@@ -1201,7 +1201,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://localhost:3000/v1.0/companies',
+  url: 'https://api.bgenda.dmbarreiro.com/v1.0/companies',
   method: 'post',
 
   headers: headers,
@@ -1236,7 +1236,7 @@ const headers = {
 
 };
 
-fetch('https://localhost:3000/v1.0/companies',
+fetch('https://api.bgenda.dmbarreiro.com/v1.0/companies',
 {
   method: 'POST',
   body: inputBody,
@@ -1260,7 +1260,7 @@ headers = {
   'Authorization' => 'Bearer {access-token}'
 }
 
-result = RestClient.post 'https://localhost:3000/v1.0/companies',
+result = RestClient.post 'https://api.bgenda.dmbarreiro.com/v1.0/companies',
   params: {
   }, headers: headers
 
@@ -1276,7 +1276,7 @@ headers = {
   'Authorization': 'Bearer {access-token}'
 }
 
-r = requests.post('https://localhost:3000/v1.0/companies', params={
+r = requests.post('https://api.bgenda.dmbarreiro.com/v1.0/companies', params={
 
 }, headers = headers)
 
@@ -1285,7 +1285,7 @@ print r.json()
 ```
 
 ```java
-URL obj = new URL("https://localhost:3000/v1.0/companies");
+URL obj = new URL("https://api.bgenda.dmbarreiro.com/v1.0/companies");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("POST");
 int responseCode = con.getResponseCode();
@@ -1319,7 +1319,7 @@ func main() {
     }
 
     data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("POST", "https://localhost:3000/v1.0/companies", data)
+    req, err := http.NewRequest("POST", "https://api.bgenda.dmbarreiro.com/v1.0/companies", data)
     req.Header = headers
 
     client := &http.Client{}
@@ -1382,8 +1382,8 @@ Creates new company returning no information
       "post_code": 0
     },
     "_id": "string",
-    "created_at": "2019-09-03T09:31:38Z",
-    "updated_at": "2019-09-03T09:31:38Z"
+    "created_at": "2019-09-19T13:37:23Z",
+    "updated_at": "2019-09-19T13:37:23Z"
   },
   "message": "Element successfully created"
 }
@@ -1457,15 +1457,15 @@ Companies employees
 
 ```shell
 # You can also use wget
-curl -X GET https://localhost:3000/v1.0/employees/{id} \
+curl -X GET https://api.bgenda.dmbarreiro.com/v1.0/employees/{id} \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access-token}'
 
 ```
 
 ```http
-GET https://localhost:3000/v1.0/employees/{id} HTTP/1.1
-Host: localhost:3000
+GET https://api.bgenda.dmbarreiro.com/v1.0/employees/{id} HTTP/1.1
+Host: api.bgenda.dmbarreiro.com
 Accept: application/json
 
 ```
@@ -1478,7 +1478,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://localhost:3000/v1.0/employees/{id}',
+  url: 'https://api.bgenda.dmbarreiro.com/v1.0/employees/{id}',
   method: 'get',
 
   headers: headers,
@@ -1498,7 +1498,7 @@ const headers = {
 
 };
 
-fetch('https://localhost:3000/v1.0/employees/{id}',
+fetch('https://api.bgenda.dmbarreiro.com/v1.0/employees/{id}',
 {
   method: 'GET',
 
@@ -1521,7 +1521,7 @@ headers = {
   'Authorization' => 'Bearer {access-token}'
 }
 
-result = RestClient.get 'https://localhost:3000/v1.0/employees/{id}',
+result = RestClient.get 'https://api.bgenda.dmbarreiro.com/v1.0/employees/{id}',
   params: {
   }, headers: headers
 
@@ -1536,7 +1536,7 @@ headers = {
   'Authorization': 'Bearer {access-token}'
 }
 
-r = requests.get('https://localhost:3000/v1.0/employees/{id}', params={
+r = requests.get('https://api.bgenda.dmbarreiro.com/v1.0/employees/{id}', params={
 
 }, headers = headers)
 
@@ -1545,7 +1545,7 @@ print r.json()
 ```
 
 ```java
-URL obj = new URL("https://localhost:3000/v1.0/employees/{id}");
+URL obj = new URL("https://api.bgenda.dmbarreiro.com/v1.0/employees/{id}");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("GET");
 int responseCode = con.getResponseCode();
@@ -1578,7 +1578,7 @@ func main() {
     }
 
     data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("GET", "https://localhost:3000/v1.0/employees/{id}", data)
+    req, err := http.NewRequest("GET", "https://api.bgenda.dmbarreiro.com/v1.0/employees/{id}", data)
     req.Header = headers
 
     client := &http.Client{}
@@ -1619,9 +1619,9 @@ Returns employee data identified by {id}
   },
   "_id": "string",
   "company_id": "string",
-  "created_at": "2019-09-03T09:31:38Z",
+  "created_at": "2019-09-19T13:37:23Z",
   "last_modified_by": "string",
-  "updated_at": "2019-09-03T09:31:38Z"
+  "updated_at": "2019-09-19T13:37:23Z"
 }
 ```
 
@@ -1648,7 +1648,7 @@ BearerAuth
 
 ```shell
 # You can also use wget
-curl -X PUT https://localhost:3000/v1.0/employees/{id} \
+curl -X PUT https://api.bgenda.dmbarreiro.com/v1.0/employees/{id} \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access-token}'
@@ -1656,8 +1656,8 @@ curl -X PUT https://localhost:3000/v1.0/employees/{id} \
 ```
 
 ```http
-PUT https://localhost:3000/v1.0/employees/{id} HTTP/1.1
-Host: localhost:3000
+PUT https://api.bgenda.dmbarreiro.com/v1.0/employees/{id} HTTP/1.1
+Host: api.bgenda.dmbarreiro.com
 Content-Type: application/json
 Accept: application/json
 
@@ -1672,7 +1672,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://localhost:3000/v1.0/employees/{id}',
+  url: 'https://api.bgenda.dmbarreiro.com/v1.0/employees/{id}',
   method: 'put',
 
   headers: headers,
@@ -1699,9 +1699,9 @@ const inputBody = '{
   },
   "_id": "string",
   "company_id": "string",
-  "created_at": "2019-09-03T09:31:38Z",
+  "created_at": "2019-09-19T13:37:23Z",
   "last_modified_by": "string",
-  "updated_at": "2019-09-03T09:31:38Z"
+  "updated_at": "2019-09-19T13:37:23Z"
 }';
 const headers = {
   'Content-Type':'application/json',
@@ -1710,7 +1710,7 @@ const headers = {
 
 };
 
-fetch('https://localhost:3000/v1.0/employees/{id}',
+fetch('https://api.bgenda.dmbarreiro.com/v1.0/employees/{id}',
 {
   method: 'PUT',
   body: inputBody,
@@ -1734,7 +1734,7 @@ headers = {
   'Authorization' => 'Bearer {access-token}'
 }
 
-result = RestClient.put 'https://localhost:3000/v1.0/employees/{id}',
+result = RestClient.put 'https://api.bgenda.dmbarreiro.com/v1.0/employees/{id}',
   params: {
   }, headers: headers
 
@@ -1750,7 +1750,7 @@ headers = {
   'Authorization': 'Bearer {access-token}'
 }
 
-r = requests.put('https://localhost:3000/v1.0/employees/{id}', params={
+r = requests.put('https://api.bgenda.dmbarreiro.com/v1.0/employees/{id}', params={
 
 }, headers = headers)
 
@@ -1759,7 +1759,7 @@ print r.json()
 ```
 
 ```java
-URL obj = new URL("https://localhost:3000/v1.0/employees/{id}");
+URL obj = new URL("https://api.bgenda.dmbarreiro.com/v1.0/employees/{id}");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("PUT");
 int responseCode = con.getResponseCode();
@@ -1793,7 +1793,7 @@ func main() {
     }
 
     data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("PUT", "https://localhost:3000/v1.0/employees/{id}", data)
+    req, err := http.NewRequest("PUT", "https://api.bgenda.dmbarreiro.com/v1.0/employees/{id}", data)
     req.Header = headers
 
     client := &http.Client{}
@@ -1826,9 +1826,9 @@ Updates employee data identified by {id} returning no information
   },
   "_id": "string",
   "company_id": "string",
-  "created_at": "2019-09-03T09:31:38Z",
+  "created_at": "2019-09-19T13:37:23Z",
   "last_modified_by": "string",
-  "updated_at": "2019-09-03T09:31:38Z"
+  "updated_at": "2019-09-19T13:37:23Z"
 }
 ```
 
@@ -1874,7 +1874,7 @@ BearerAuth
 
 ```shell
 # You can also use wget
-curl -X POST https://localhost:3000/v1.0/employees \
+curl -X POST https://api.bgenda.dmbarreiro.com/v1.0/employees \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access-token}'
@@ -1882,8 +1882,8 @@ curl -X POST https://localhost:3000/v1.0/employees \
 ```
 
 ```http
-POST https://localhost:3000/v1.0/employees HTTP/1.1
-Host: localhost:3000
+POST https://api.bgenda.dmbarreiro.com/v1.0/employees HTTP/1.1
+Host: api.bgenda.dmbarreiro.com
 Content-Type: application/json
 Accept: application/json
 
@@ -1898,7 +1898,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://localhost:3000/v1.0/employees',
+  url: 'https://api.bgenda.dmbarreiro.com/v1.0/employees',
   method: 'post',
 
   headers: headers,
@@ -1931,7 +1931,7 @@ const headers = {
 
 };
 
-fetch('https://localhost:3000/v1.0/employees',
+fetch('https://api.bgenda.dmbarreiro.com/v1.0/employees',
 {
   method: 'POST',
   body: inputBody,
@@ -1955,7 +1955,7 @@ headers = {
   'Authorization' => 'Bearer {access-token}'
 }
 
-result = RestClient.post 'https://localhost:3000/v1.0/employees',
+result = RestClient.post 'https://api.bgenda.dmbarreiro.com/v1.0/employees',
   params: {
   }, headers: headers
 
@@ -1971,7 +1971,7 @@ headers = {
   'Authorization': 'Bearer {access-token}'
 }
 
-r = requests.post('https://localhost:3000/v1.0/employees', params={
+r = requests.post('https://api.bgenda.dmbarreiro.com/v1.0/employees', params={
 
 }, headers = headers)
 
@@ -1980,7 +1980,7 @@ print r.json()
 ```
 
 ```java
-URL obj = new URL("https://localhost:3000/v1.0/employees");
+URL obj = new URL("https://api.bgenda.dmbarreiro.com/v1.0/employees");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("POST");
 int responseCode = con.getResponseCode();
@@ -2014,7 +2014,7 @@ func main() {
     }
 
     data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("POST", "https://localhost:3000/v1.0/employees", data)
+    req, err := http.NewRequest("POST", "https://api.bgenda.dmbarreiro.com/v1.0/employees", data)
     req.Header = headers
 
     client := &http.Client{}
@@ -2101,15 +2101,15 @@ Companies clients
 
 ```shell
 # You can also use wget
-curl -X GET https://localhost:3000/v1.0/clients/{id} \
+curl -X GET https://api.bgenda.dmbarreiro.com/v1.0/clients/{id} \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access-token}'
 
 ```
 
 ```http
-GET https://localhost:3000/v1.0/clients/{id} HTTP/1.1
-Host: localhost:3000
+GET https://api.bgenda.dmbarreiro.com/v1.0/clients/{id} HTTP/1.1
+Host: api.bgenda.dmbarreiro.com
 Accept: application/json
 
 ```
@@ -2122,7 +2122,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://localhost:3000/v1.0/clients/{id}',
+  url: 'https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}',
   method: 'get',
 
   headers: headers,
@@ -2142,7 +2142,7 @@ const headers = {
 
 };
 
-fetch('https://localhost:3000/v1.0/clients/{id}',
+fetch('https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}',
 {
   method: 'GET',
 
@@ -2165,7 +2165,7 @@ headers = {
   'Authorization' => 'Bearer {access-token}'
 }
 
-result = RestClient.get 'https://localhost:3000/v1.0/clients/{id}',
+result = RestClient.get 'https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}',
   params: {
   }, headers: headers
 
@@ -2180,7 +2180,7 @@ headers = {
   'Authorization': 'Bearer {access-token}'
 }
 
-r = requests.get('https://localhost:3000/v1.0/clients/{id}', params={
+r = requests.get('https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}', params={
 
 }, headers = headers)
 
@@ -2189,7 +2189,7 @@ print r.json()
 ```
 
 ```java
-URL obj = new URL("https://localhost:3000/v1.0/clients/{id}");
+URL obj = new URL("https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("GET");
 int responseCode = con.getResponseCode();
@@ -2222,7 +2222,7 @@ func main() {
     }
 
     data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("GET", "https://localhost:3000/v1.0/clients/{id}", data)
+    req, err := http.NewRequest("GET", "https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}", data)
     req.Header = headers
 
     client := &http.Client{}
@@ -2258,8 +2258,8 @@ Returns client data identified by {id}
     "phone_number": "string",
     "_id": "string",
     "company_added": "string",
-    "created_at": "2019-09-03T09:31:38Z",
-    "updated_at": "2019-09-03T09:31:38Z",
+    "created_at": "2019-09-19T13:37:23Z",
+    "updated_at": "2019-09-19T13:37:23Z",
     "last_modified_by": "string"
   },
   "message": "Element successfully found"
@@ -2325,7 +2325,7 @@ BearerAuth
 
 ```shell
 # You can also use wget
-curl -X PUT https://localhost:3000/v1.0/clients/{id} \
+curl -X PUT https://api.bgenda.dmbarreiro.com/v1.0/clients/{id} \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access-token}'
@@ -2333,8 +2333,8 @@ curl -X PUT https://localhost:3000/v1.0/clients/{id} \
 ```
 
 ```http
-PUT https://localhost:3000/v1.0/clients/{id} HTTP/1.1
-Host: localhost:3000
+PUT https://api.bgenda.dmbarreiro.com/v1.0/clients/{id} HTTP/1.1
+Host: api.bgenda.dmbarreiro.com
 Content-Type: application/json
 Accept: application/json
 
@@ -2349,7 +2349,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://localhost:3000/v1.0/clients/{id}',
+  url: 'https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}',
   method: 'put',
 
   headers: headers,
@@ -2370,8 +2370,8 @@ const inputBody = '{
   "phone_number": "string",
   "_id": "string",
   "company_added": "string",
-  "created_at": "2019-09-03T09:31:38Z",
-  "updated_at": "2019-09-03T09:31:38Z",
+  "created_at": "2019-09-19T13:37:23Z",
+  "updated_at": "2019-09-19T13:37:23Z",
   "last_modified_by": "string"
 }';
 const headers = {
@@ -2381,7 +2381,7 @@ const headers = {
 
 };
 
-fetch('https://localhost:3000/v1.0/clients/{id}',
+fetch('https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}',
 {
   method: 'PUT',
   body: inputBody,
@@ -2405,7 +2405,7 @@ headers = {
   'Authorization' => 'Bearer {access-token}'
 }
 
-result = RestClient.put 'https://localhost:3000/v1.0/clients/{id}',
+result = RestClient.put 'https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}',
   params: {
   }, headers: headers
 
@@ -2421,7 +2421,7 @@ headers = {
   'Authorization': 'Bearer {access-token}'
 }
 
-r = requests.put('https://localhost:3000/v1.0/clients/{id}', params={
+r = requests.put('https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}', params={
 
 }, headers = headers)
 
@@ -2430,7 +2430,7 @@ print r.json()
 ```
 
 ```java
-URL obj = new URL("https://localhost:3000/v1.0/clients/{id}");
+URL obj = new URL("https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("PUT");
 int responseCode = con.getResponseCode();
@@ -2464,7 +2464,7 @@ func main() {
     }
 
     data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("PUT", "https://localhost:3000/v1.0/clients/{id}", data)
+    req, err := http.NewRequest("PUT", "https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}", data)
     req.Header = headers
 
     client := &http.Client{}
@@ -2491,8 +2491,8 @@ Updates client data identified by {id} returning no information
   "phone_number": "string",
   "_id": "string",
   "company_added": "string",
-  "created_at": "2019-09-03T09:31:38Z",
-  "updated_at": "2019-09-03T09:31:38Z",
+  "created_at": "2019-09-19T13:37:23Z",
+  "updated_at": "2019-09-19T13:37:23Z",
   "last_modified_by": "string"
 }
 ```
@@ -2539,15 +2539,15 @@ BearerAuth
 
 ```shell
 # You can also use wget
-curl -X GET https://localhost:3000/v1.0/clients/{id}/appointments \
+curl -X GET https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}/appointments \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access-token}'
 
 ```
 
 ```http
-GET https://localhost:3000/v1.0/clients/{id}/appointments HTTP/1.1
-Host: localhost:3000
+GET https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}/appointments HTTP/1.1
+Host: api.bgenda.dmbarreiro.com
 Accept: application/json
 
 ```
@@ -2560,7 +2560,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://localhost:3000/v1.0/clients/{id}/appointments',
+  url: 'https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}/appointments',
   method: 'get',
 
   headers: headers,
@@ -2580,7 +2580,7 @@ const headers = {
 
 };
 
-fetch('https://localhost:3000/v1.0/clients/{id}/appointments',
+fetch('https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}/appointments',
 {
   method: 'GET',
 
@@ -2603,7 +2603,7 @@ headers = {
   'Authorization' => 'Bearer {access-token}'
 }
 
-result = RestClient.get 'https://localhost:3000/v1.0/clients/{id}/appointments',
+result = RestClient.get 'https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}/appointments',
   params: {
   }, headers: headers
 
@@ -2618,7 +2618,7 @@ headers = {
   'Authorization': 'Bearer {access-token}'
 }
 
-r = requests.get('https://localhost:3000/v1.0/clients/{id}/appointments', params={
+r = requests.get('https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}/appointments', params={
 
 }, headers = headers)
 
@@ -2627,7 +2627,7 @@ print r.json()
 ```
 
 ```java
-URL obj = new URL("https://localhost:3000/v1.0/clients/{id}/appointments");
+URL obj = new URL("https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}/appointments");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("GET");
 int responseCode = con.getResponseCode();
@@ -2660,7 +2660,7 @@ func main() {
     }
 
     data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("GET", "https://localhost:3000/v1.0/clients/{id}/appointments", data)
+    req, err := http.NewRequest("GET", "https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}/appointments", data)
     req.Header = headers
 
     client := &http.Client{}
@@ -2702,8 +2702,8 @@ Returns all client appointments or single appointment information information da
         "phone_number": "string",
         "_id": "string",
         "company_added": "string",
-        "created_at": "2019-09-03T09:31:38Z",
-        "updated_at": "2019-09-03T09:31:38Z",
+        "created_at": "2019-09-19T13:37:23Z",
+        "updated_at": "2019-09-19T13:37:23Z",
         "last_modified_by": "string"
       },
       "employee": {
@@ -2720,15 +2720,15 @@ Returns all client appointments or single appointment information information da
         },
         "_id": "string",
         "company_id": "string",
-        "created_at": "2019-09-03T09:31:38Z",
+        "created_at": "2019-09-19T13:37:23Z",
         "last_modified_by": "string",
-        "updated_at": "2019-09-03T09:31:38Z"
+        "updated_at": "2019-09-19T13:37:23Z"
       },
-      "start_date": "2019-09-03T09:31:38Z",
-      "end_date": "2019-09-03T09:31:38Z",
+      "start_date": "2019-09-19T13:37:23Z",
+      "end_date": "2019-09-19T13:37:23Z",
       "_id": "string",
-      "created_at": "2019-09-03T09:31:38Z",
-      "updated_at": "2019-09-03T09:31:38Z",
+      "created_at": "2019-09-19T13:37:23Z",
+      "updated_at": "2019-09-19T13:37:23Z",
       "last_modified_by": "string"
     }
   ]
@@ -2846,7 +2846,7 @@ BearerAuth
 
 ```shell
 # You can also use wget
-curl -X PUT https://localhost:3000/v1.0/clients/{id}/appointments?appointment_id=string \
+curl -X PUT https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}/appointments?appointment_id=string \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access-token}'
@@ -2854,8 +2854,8 @@ curl -X PUT https://localhost:3000/v1.0/clients/{id}/appointments?appointment_id
 ```
 
 ```http
-PUT https://localhost:3000/v1.0/clients/{id}/appointments?appointment_id=string HTTP/1.1
-Host: localhost:3000
+PUT https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}/appointments?appointment_id=string HTTP/1.1
+Host: api.bgenda.dmbarreiro.com
 Content-Type: application/json
 Accept: application/json
 
@@ -2870,7 +2870,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://localhost:3000/v1.0/clients/{id}/appointments',
+  url: 'https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}/appointments',
   method: 'put',
   data: '?appointment_id=string',
   headers: headers,
@@ -2893,8 +2893,8 @@ const inputBody = '{
     "phone_number": "string",
     "_id": "string",
     "company_added": "string",
-    "created_at": "2019-09-03T09:31:38Z",
-    "updated_at": "2019-09-03T09:31:38Z",
+    "created_at": "2019-09-19T13:37:23Z",
+    "updated_at": "2019-09-19T13:37:23Z",
     "last_modified_by": "string"
   },
   "employee": {
@@ -2911,15 +2911,15 @@ const inputBody = '{
     },
     "_id": "string",
     "company_id": "string",
-    "created_at": "2019-09-03T09:31:38Z",
+    "created_at": "2019-09-19T13:37:23Z",
     "last_modified_by": "string",
-    "updated_at": "2019-09-03T09:31:38Z"
+    "updated_at": "2019-09-19T13:37:23Z"
   },
-  "start_date": "2019-09-03T09:31:38Z",
-  "end_date": "2019-09-03T09:31:38Z",
+  "start_date": "2019-09-19T13:37:23Z",
+  "end_date": "2019-09-19T13:37:23Z",
   "_id": "string",
-  "created_at": "2019-09-03T09:31:38Z",
-  "updated_at": "2019-09-03T09:31:38Z",
+  "created_at": "2019-09-19T13:37:23Z",
+  "updated_at": "2019-09-19T13:37:23Z",
   "last_modified_by": "string"
 }';
 const headers = {
@@ -2929,7 +2929,7 @@ const headers = {
 
 };
 
-fetch('https://localhost:3000/v1.0/clients/{id}/appointments?appointment_id=string',
+fetch('https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}/appointments?appointment_id=string',
 {
   method: 'PUT',
   body: inputBody,
@@ -2953,7 +2953,7 @@ headers = {
   'Authorization' => 'Bearer {access-token}'
 }
 
-result = RestClient.put 'https://localhost:3000/v1.0/clients/{id}/appointments',
+result = RestClient.put 'https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}/appointments',
   params: {
   'appointment_id' => 'string'
 }, headers: headers
@@ -2970,7 +2970,7 @@ headers = {
   'Authorization': 'Bearer {access-token}'
 }
 
-r = requests.put('https://localhost:3000/v1.0/clients/{id}/appointments', params={
+r = requests.put('https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}/appointments', params={
   'appointment_id': 'string'
 }, headers = headers)
 
@@ -2979,7 +2979,7 @@ print r.json()
 ```
 
 ```java
-URL obj = new URL("https://localhost:3000/v1.0/clients/{id}/appointments?appointment_id=string");
+URL obj = new URL("https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}/appointments?appointment_id=string");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("PUT");
 int responseCode = con.getResponseCode();
@@ -3013,7 +3013,7 @@ func main() {
     }
 
     data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("PUT", "https://localhost:3000/v1.0/clients/{id}/appointments", data)
+    req, err := http.NewRequest("PUT", "https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}/appointments", data)
     req.Header = headers
 
     client := &http.Client{}
@@ -3042,8 +3042,8 @@ Updates appointment data for client identified by {id} and appointment identifie
     "phone_number": "string",
     "_id": "string",
     "company_added": "string",
-    "created_at": "2019-09-03T09:31:38Z",
-    "updated_at": "2019-09-03T09:31:38Z",
+    "created_at": "2019-09-19T13:37:23Z",
+    "updated_at": "2019-09-19T13:37:23Z",
     "last_modified_by": "string"
   },
   "employee": {
@@ -3060,15 +3060,15 @@ Updates appointment data for client identified by {id} and appointment identifie
     },
     "_id": "string",
     "company_id": "string",
-    "created_at": "2019-09-03T09:31:38Z",
+    "created_at": "2019-09-19T13:37:23Z",
     "last_modified_by": "string",
-    "updated_at": "2019-09-03T09:31:38Z"
+    "updated_at": "2019-09-19T13:37:23Z"
   },
-  "start_date": "2019-09-03T09:31:38Z",
-  "end_date": "2019-09-03T09:31:38Z",
+  "start_date": "2019-09-19T13:37:23Z",
+  "end_date": "2019-09-19T13:37:23Z",
   "_id": "string",
-  "created_at": "2019-09-03T09:31:38Z",
-  "updated_at": "2019-09-03T09:31:38Z",
+  "created_at": "2019-09-19T13:37:23Z",
+  "updated_at": "2019-09-19T13:37:23Z",
   "last_modified_by": "string"
 }
 ```
@@ -3116,7 +3116,7 @@ BearerAuth
 
 ```shell
 # You can also use wget
-curl -X POST https://localhost:3000/v1.0/clients/{id}/appointments \
+curl -X POST https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}/appointments \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access-token}'
@@ -3124,8 +3124,8 @@ curl -X POST https://localhost:3000/v1.0/clients/{id}/appointments \
 ```
 
 ```http
-POST https://localhost:3000/v1.0/clients/{id}/appointments HTTP/1.1
-Host: localhost:3000
+POST https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}/appointments HTTP/1.1
+Host: api.bgenda.dmbarreiro.com
 Content-Type: application/json
 Accept: application/json
 
@@ -3140,7 +3140,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://localhost:3000/v1.0/clients/{id}/appointments',
+  url: 'https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}/appointments',
   method: 'post',
 
   headers: headers,
@@ -3163,8 +3163,8 @@ const inputBody = '{
     "phone_number": "string",
     "_id": "string",
     "company_added": "string",
-    "created_at": "2019-09-03T09:31:38Z",
-    "updated_at": "2019-09-03T09:31:38Z",
+    "created_at": "2019-09-19T13:37:23Z",
+    "updated_at": "2019-09-19T13:37:23Z",
     "last_modified_by": "string"
   },
   "employee": {
@@ -3181,12 +3181,12 @@ const inputBody = '{
     },
     "_id": "string",
     "company_id": "string",
-    "created_at": "2019-09-03T09:31:38Z",
+    "created_at": "2019-09-19T13:37:23Z",
     "last_modified_by": "string",
-    "updated_at": "2019-09-03T09:31:38Z"
+    "updated_at": "2019-09-19T13:37:23Z"
   },
-  "start_date": "2019-09-03T09:31:38Z",
-  "end_date": "2019-09-03T09:31:38Z"
+  "start_date": "2019-09-19T13:37:23Z",
+  "end_date": "2019-09-19T13:37:23Z"
 }';
 const headers = {
   'Content-Type':'application/json',
@@ -3195,7 +3195,7 @@ const headers = {
 
 };
 
-fetch('https://localhost:3000/v1.0/clients/{id}/appointments',
+fetch('https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}/appointments',
 {
   method: 'POST',
   body: inputBody,
@@ -3219,7 +3219,7 @@ headers = {
   'Authorization' => 'Bearer {access-token}'
 }
 
-result = RestClient.post 'https://localhost:3000/v1.0/clients/{id}/appointments',
+result = RestClient.post 'https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}/appointments',
   params: {
   }, headers: headers
 
@@ -3235,7 +3235,7 @@ headers = {
   'Authorization': 'Bearer {access-token}'
 }
 
-r = requests.post('https://localhost:3000/v1.0/clients/{id}/appointments', params={
+r = requests.post('https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}/appointments', params={
 
 }, headers = headers)
 
@@ -3244,7 +3244,7 @@ print r.json()
 ```
 
 ```java
-URL obj = new URL("https://localhost:3000/v1.0/clients/{id}/appointments");
+URL obj = new URL("https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}/appointments");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("POST");
 int responseCode = con.getResponseCode();
@@ -3278,7 +3278,7 @@ func main() {
     }
 
     data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("POST", "https://localhost:3000/v1.0/clients/{id}/appointments", data)
+    req, err := http.NewRequest("POST", "https://api.bgenda.dmbarreiro.com/v1.0/clients/{id}/appointments", data)
     req.Header = headers
 
     client := &http.Client{}
@@ -3307,8 +3307,8 @@ Creates new appointment returning new appointment information. Client identified
     "phone_number": "string",
     "_id": "string",
     "company_added": "string",
-    "created_at": "2019-09-03T09:31:38Z",
-    "updated_at": "2019-09-03T09:31:38Z",
+    "created_at": "2019-09-19T13:37:23Z",
+    "updated_at": "2019-09-19T13:37:23Z",
     "last_modified_by": "string"
   },
   "employee": {
@@ -3325,12 +3325,12 @@ Creates new appointment returning new appointment information. Client identified
     },
     "_id": "string",
     "company_id": "string",
-    "created_at": "2019-09-03T09:31:38Z",
+    "created_at": "2019-09-19T13:37:23Z",
     "last_modified_by": "string",
-    "updated_at": "2019-09-03T09:31:38Z"
+    "updated_at": "2019-09-19T13:37:23Z"
   },
-  "start_date": "2019-09-03T09:31:38Z",
-  "end_date": "2019-09-03T09:31:38Z"
+  "start_date": "2019-09-19T13:37:23Z",
+  "end_date": "2019-09-19T13:37:23Z"
 }
 ```
 
@@ -3357,8 +3357,8 @@ Creates new appointment returning new appointment information. Client identified
       "phone_number": "string",
       "_id": "string",
       "company_added": "string",
-      "created_at": "2019-09-03T09:31:38Z",
-      "updated_at": "2019-09-03T09:31:38Z",
+      "created_at": "2019-09-19T13:37:23Z",
+      "updated_at": "2019-09-19T13:37:23Z",
       "last_modified_by": "string"
     },
     "employee": {
@@ -3375,15 +3375,15 @@ Creates new appointment returning new appointment information. Client identified
       },
       "_id": "string",
       "company_id": "string",
-      "created_at": "2019-09-03T09:31:38Z",
+      "created_at": "2019-09-19T13:37:23Z",
       "last_modified_by": "string",
-      "updated_at": "2019-09-03T09:31:38Z"
+      "updated_at": "2019-09-19T13:37:23Z"
     },
-    "start_date": "2019-09-03T09:31:38Z",
-    "end_date": "2019-09-03T09:31:38Z",
+    "start_date": "2019-09-19T13:37:23Z",
+    "end_date": "2019-09-19T13:37:23Z",
     "_id": "string",
-    "created_at": "2019-09-03T09:31:38Z",
-    "updated_at": "2019-09-03T09:31:38Z",
+    "created_at": "2019-09-19T13:37:23Z",
+    "updated_at": "2019-09-19T13:37:23Z",
     "last_modified_by": "string"
   },
   "message": "Element successfully created"
@@ -3507,7 +3507,7 @@ BearerAuth
 
 ```shell
 # You can also use wget
-curl -X POST https://localhost:3000/v1.0/clients \
+curl -X POST https://api.bgenda.dmbarreiro.com/v1.0/clients \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access-token}'
@@ -3515,8 +3515,8 @@ curl -X POST https://localhost:3000/v1.0/clients \
 ```
 
 ```http
-POST https://localhost:3000/v1.0/clients HTTP/1.1
-Host: localhost:3000
+POST https://api.bgenda.dmbarreiro.com/v1.0/clients HTTP/1.1
+Host: api.bgenda.dmbarreiro.com
 Content-Type: application/json
 Accept: application/json
 
@@ -3531,7 +3531,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://localhost:3000/v1.0/clients',
+  url: 'https://api.bgenda.dmbarreiro.com/v1.0/clients',
   method: 'post',
 
   headers: headers,
@@ -3558,7 +3558,7 @@ const headers = {
 
 };
 
-fetch('https://localhost:3000/v1.0/clients',
+fetch('https://api.bgenda.dmbarreiro.com/v1.0/clients',
 {
   method: 'POST',
   body: inputBody,
@@ -3582,7 +3582,7 @@ headers = {
   'Authorization' => 'Bearer {access-token}'
 }
 
-result = RestClient.post 'https://localhost:3000/v1.0/clients',
+result = RestClient.post 'https://api.bgenda.dmbarreiro.com/v1.0/clients',
   params: {
   }, headers: headers
 
@@ -3598,7 +3598,7 @@ headers = {
   'Authorization': 'Bearer {access-token}'
 }
 
-r = requests.post('https://localhost:3000/v1.0/clients', params={
+r = requests.post('https://api.bgenda.dmbarreiro.com/v1.0/clients', params={
 
 }, headers = headers)
 
@@ -3607,7 +3607,7 @@ print r.json()
 ```
 
 ```java
-URL obj = new URL("https://localhost:3000/v1.0/clients");
+URL obj = new URL("https://api.bgenda.dmbarreiro.com/v1.0/clients");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("POST");
 int responseCode = con.getResponseCode();
@@ -3641,7 +3641,7 @@ func main() {
     }
 
     data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("POST", "https://localhost:3000/v1.0/clients", data)
+    req, err := http.NewRequest("POST", "https://api.bgenda.dmbarreiro.com/v1.0/clients", data)
     req.Header = headers
 
     client := &http.Client{}
@@ -3689,8 +3689,8 @@ Creates new client returning new client information
     "phone_number": "string",
     "_id": "string",
     "company_added": "string",
-    "created_at": "2019-09-03T09:31:38Z",
-    "updated_at": "2019-09-03T09:31:38Z",
+    "created_at": "2019-09-19T13:37:23Z",
+    "updated_at": "2019-09-19T13:37:23Z",
     "last_modified_by": "string"
   },
   "message": "Element successfully created"
@@ -3787,9 +3787,9 @@ BearerAuth
   },
   "_id": "string",
   "company_id": "string",
-  "created_at": "2019-09-03T09:31:38Z",
+  "created_at": "2019-09-19T13:37:23Z",
   "last_modified_by": "string",
-  "updated_at": "2019-09-03T09:31:38Z"
+  "updated_at": "2019-09-19T13:37:23Z"
 }
 
 ```
@@ -3862,8 +3862,8 @@ BearerAuth
   "phone_number": "string",
   "_id": "string",
   "company_added": "string",
-  "created_at": "2019-09-03T09:31:38Z",
-  "updated_at": "2019-09-03T09:31:38Z",
+  "created_at": "2019-09-19T13:37:23Z",
+  "updated_at": "2019-09-19T13:37:23Z",
   "last_modified_by": "string"
 }
 
@@ -3933,8 +3933,8 @@ BearerAuth
     "post_code": 0
   },
   "_id": "string",
-  "created_at": "2019-09-03T09:31:38Z",
-  "updated_at": "2019-09-03T09:31:38Z"
+  "created_at": "2019-09-19T13:37:23Z",
+  "updated_at": "2019-09-19T13:37:23Z"
 }
 
 ```
@@ -4011,8 +4011,8 @@ BearerAuth
     "phone_number": "string",
     "_id": "string",
     "company_added": "string",
-    "created_at": "2019-09-03T09:31:38Z",
-    "updated_at": "2019-09-03T09:31:38Z",
+    "created_at": "2019-09-19T13:37:23Z",
+    "updated_at": "2019-09-19T13:37:23Z",
     "last_modified_by": "string"
   },
   "employee": {
@@ -4029,15 +4029,15 @@ BearerAuth
     },
     "_id": "string",
     "company_id": "string",
-    "created_at": "2019-09-03T09:31:38Z",
+    "created_at": "2019-09-19T13:37:23Z",
     "last_modified_by": "string",
-    "updated_at": "2019-09-03T09:31:38Z"
+    "updated_at": "2019-09-19T13:37:23Z"
   },
-  "start_date": "2019-09-03T09:31:38Z",
-  "end_date": "2019-09-03T09:31:38Z",
+  "start_date": "2019-09-19T13:37:23Z",
+  "end_date": "2019-09-19T13:37:23Z",
   "_id": "string",
-  "created_at": "2019-09-03T09:31:38Z",
-  "updated_at": "2019-09-03T09:31:38Z",
+  "created_at": "2019-09-19T13:37:23Z",
+  "updated_at": "2019-09-19T13:37:23Z",
   "last_modified_by": "string"
 }
 
@@ -4076,8 +4076,8 @@ BearerAuth
     "phone_number": "string",
     "_id": "string",
     "company_added": "string",
-    "created_at": "2019-09-03T09:31:38Z",
-    "updated_at": "2019-09-03T09:31:38Z",
+    "created_at": "2019-09-19T13:37:23Z",
+    "updated_at": "2019-09-19T13:37:23Z",
     "last_modified_by": "string"
   },
   "employee": {
@@ -4094,12 +4094,12 @@ BearerAuth
     },
     "_id": "string",
     "company_id": "string",
-    "created_at": "2019-09-03T09:31:38Z",
+    "created_at": "2019-09-19T13:37:23Z",
     "last_modified_by": "string",
-    "updated_at": "2019-09-03T09:31:38Z"
+    "updated_at": "2019-09-19T13:37:23Z"
   },
-  "start_date": "2019-09-03T09:31:38Z",
-  "end_date": "2019-09-03T09:31:38Z"
+  "start_date": "2019-09-19T13:37:23Z",
+  "end_date": "2019-09-19T13:37:23Z"
 }
 
 ```

@@ -44,7 +44,9 @@ Email: <a href="mailto:david@dmbarreiro.com">David Martinez Barreiro</a> Web: <a
 
 Authentication system management
 
-## post__auth_login
+## getToken
+
+<a id="opIdgetToken"></a>
 
 > Code samples
 
@@ -206,7 +208,7 @@ Returns JWT authentication token when succeding and an information message
 }
 ```
 
-<h3 id="post__auth_login-parameters">Parameters</h3>
+<h3 id="gettoken-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -225,15 +227,15 @@ Returns JWT authentication token when succeding and an information message
 }
 ```
 
-<h3 id="post__auth_login-responses">Responses</h3>
+<h3 id="gettoken-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Gets the specific employee|Inline|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Gets user token|Inline|
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Not authenticated|[GeneralError](#schemageneralerror)|
 |default|Default|Error|[GeneralError](#schemageneralerror)|
 
-<h3 id="post__auth_login-responseschema">Response Schema</h3>
+<h3 id="gettoken-responseschema">Response Schema</h3>
 
 Status Code **200**
 
@@ -241,6 +243,208 @@ Status Code **200**
 |---|---|---|---|---|
 |» message|string|true|none|none|
 |» token|string|true|none|none|
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+ApiKeyAuth
+</aside>
+
+## invalidateToken
+
+<a id="opIdinvalidateToken"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X POST https://api.bgenda.dmbarreiro.com/v1.0/auth/logout \
+  -H 'Content-Type: application/json' \
+  -H 'Accept: application/json' \
+  -H 'api_key: API_KEY'
+
+```
+
+```http
+POST https://api.bgenda.dmbarreiro.com/v1.0/auth/logout HTTP/1.1
+Host: api.bgenda.dmbarreiro.com
+Content-Type: application/json
+Accept: application/json
+
+```
+
+```javascript
+var headers = {
+  'Content-Type':'application/json',
+  'Accept':'application/json',
+  'api_key':'API_KEY'
+
+};
+
+$.ajax({
+  url: 'https://api.bgenda.dmbarreiro.com/v1.0/auth/logout',
+  method: 'post',
+
+  headers: headers,
+  success: function(data) {
+    console.log(JSON.stringify(data));
+  }
+})
+
+```
+
+```javascript--nodejs
+const fetch = require('node-fetch');
+const inputBody = '{
+  "email": "string",
+  "password": "string"
+}';
+const headers = {
+  'Content-Type':'application/json',
+  'Accept':'application/json',
+  'api_key':'API_KEY'
+
+};
+
+fetch('https://api.bgenda.dmbarreiro.com/v1.0/auth/logout',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Content-Type' => 'application/json',
+  'Accept' => 'application/json',
+  'api_key' => 'API_KEY'
+}
+
+result = RestClient.post 'https://api.bgenda.dmbarreiro.com/v1.0/auth/logout',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json',
+  'api_key': 'API_KEY'
+}
+
+r = requests.post('https://api.bgenda.dmbarreiro.com/v1.0/auth/logout', params={
+
+}, headers = headers)
+
+print r.json()
+
+```
+
+```java
+URL obj = new URL("https://api.bgenda.dmbarreiro.com/v1.0/auth/logout");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("POST");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Content-Type": []string{"application/json"},
+        "Accept": []string{"application/json"},
+        "api_key": []string{"API_KEY"},
+        
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("POST", "https://api.bgenda.dmbarreiro.com/v1.0/auth/logout", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+`POST /auth/logout`
+
+*Invalidates JWT authentication token*
+
+Invalidates JWT authentication token when succeding
+
+> Body parameter
+
+```json
+{
+  "email": "string",
+  "password": "string"
+}
+```
+
+<h3 id="invalidatetoken-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|body|body|object|true|Contains user e-mail and password|
+|» email|body|string|true|none|
+|» password|body|string|true|none|
+
+> Example responses
+
+> 204 Response
+
+```json
+{
+  "message": "string"
+}
+```
+
+<h3 id="invalidatetoken-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|Invalidates employee token|Inline|
+|default|Default|Error|[GeneralError](#schemageneralerror)|
+
+<h3 id="invalidatetoken-responseschema">Response Schema</h3>
+
+Status Code **204**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» message|string|true|none|none|
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
@@ -423,8 +627,8 @@ Returns company information identified by {id}. Requires administrator permissio
       "post_code": 0
     },
     "_id": "string",
-    "created_at": "2019-09-22T15:56:24Z",
-    "updated_at": "2019-09-22T15:56:24Z"
+    "created_at": "2019-09-22T22:56:48Z",
+    "updated_at": "2019-09-22T22:56:48Z"
   },
   "message": "Element successfully found"
 }
@@ -546,8 +750,8 @@ const inputBody = '{
     "post_code": 0
   },
   "_id": "string",
-  "created_at": "2019-09-22T15:56:24Z",
-  "updated_at": "2019-09-22T15:56:24Z"
+  "created_at": "2019-09-22T22:56:48Z",
+  "updated_at": "2019-09-22T22:56:48Z"
 }';
 const headers = {
   'Content-Type':'application/json',
@@ -673,8 +877,8 @@ Updates company information data identified by {id} returning no information. Re
     "post_code": 0
   },
   "_id": "string",
-  "created_at": "2019-09-22T15:56:24Z",
-  "updated_at": "2019-09-22T15:56:24Z"
+  "created_at": "2019-09-22T22:56:48Z",
+  "updated_at": "2019-09-22T22:56:48Z"
 }
 ```
 
@@ -883,9 +1087,9 @@ Returns all company employees data. Needs add_employee permission.
     },
     "_id": "string",
     "company_id": "string",
-    "created_at": "2019-09-22T15:56:24Z",
+    "created_at": "2019-09-22T22:56:48Z",
     "last_modified_by": "string",
-    "updated_at": "2019-09-22T15:56:24Z"
+    "updated_at": "2019-09-22T22:56:48Z"
   }
 ]
 ```
@@ -1104,8 +1308,8 @@ Returns all company clients data. Requires update_client permission.
     "phone_number": "string",
     "_id": "string",
     "company_added": "string",
-    "created_at": "2019-09-22T15:56:24Z",
-    "updated_at": "2019-09-22T15:56:24Z",
+    "created_at": "2019-09-22T22:56:48Z",
+    "updated_at": "2019-09-22T22:56:48Z",
     "last_modified_by": "string"
   }
 ]
@@ -1321,8 +1525,8 @@ Returns an array with information from each company. Needs administrator permiss
       "post_code": 0
     },
     "_id": "string",
-    "created_at": "2019-09-22T15:56:24Z",
-    "updated_at": "2019-09-22T15:56:24Z"
+    "created_at": "2019-09-22T22:56:48Z",
+    "updated_at": "2019-09-22T22:56:48Z"
   }
 ]
 ```
@@ -1589,8 +1793,8 @@ Creates new company returning no information. Needs administrator permissions.
       "post_code": 0
     },
     "_id": "string",
-    "created_at": "2019-09-22T15:56:24Z",
-    "updated_at": "2019-09-22T15:56:24Z"
+    "created_at": "2019-09-22T22:56:48Z",
+    "updated_at": "2019-09-22T22:56:48Z"
   },
   "message": "Element successfully created"
 }
@@ -1826,9 +2030,9 @@ Returns employee data identified by {id}
   },
   "_id": "string",
   "company_id": "string",
-  "created_at": "2019-09-22T15:56:24Z",
+  "created_at": "2019-09-22T22:56:48Z",
   "last_modified_by": "string",
-  "updated_at": "2019-09-22T15:56:24Z"
+  "updated_at": "2019-09-22T22:56:48Z"
 }
 ```
 
@@ -1906,9 +2110,9 @@ const inputBody = '{
   },
   "_id": "string",
   "company_id": "string",
-  "created_at": "2019-09-22T15:56:24Z",
+  "created_at": "2019-09-22T22:56:48Z",
   "last_modified_by": "string",
-  "updated_at": "2019-09-22T15:56:24Z"
+  "updated_at": "2019-09-22T22:56:48Z"
 }';
 const headers = {
   'Content-Type':'application/json',
@@ -2033,9 +2237,9 @@ Updates employee data identified by {id} returning no information. Needs add_emp
   },
   "_id": "string",
   "company_id": "string",
-  "created_at": "2019-09-22T15:56:24Z",
+  "created_at": "2019-09-22T22:56:48Z",
   "last_modified_by": "string",
-  "updated_at": "2019-09-22T15:56:24Z"
+  "updated_at": "2019-09-22T22:56:48Z"
 }
 ```
 
@@ -2465,8 +2669,8 @@ Returns client data identified by {id}.
     "phone_number": "string",
     "_id": "string",
     "company_added": "string",
-    "created_at": "2019-09-22T15:56:24Z",
-    "updated_at": "2019-09-22T15:56:24Z",
+    "created_at": "2019-09-22T22:56:48Z",
+    "updated_at": "2019-09-22T22:56:48Z",
     "last_modified_by": "string"
   },
   "message": "Element successfully found"
@@ -2577,8 +2781,8 @@ const inputBody = '{
   "phone_number": "string",
   "_id": "string",
   "company_added": "string",
-  "created_at": "2019-09-22T15:56:24Z",
-  "updated_at": "2019-09-22T15:56:24Z",
+  "created_at": "2019-09-22T22:56:48Z",
+  "updated_at": "2019-09-22T22:56:48Z",
   "last_modified_by": "string"
 }';
 const headers = {
@@ -2698,8 +2902,8 @@ Updates client data identified by {id} returning no information. Requires update
   "phone_number": "string",
   "_id": "string",
   "company_added": "string",
-  "created_at": "2019-09-22T15:56:24Z",
-  "updated_at": "2019-09-22T15:56:24Z",
+  "created_at": "2019-09-22T22:56:48Z",
+  "updated_at": "2019-09-22T22:56:48Z",
   "last_modified_by": "string"
 }
 ```
@@ -2909,8 +3113,8 @@ Returns all client appointments or single appointment information information da
         "phone_number": "string",
         "_id": "string",
         "company_added": "string",
-        "created_at": "2019-09-22T15:56:24Z",
-        "updated_at": "2019-09-22T15:56:24Z",
+        "created_at": "2019-09-22T22:56:48Z",
+        "updated_at": "2019-09-22T22:56:48Z",
         "last_modified_by": "string"
       },
       "employee": {
@@ -2927,15 +3131,15 @@ Returns all client appointments or single appointment information information da
         },
         "_id": "string",
         "company_id": "string",
-        "created_at": "2019-09-22T15:56:24Z",
+        "created_at": "2019-09-22T22:56:48Z",
         "last_modified_by": "string",
-        "updated_at": "2019-09-22T15:56:24Z"
+        "updated_at": "2019-09-22T22:56:48Z"
       },
-      "start_date": "2019-09-22T15:56:24Z",
-      "end_date": "2019-09-22T15:56:24Z",
+      "start_date": "2019-09-22T22:56:48Z",
+      "end_date": "2019-09-22T22:56:48Z",
       "_id": "string",
-      "created_at": "2019-09-22T15:56:24Z",
-      "updated_at": "2019-09-22T15:56:24Z",
+      "created_at": "2019-09-22T22:56:48Z",
+      "updated_at": "2019-09-22T22:56:48Z",
       "last_modified_by": "string"
     }
   ]
@@ -3100,8 +3304,8 @@ const inputBody = '{
     "phone_number": "string",
     "_id": "string",
     "company_added": "string",
-    "created_at": "2019-09-22T15:56:24Z",
-    "updated_at": "2019-09-22T15:56:24Z",
+    "created_at": "2019-09-22T22:56:48Z",
+    "updated_at": "2019-09-22T22:56:48Z",
     "last_modified_by": "string"
   },
   "employee": {
@@ -3118,15 +3322,15 @@ const inputBody = '{
     },
     "_id": "string",
     "company_id": "string",
-    "created_at": "2019-09-22T15:56:24Z",
+    "created_at": "2019-09-22T22:56:48Z",
     "last_modified_by": "string",
-    "updated_at": "2019-09-22T15:56:24Z"
+    "updated_at": "2019-09-22T22:56:48Z"
   },
-  "start_date": "2019-09-22T15:56:24Z",
-  "end_date": "2019-09-22T15:56:24Z",
+  "start_date": "2019-09-22T22:56:48Z",
+  "end_date": "2019-09-22T22:56:48Z",
   "_id": "string",
-  "created_at": "2019-09-22T15:56:24Z",
-  "updated_at": "2019-09-22T15:56:24Z",
+  "created_at": "2019-09-22T22:56:48Z",
+  "updated_at": "2019-09-22T22:56:48Z",
   "last_modified_by": "string"
 }';
 const headers = {
@@ -3249,8 +3453,8 @@ Updates appointment data for client identified by {id} and appointment identifie
     "phone_number": "string",
     "_id": "string",
     "company_added": "string",
-    "created_at": "2019-09-22T15:56:24Z",
-    "updated_at": "2019-09-22T15:56:24Z",
+    "created_at": "2019-09-22T22:56:48Z",
+    "updated_at": "2019-09-22T22:56:48Z",
     "last_modified_by": "string"
   },
   "employee": {
@@ -3267,15 +3471,15 @@ Updates appointment data for client identified by {id} and appointment identifie
     },
     "_id": "string",
     "company_id": "string",
-    "created_at": "2019-09-22T15:56:24Z",
+    "created_at": "2019-09-22T22:56:48Z",
     "last_modified_by": "string",
-    "updated_at": "2019-09-22T15:56:24Z"
+    "updated_at": "2019-09-22T22:56:48Z"
   },
-  "start_date": "2019-09-22T15:56:24Z",
-  "end_date": "2019-09-22T15:56:24Z",
+  "start_date": "2019-09-22T22:56:48Z",
+  "end_date": "2019-09-22T22:56:48Z",
   "_id": "string",
-  "created_at": "2019-09-22T15:56:24Z",
-  "updated_at": "2019-09-22T15:56:24Z",
+  "created_at": "2019-09-22T22:56:48Z",
+  "updated_at": "2019-09-22T22:56:48Z",
   "last_modified_by": "string"
 }
 ```
@@ -3370,8 +3574,8 @@ const inputBody = '{
     "phone_number": "string",
     "_id": "string",
     "company_added": "string",
-    "created_at": "2019-09-22T15:56:24Z",
-    "updated_at": "2019-09-22T15:56:24Z",
+    "created_at": "2019-09-22T22:56:48Z",
+    "updated_at": "2019-09-22T22:56:48Z",
     "last_modified_by": "string"
   },
   "employee": {
@@ -3388,12 +3592,12 @@ const inputBody = '{
     },
     "_id": "string",
     "company_id": "string",
-    "created_at": "2019-09-22T15:56:24Z",
+    "created_at": "2019-09-22T22:56:48Z",
     "last_modified_by": "string",
-    "updated_at": "2019-09-22T15:56:24Z"
+    "updated_at": "2019-09-22T22:56:48Z"
   },
-  "start_date": "2019-09-22T15:56:24Z",
-  "end_date": "2019-09-22T15:56:24Z"
+  "start_date": "2019-09-22T22:56:48Z",
+  "end_date": "2019-09-22T22:56:48Z"
 }';
 const headers = {
   'Content-Type':'application/json',
@@ -3514,8 +3718,8 @@ Creates new appointment returning new appointment information. Client identified
     "phone_number": "string",
     "_id": "string",
     "company_added": "string",
-    "created_at": "2019-09-22T15:56:24Z",
-    "updated_at": "2019-09-22T15:56:24Z",
+    "created_at": "2019-09-22T22:56:48Z",
+    "updated_at": "2019-09-22T22:56:48Z",
     "last_modified_by": "string"
   },
   "employee": {
@@ -3532,12 +3736,12 @@ Creates new appointment returning new appointment information. Client identified
     },
     "_id": "string",
     "company_id": "string",
-    "created_at": "2019-09-22T15:56:24Z",
+    "created_at": "2019-09-22T22:56:48Z",
     "last_modified_by": "string",
-    "updated_at": "2019-09-22T15:56:24Z"
+    "updated_at": "2019-09-22T22:56:48Z"
   },
-  "start_date": "2019-09-22T15:56:24Z",
-  "end_date": "2019-09-22T15:56:24Z"
+  "start_date": "2019-09-22T22:56:48Z",
+  "end_date": "2019-09-22T22:56:48Z"
 }
 ```
 
@@ -3564,8 +3768,8 @@ Creates new appointment returning new appointment information. Client identified
       "phone_number": "string",
       "_id": "string",
       "company_added": "string",
-      "created_at": "2019-09-22T15:56:24Z",
-      "updated_at": "2019-09-22T15:56:24Z",
+      "created_at": "2019-09-22T22:56:48Z",
+      "updated_at": "2019-09-22T22:56:48Z",
       "last_modified_by": "string"
     },
     "employee": {
@@ -3582,15 +3786,15 @@ Creates new appointment returning new appointment information. Client identified
       },
       "_id": "string",
       "company_id": "string",
-      "created_at": "2019-09-22T15:56:24Z",
+      "created_at": "2019-09-22T22:56:48Z",
       "last_modified_by": "string",
-      "updated_at": "2019-09-22T15:56:24Z"
+      "updated_at": "2019-09-22T22:56:48Z"
     },
-    "start_date": "2019-09-22T15:56:24Z",
-    "end_date": "2019-09-22T15:56:24Z",
+    "start_date": "2019-09-22T22:56:48Z",
+    "end_date": "2019-09-22T22:56:48Z",
     "_id": "string",
-    "created_at": "2019-09-22T15:56:24Z",
-    "updated_at": "2019-09-22T15:56:24Z",
+    "created_at": "2019-09-22T22:56:48Z",
+    "updated_at": "2019-09-22T22:56:48Z",
     "last_modified_by": "string"
   },
   "message": "Element successfully created"
@@ -3896,8 +4100,8 @@ Creates new client returning new client information.
     "phone_number": "string",
     "_id": "string",
     "company_added": "string",
-    "created_at": "2019-09-22T15:56:24Z",
-    "updated_at": "2019-09-22T15:56:24Z",
+    "created_at": "2019-09-22T22:56:48Z",
+    "updated_at": "2019-09-22T22:56:48Z",
     "last_modified_by": "string"
   },
   "message": "Element successfully created"
@@ -3994,9 +4198,9 @@ BearerAuth
   },
   "_id": "string",
   "company_id": "string",
-  "created_at": "2019-09-22T15:56:24Z",
+  "created_at": "2019-09-22T22:56:48Z",
   "last_modified_by": "string",
-  "updated_at": "2019-09-22T15:56:24Z"
+  "updated_at": "2019-09-22T22:56:48Z"
 }
 
 ```
@@ -4069,8 +4273,8 @@ BearerAuth
   "phone_number": "string",
   "_id": "string",
   "company_added": "string",
-  "created_at": "2019-09-22T15:56:24Z",
-  "updated_at": "2019-09-22T15:56:24Z",
+  "created_at": "2019-09-22T22:56:48Z",
+  "updated_at": "2019-09-22T22:56:48Z",
   "last_modified_by": "string"
 }
 
@@ -4140,8 +4344,8 @@ BearerAuth
     "post_code": 0
   },
   "_id": "string",
-  "created_at": "2019-09-22T15:56:24Z",
-  "updated_at": "2019-09-22T15:56:24Z"
+  "created_at": "2019-09-22T22:56:48Z",
+  "updated_at": "2019-09-22T22:56:48Z"
 }
 
 ```
@@ -4218,8 +4422,8 @@ BearerAuth
     "phone_number": "string",
     "_id": "string",
     "company_added": "string",
-    "created_at": "2019-09-22T15:56:24Z",
-    "updated_at": "2019-09-22T15:56:24Z",
+    "created_at": "2019-09-22T22:56:48Z",
+    "updated_at": "2019-09-22T22:56:48Z",
     "last_modified_by": "string"
   },
   "employee": {
@@ -4236,15 +4440,15 @@ BearerAuth
     },
     "_id": "string",
     "company_id": "string",
-    "created_at": "2019-09-22T15:56:24Z",
+    "created_at": "2019-09-22T22:56:48Z",
     "last_modified_by": "string",
-    "updated_at": "2019-09-22T15:56:24Z"
+    "updated_at": "2019-09-22T22:56:48Z"
   },
-  "start_date": "2019-09-22T15:56:24Z",
-  "end_date": "2019-09-22T15:56:24Z",
+  "start_date": "2019-09-22T22:56:48Z",
+  "end_date": "2019-09-22T22:56:48Z",
   "_id": "string",
-  "created_at": "2019-09-22T15:56:24Z",
-  "updated_at": "2019-09-22T15:56:24Z",
+  "created_at": "2019-09-22T22:56:48Z",
+  "updated_at": "2019-09-22T22:56:48Z",
   "last_modified_by": "string"
 }
 
@@ -4283,8 +4487,8 @@ BearerAuth
     "phone_number": "string",
     "_id": "string",
     "company_added": "string",
-    "created_at": "2019-09-22T15:56:24Z",
-    "updated_at": "2019-09-22T15:56:24Z",
+    "created_at": "2019-09-22T22:56:48Z",
+    "updated_at": "2019-09-22T22:56:48Z",
     "last_modified_by": "string"
   },
   "employee": {
@@ -4301,12 +4505,12 @@ BearerAuth
     },
     "_id": "string",
     "company_id": "string",
-    "created_at": "2019-09-22T15:56:24Z",
+    "created_at": "2019-09-22T22:56:48Z",
     "last_modified_by": "string",
-    "updated_at": "2019-09-22T15:56:24Z"
+    "updated_at": "2019-09-22T22:56:48Z"
   },
-  "start_date": "2019-09-22T15:56:24Z",
-  "end_date": "2019-09-22T15:56:24Z"
+  "start_date": "2019-09-22T22:56:48Z",
+  "end_date": "2019-09-22T22:56:48Z"
 }
 
 ```

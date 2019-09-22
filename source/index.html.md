@@ -40,6 +40,213 @@ Email: <a href="mailto:david@dmbarreiro.com">David Martinez Barreiro</a> Web: <a
 
 - HTTP Authentication, scheme: bearer 
 
+<h1 id="appointments-management-api-authentication">authentication</h1>
+
+Authentication system management
+
+## post__auth_login
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X POST https://api.bgenda.dmbarreiro.com/v1.0/auth/login \
+  -H 'Content-Type: application/json' \
+  -H 'Accept: application/json' \
+  -H 'api_key: API_KEY'
+
+```
+
+```http
+POST https://api.bgenda.dmbarreiro.com/v1.0/auth/login HTTP/1.1
+Host: api.bgenda.dmbarreiro.com
+Content-Type: application/json
+Accept: application/json
+
+```
+
+```javascript
+var headers = {
+  'Content-Type':'application/json',
+  'Accept':'application/json',
+  'api_key':'API_KEY'
+
+};
+
+$.ajax({
+  url: 'https://api.bgenda.dmbarreiro.com/v1.0/auth/login',
+  method: 'post',
+
+  headers: headers,
+  success: function(data) {
+    console.log(JSON.stringify(data));
+  }
+})
+
+```
+
+```javascript--nodejs
+const fetch = require('node-fetch');
+const inputBody = '{
+  "email": "string",
+  "password": "string"
+}';
+const headers = {
+  'Content-Type':'application/json',
+  'Accept':'application/json',
+  'api_key':'API_KEY'
+
+};
+
+fetch('https://api.bgenda.dmbarreiro.com/v1.0/auth/login',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Content-Type' => 'application/json',
+  'Accept' => 'application/json',
+  'api_key' => 'API_KEY'
+}
+
+result = RestClient.post 'https://api.bgenda.dmbarreiro.com/v1.0/auth/login',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json',
+  'api_key': 'API_KEY'
+}
+
+r = requests.post('https://api.bgenda.dmbarreiro.com/v1.0/auth/login', params={
+
+}, headers = headers)
+
+print r.json()
+
+```
+
+```java
+URL obj = new URL("https://api.bgenda.dmbarreiro.com/v1.0/auth/login");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("POST");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Content-Type": []string{"application/json"},
+        "Accept": []string{"application/json"},
+        "api_key": []string{"API_KEY"},
+        
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("POST", "https://api.bgenda.dmbarreiro.com/v1.0/auth/login", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+`POST /auth/login`
+
+*Returns JWT authentication token*
+
+Returns JWT authentication token when succeding and an information message
+
+> Body parameter
+
+```json
+{
+  "email": "string",
+  "password": "string"
+}
+```
+
+<h3 id="post__auth_login-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|body|body|object|true|Contains user e-mail and password|
+|» email|body|string|true|none|
+|» password|body|string|true|none|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "message": "string",
+  "token": "string"
+}
+```
+
+<h3 id="post__auth_login-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Gets the specific employee|Inline|
+|401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Not authenticated|[GeneralError](#schemageneralerror)|
+|default|Default|Error|[GeneralError](#schemageneralerror)|
+
+<h3 id="post__auth_login-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» message|string|true|none|none|
+|» token|string|true|none|none|
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+ApiKeyAuth
+</aside>
+
 <h1 id="appointments-management-api-companies">companies</h1>
 
 Companies using appointments service
@@ -187,7 +394,7 @@ func main() {
 
 *Returns single company information*
 
-Returns company information identified by {id}
+Returns company information identified by {id}. Requires administrator permissions.
 
 <h3 id="getcompanybyid-parameters">Parameters</h3>
 
@@ -216,8 +423,8 @@ Returns company information identified by {id}
       "post_code": 0
     },
     "_id": "string",
-    "created_at": "2019-09-19T13:37:23Z",
-    "updated_at": "2019-09-19T13:37:23Z"
+    "created_at": "2019-09-22T15:56:24Z",
+    "updated_at": "2019-09-22T15:56:24Z"
   },
   "message": "Element successfully found"
 }
@@ -339,8 +546,8 @@ const inputBody = '{
     "post_code": 0
   },
   "_id": "string",
-  "created_at": "2019-09-19T13:37:23Z",
-  "updated_at": "2019-09-19T13:37:23Z"
+  "created_at": "2019-09-22T15:56:24Z",
+  "updated_at": "2019-09-22T15:56:24Z"
 }';
 const headers = {
   'Content-Type':'application/json',
@@ -446,7 +653,7 @@ func main() {
 
 *Updates company information*
 
-Updates company information data identified by {id} returning no information
+Updates company information data identified by {id} returning no information. Requires administrator permissions.
 
 > Body parameter
 
@@ -466,8 +673,8 @@ Updates company information data identified by {id} returning no information
     "post_code": 0
   },
   "_id": "string",
-  "created_at": "2019-09-19T13:37:23Z",
-  "updated_at": "2019-09-19T13:37:23Z"
+  "created_at": "2019-09-22T15:56:24Z",
+  "updated_at": "2019-09-22T15:56:24Z"
 }
 ```
 
@@ -648,7 +855,7 @@ func main() {
 
 *Returns company employee data*
 
-Returns all company employees data
+Returns all company employees data. Needs add_employee permission.
 
 <h3 id="getcompanyemployees-parameters">Parameters</h3>
 
@@ -676,9 +883,9 @@ Returns all company employees data
     },
     "_id": "string",
     "company_id": "string",
-    "created_at": "2019-09-19T13:37:23Z",
+    "created_at": "2019-09-22T15:56:24Z",
     "last_modified_by": "string",
-    "updated_at": "2019-09-19T13:37:23Z"
+    "updated_at": "2019-09-22T15:56:24Z"
   }
 ]
 ```
@@ -875,7 +1082,7 @@ func main() {
 
 *Returns company client data*
 
-Returns all company clients data
+Returns all company clients data. Requires update_client permission.
 
 <h3 id="getcompanyclients-parameters">Parameters</h3>
 
@@ -897,8 +1104,8 @@ Returns all company clients data
     "phone_number": "string",
     "_id": "string",
     "company_added": "string",
-    "created_at": "2019-09-19T13:37:23Z",
-    "updated_at": "2019-09-19T13:37:23Z",
+    "created_at": "2019-09-22T15:56:24Z",
+    "updated_at": "2019-09-22T15:56:24Z",
     "last_modified_by": "string"
   }
 ]
@@ -1091,7 +1298,7 @@ func main() {
 
 *Returns information from all companies*
 
-Returns an array with information from each company
+Returns an array with information from each company. Needs administrator permissions.
 
 > Example responses
 
@@ -1114,8 +1321,8 @@ Returns an array with information from each company
       "post_code": 0
     },
     "_id": "string",
-    "created_at": "2019-09-19T13:37:23Z",
-    "updated_at": "2019-09-19T13:37:23Z"
+    "created_at": "2019-09-22T15:56:24Z",
+    "updated_at": "2019-09-22T15:56:24Z"
   }
 ]
 ```
@@ -1333,7 +1540,7 @@ func main() {
 
 *Creates new company*
 
-Creates new company returning no information
+Creates new company returning no information. Needs administrator permissions.
 
 > Body parameter
 
@@ -1382,8 +1589,8 @@ Creates new company returning no information
       "post_code": 0
     },
     "_id": "string",
-    "created_at": "2019-09-19T13:37:23Z",
-    "updated_at": "2019-09-19T13:37:23Z"
+    "created_at": "2019-09-22T15:56:24Z",
+    "updated_at": "2019-09-22T15:56:24Z"
   },
   "message": "Element successfully created"
 }
@@ -1619,9 +1826,9 @@ Returns employee data identified by {id}
   },
   "_id": "string",
   "company_id": "string",
-  "created_at": "2019-09-19T13:37:23Z",
+  "created_at": "2019-09-22T15:56:24Z",
   "last_modified_by": "string",
-  "updated_at": "2019-09-19T13:37:23Z"
+  "updated_at": "2019-09-22T15:56:24Z"
 }
 ```
 
@@ -1699,9 +1906,9 @@ const inputBody = '{
   },
   "_id": "string",
   "company_id": "string",
-  "created_at": "2019-09-19T13:37:23Z",
+  "created_at": "2019-09-22T15:56:24Z",
   "last_modified_by": "string",
-  "updated_at": "2019-09-19T13:37:23Z"
+  "updated_at": "2019-09-22T15:56:24Z"
 }';
 const headers = {
   'Content-Type':'application/json',
@@ -1807,7 +2014,7 @@ func main() {
 
 *Updates employee information*
 
-Updates employee data identified by {id} returning no information
+Updates employee data identified by {id} returning no information. Needs add_employee user permission.
 
 > Body parameter
 
@@ -1826,9 +2033,9 @@ Updates employee data identified by {id} returning no information
   },
   "_id": "string",
   "company_id": "string",
-  "created_at": "2019-09-19T13:37:23Z",
+  "created_at": "2019-09-22T15:56:24Z",
   "last_modified_by": "string",
-  "updated_at": "2019-09-19T13:37:23Z"
+  "updated_at": "2019-09-22T15:56:24Z"
 }
 ```
 
@@ -2028,7 +2235,7 @@ func main() {
 
 *Creates new employee*
 
-Creates new employee returning no information
+Creates new employee returning no information.  Needs add_employee user permission.
 
 > Body parameter
 
@@ -2236,7 +2443,7 @@ func main() {
 
 *Returns single client data*
 
-Returns client data identified by {id}
+Returns client data identified by {id}.
 
 <h3 id="getclientbyid-parameters">Parameters</h3>
 
@@ -2258,8 +2465,8 @@ Returns client data identified by {id}
     "phone_number": "string",
     "_id": "string",
     "company_added": "string",
-    "created_at": "2019-09-19T13:37:23Z",
-    "updated_at": "2019-09-19T13:37:23Z",
+    "created_at": "2019-09-22T15:56:24Z",
+    "updated_at": "2019-09-22T15:56:24Z",
     "last_modified_by": "string"
   },
   "message": "Element successfully found"
@@ -2370,8 +2577,8 @@ const inputBody = '{
   "phone_number": "string",
   "_id": "string",
   "company_added": "string",
-  "created_at": "2019-09-19T13:37:23Z",
-  "updated_at": "2019-09-19T13:37:23Z",
+  "created_at": "2019-09-22T15:56:24Z",
+  "updated_at": "2019-09-22T15:56:24Z",
   "last_modified_by": "string"
 }';
 const headers = {
@@ -2478,7 +2685,7 @@ func main() {
 
 *Updates client information*
 
-Updates client data identified by {id} returning no information
+Updates client data identified by {id} returning no information. Requires update_client permission.
 
 > Body parameter
 
@@ -2491,8 +2698,8 @@ Updates client data identified by {id} returning no information
   "phone_number": "string",
   "_id": "string",
   "company_added": "string",
-  "created_at": "2019-09-19T13:37:23Z",
-  "updated_at": "2019-09-19T13:37:23Z",
+  "created_at": "2019-09-22T15:56:24Z",
+  "updated_at": "2019-09-22T15:56:24Z",
   "last_modified_by": "string"
 }
 ```
@@ -2674,7 +2881,7 @@ func main() {
 
 *Returns client appointments or single appointment information*
 
-Returns all client appointments or single appointment information information data. Client information is specified by path id and appointment information is provided by optional query parameter appointment_id
+Returns all client appointments or single appointment information information data. Client information is specified by path id and appointment information is provided by optional query parameter appointment_id.
 
 <h3 id="getclientappointment-parameters">Parameters</h3>
 
@@ -2702,8 +2909,8 @@ Returns all client appointments or single appointment information information da
         "phone_number": "string",
         "_id": "string",
         "company_added": "string",
-        "created_at": "2019-09-19T13:37:23Z",
-        "updated_at": "2019-09-19T13:37:23Z",
+        "created_at": "2019-09-22T15:56:24Z",
+        "updated_at": "2019-09-22T15:56:24Z",
         "last_modified_by": "string"
       },
       "employee": {
@@ -2720,15 +2927,15 @@ Returns all client appointments or single appointment information information da
         },
         "_id": "string",
         "company_id": "string",
-        "created_at": "2019-09-19T13:37:23Z",
+        "created_at": "2019-09-22T15:56:24Z",
         "last_modified_by": "string",
-        "updated_at": "2019-09-19T13:37:23Z"
+        "updated_at": "2019-09-22T15:56:24Z"
       },
-      "start_date": "2019-09-19T13:37:23Z",
-      "end_date": "2019-09-19T13:37:23Z",
+      "start_date": "2019-09-22T15:56:24Z",
+      "end_date": "2019-09-22T15:56:24Z",
       "_id": "string",
-      "created_at": "2019-09-19T13:37:23Z",
-      "updated_at": "2019-09-19T13:37:23Z",
+      "created_at": "2019-09-22T15:56:24Z",
+      "updated_at": "2019-09-22T15:56:24Z",
       "last_modified_by": "string"
     }
   ]
@@ -2893,8 +3100,8 @@ const inputBody = '{
     "phone_number": "string",
     "_id": "string",
     "company_added": "string",
-    "created_at": "2019-09-19T13:37:23Z",
-    "updated_at": "2019-09-19T13:37:23Z",
+    "created_at": "2019-09-22T15:56:24Z",
+    "updated_at": "2019-09-22T15:56:24Z",
     "last_modified_by": "string"
   },
   "employee": {
@@ -2911,15 +3118,15 @@ const inputBody = '{
     },
     "_id": "string",
     "company_id": "string",
-    "created_at": "2019-09-19T13:37:23Z",
+    "created_at": "2019-09-22T15:56:24Z",
     "last_modified_by": "string",
-    "updated_at": "2019-09-19T13:37:23Z"
+    "updated_at": "2019-09-22T15:56:24Z"
   },
-  "start_date": "2019-09-19T13:37:23Z",
-  "end_date": "2019-09-19T13:37:23Z",
+  "start_date": "2019-09-22T15:56:24Z",
+  "end_date": "2019-09-22T15:56:24Z",
   "_id": "string",
-  "created_at": "2019-09-19T13:37:23Z",
-  "updated_at": "2019-09-19T13:37:23Z",
+  "created_at": "2019-09-22T15:56:24Z",
+  "updated_at": "2019-09-22T15:56:24Z",
   "last_modified_by": "string"
 }';
 const headers = {
@@ -3027,7 +3234,7 @@ func main() {
 
 *Updates appointment information*
 
-Updates appointment data for client identified by {id} and appointment identified by ?appointment_id returning no information
+Updates appointment data for client identified by {id} and appointment identified by ?appointment_id returning no information. Requires update_schedule permission.
 
 > Body parameter
 
@@ -3042,8 +3249,8 @@ Updates appointment data for client identified by {id} and appointment identifie
     "phone_number": "string",
     "_id": "string",
     "company_added": "string",
-    "created_at": "2019-09-19T13:37:23Z",
-    "updated_at": "2019-09-19T13:37:23Z",
+    "created_at": "2019-09-22T15:56:24Z",
+    "updated_at": "2019-09-22T15:56:24Z",
     "last_modified_by": "string"
   },
   "employee": {
@@ -3060,15 +3267,15 @@ Updates appointment data for client identified by {id} and appointment identifie
     },
     "_id": "string",
     "company_id": "string",
-    "created_at": "2019-09-19T13:37:23Z",
+    "created_at": "2019-09-22T15:56:24Z",
     "last_modified_by": "string",
-    "updated_at": "2019-09-19T13:37:23Z"
+    "updated_at": "2019-09-22T15:56:24Z"
   },
-  "start_date": "2019-09-19T13:37:23Z",
-  "end_date": "2019-09-19T13:37:23Z",
+  "start_date": "2019-09-22T15:56:24Z",
+  "end_date": "2019-09-22T15:56:24Z",
   "_id": "string",
-  "created_at": "2019-09-19T13:37:23Z",
-  "updated_at": "2019-09-19T13:37:23Z",
+  "created_at": "2019-09-22T15:56:24Z",
+  "updated_at": "2019-09-22T15:56:24Z",
   "last_modified_by": "string"
 }
 ```
@@ -3163,8 +3370,8 @@ const inputBody = '{
     "phone_number": "string",
     "_id": "string",
     "company_added": "string",
-    "created_at": "2019-09-19T13:37:23Z",
-    "updated_at": "2019-09-19T13:37:23Z",
+    "created_at": "2019-09-22T15:56:24Z",
+    "updated_at": "2019-09-22T15:56:24Z",
     "last_modified_by": "string"
   },
   "employee": {
@@ -3181,12 +3388,12 @@ const inputBody = '{
     },
     "_id": "string",
     "company_id": "string",
-    "created_at": "2019-09-19T13:37:23Z",
+    "created_at": "2019-09-22T15:56:24Z",
     "last_modified_by": "string",
-    "updated_at": "2019-09-19T13:37:23Z"
+    "updated_at": "2019-09-22T15:56:24Z"
   },
-  "start_date": "2019-09-19T13:37:23Z",
-  "end_date": "2019-09-19T13:37:23Z"
+  "start_date": "2019-09-22T15:56:24Z",
+  "end_date": "2019-09-22T15:56:24Z"
 }';
 const headers = {
   'Content-Type':'application/json',
@@ -3292,7 +3499,7 @@ func main() {
 
 *Creates new appointment for client*
 
-Creates new appointment returning new appointment information. Client identified by {id}
+Creates new appointment returning new appointment information. Client identified by {id}.
 
 > Body parameter
 
@@ -3307,8 +3514,8 @@ Creates new appointment returning new appointment information. Client identified
     "phone_number": "string",
     "_id": "string",
     "company_added": "string",
-    "created_at": "2019-09-19T13:37:23Z",
-    "updated_at": "2019-09-19T13:37:23Z",
+    "created_at": "2019-09-22T15:56:24Z",
+    "updated_at": "2019-09-22T15:56:24Z",
     "last_modified_by": "string"
   },
   "employee": {
@@ -3325,12 +3532,12 @@ Creates new appointment returning new appointment information. Client identified
     },
     "_id": "string",
     "company_id": "string",
-    "created_at": "2019-09-19T13:37:23Z",
+    "created_at": "2019-09-22T15:56:24Z",
     "last_modified_by": "string",
-    "updated_at": "2019-09-19T13:37:23Z"
+    "updated_at": "2019-09-22T15:56:24Z"
   },
-  "start_date": "2019-09-19T13:37:23Z",
-  "end_date": "2019-09-19T13:37:23Z"
+  "start_date": "2019-09-22T15:56:24Z",
+  "end_date": "2019-09-22T15:56:24Z"
 }
 ```
 
@@ -3357,8 +3564,8 @@ Creates new appointment returning new appointment information. Client identified
       "phone_number": "string",
       "_id": "string",
       "company_added": "string",
-      "created_at": "2019-09-19T13:37:23Z",
-      "updated_at": "2019-09-19T13:37:23Z",
+      "created_at": "2019-09-22T15:56:24Z",
+      "updated_at": "2019-09-22T15:56:24Z",
       "last_modified_by": "string"
     },
     "employee": {
@@ -3375,15 +3582,15 @@ Creates new appointment returning new appointment information. Client identified
       },
       "_id": "string",
       "company_id": "string",
-      "created_at": "2019-09-19T13:37:23Z",
+      "created_at": "2019-09-22T15:56:24Z",
       "last_modified_by": "string",
-      "updated_at": "2019-09-19T13:37:23Z"
+      "updated_at": "2019-09-22T15:56:24Z"
     },
-    "start_date": "2019-09-19T13:37:23Z",
-    "end_date": "2019-09-19T13:37:23Z",
+    "start_date": "2019-09-22T15:56:24Z",
+    "end_date": "2019-09-22T15:56:24Z",
     "_id": "string",
-    "created_at": "2019-09-19T13:37:23Z",
-    "updated_at": "2019-09-19T13:37:23Z",
+    "created_at": "2019-09-22T15:56:24Z",
+    "updated_at": "2019-09-22T15:56:24Z",
     "last_modified_by": "string"
   },
   "message": "Element successfully created"
@@ -3655,7 +3862,7 @@ func main() {
 
 *Creates new client*
 
-Creates new client returning new client information
+Creates new client returning new client information.
 
 > Body parameter
 
@@ -3689,8 +3896,8 @@ Creates new client returning new client information
     "phone_number": "string",
     "_id": "string",
     "company_added": "string",
-    "created_at": "2019-09-19T13:37:23Z",
-    "updated_at": "2019-09-19T13:37:23Z",
+    "created_at": "2019-09-22T15:56:24Z",
+    "updated_at": "2019-09-22T15:56:24Z",
     "last_modified_by": "string"
   },
   "message": "Element successfully created"
@@ -3787,9 +3994,9 @@ BearerAuth
   },
   "_id": "string",
   "company_id": "string",
-  "created_at": "2019-09-19T13:37:23Z",
+  "created_at": "2019-09-22T15:56:24Z",
   "last_modified_by": "string",
-  "updated_at": "2019-09-19T13:37:23Z"
+  "updated_at": "2019-09-22T15:56:24Z"
 }
 
 ```
@@ -3862,8 +4069,8 @@ BearerAuth
   "phone_number": "string",
   "_id": "string",
   "company_added": "string",
-  "created_at": "2019-09-19T13:37:23Z",
-  "updated_at": "2019-09-19T13:37:23Z",
+  "created_at": "2019-09-22T15:56:24Z",
+  "updated_at": "2019-09-22T15:56:24Z",
   "last_modified_by": "string"
 }
 
@@ -3933,8 +4140,8 @@ BearerAuth
     "post_code": 0
   },
   "_id": "string",
-  "created_at": "2019-09-19T13:37:23Z",
-  "updated_at": "2019-09-19T13:37:23Z"
+  "created_at": "2019-09-22T15:56:24Z",
+  "updated_at": "2019-09-22T15:56:24Z"
 }
 
 ```
@@ -4011,8 +4218,8 @@ BearerAuth
     "phone_number": "string",
     "_id": "string",
     "company_added": "string",
-    "created_at": "2019-09-19T13:37:23Z",
-    "updated_at": "2019-09-19T13:37:23Z",
+    "created_at": "2019-09-22T15:56:24Z",
+    "updated_at": "2019-09-22T15:56:24Z",
     "last_modified_by": "string"
   },
   "employee": {
@@ -4029,15 +4236,15 @@ BearerAuth
     },
     "_id": "string",
     "company_id": "string",
-    "created_at": "2019-09-19T13:37:23Z",
+    "created_at": "2019-09-22T15:56:24Z",
     "last_modified_by": "string",
-    "updated_at": "2019-09-19T13:37:23Z"
+    "updated_at": "2019-09-22T15:56:24Z"
   },
-  "start_date": "2019-09-19T13:37:23Z",
-  "end_date": "2019-09-19T13:37:23Z",
+  "start_date": "2019-09-22T15:56:24Z",
+  "end_date": "2019-09-22T15:56:24Z",
   "_id": "string",
-  "created_at": "2019-09-19T13:37:23Z",
-  "updated_at": "2019-09-19T13:37:23Z",
+  "created_at": "2019-09-22T15:56:24Z",
+  "updated_at": "2019-09-22T15:56:24Z",
   "last_modified_by": "string"
 }
 
@@ -4076,8 +4283,8 @@ BearerAuth
     "phone_number": "string",
     "_id": "string",
     "company_added": "string",
-    "created_at": "2019-09-19T13:37:23Z",
-    "updated_at": "2019-09-19T13:37:23Z",
+    "created_at": "2019-09-22T15:56:24Z",
+    "updated_at": "2019-09-22T15:56:24Z",
     "last_modified_by": "string"
   },
   "employee": {
@@ -4094,12 +4301,12 @@ BearerAuth
     },
     "_id": "string",
     "company_id": "string",
-    "created_at": "2019-09-19T13:37:23Z",
+    "created_at": "2019-09-22T15:56:24Z",
     "last_modified_by": "string",
-    "updated_at": "2019-09-19T13:37:23Z"
+    "updated_at": "2019-09-22T15:56:24Z"
   },
-  "start_date": "2019-09-19T13:37:23Z",
-  "end_date": "2019-09-19T13:37:23Z"
+  "start_date": "2019-09-22T15:56:24Z",
+  "end_date": "2019-09-22T15:56:24Z"
 }
 
 ```
